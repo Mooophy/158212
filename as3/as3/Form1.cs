@@ -49,13 +49,24 @@ namespace as3
 
         private void tick_EventHandler(object sender, EventArgs e)
         {
-            ++elasped;
-            label1.Text = elasped.ToString();
+            ++elapsed;
+            label1.Text = getTimeStr();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             timer1.Start();
         }
+
+        private String getTimeStr()
+        {
+            lambda isTooShort = number => number < 10;
+            var min = (isTooShort(elapsed / 60) ? "0" : "") + (elapsed / 60).ToString();
+            var sec = (isTooShort(elapsed % 60) ? "0" : "") + (elapsed % 60).ToString();
+            return min + ":" + sec;
+        }
+
+        private int elapsed;
+        delegate bool lambda(int i);
     }
 }
