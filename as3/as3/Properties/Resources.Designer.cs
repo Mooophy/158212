@@ -63,6 +63,16 @@ namespace as3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cameroon {
+            get {
+                object obj = ResourceManager.GetObject("Cameroon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Chile {
             get {
                 object obj = ResourceManager.GetObject("Chile", resourceCulture);
