@@ -58,6 +58,12 @@ namespace as3
         private void button1_Click(object sender, EventArgs e)
         {
             timer1.Start();
+            groupBox1.Enabled = groupBox2.Enabled = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
         }
 
         private String getTimeStr()
@@ -71,9 +77,6 @@ namespace as3
         private int elapsed;
         delegate bool lambda(int i);
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            timer1.Stop();
-        }
+
     }
 }
