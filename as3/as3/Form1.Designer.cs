@@ -193,10 +193,10 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // timer1
             // 
-            this.timer1.Interval = 100;
             this.timer1.Tick += new System.EventHandler(this.tick_EventHandler);
             // 
             // Form1
