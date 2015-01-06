@@ -46,5 +46,16 @@ namespace as3
         {
             pictureBox2.Image = global::as3.Properties.Resources.Cameroon;
         }
+
+        private void tick_EventHandler(object sender, EventArgs e)
+        {
+            ++elasped;
+            label1.Text = elasped.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
     }
 }
