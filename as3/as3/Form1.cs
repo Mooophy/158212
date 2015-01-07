@@ -30,7 +30,7 @@ namespace as3
             label1.Text = getTimeStr();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonStart_Click(object sender, EventArgs e)
         {
             timer1.Start();
             groupBox1.Enabled = groupBox2.Enabled = false;
@@ -43,7 +43,7 @@ namespace as3
             buttonRightConversion.Enabled   =   buttonRightDrop.Enabled =   buttonRightPenalty.Enabled  =   buttonRightTry.Enabled  =   true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonStop_Click(object sender, EventArgs e)
         {
             timer1.Stop();
         }
