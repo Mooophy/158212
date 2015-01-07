@@ -43,6 +43,17 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonLeftTry = new System.Windows.Forms.Button();
+            this.buttonLeftConversion = new System.Windows.Forms.Button();
+            this.buttonLeftPenalty = new System.Windows.Forms.Button();
+            this.buttonLeftDrop = new System.Windows.Forms.Button();
+            this.buttonRightDrop = new System.Windows.Forms.Button();
+            this.buttonRightPenalty = new System.Windows.Forms.Button();
+            this.buttonRightConversion = new System.Windows.Forms.Button();
+            this.buttonRightTry = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -148,7 +159,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::as3.Properties.Resources.Germany;
-            this.pictureBox2.Location = new System.Drawing.Point(501, 17);
+            this.pictureBox2.Location = new System.Drawing.Point(517, 17);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(100, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -169,7 +180,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SimSun", 36F);
-            this.label1.Location = new System.Drawing.Point(266, 107);
+            this.label1.Location = new System.Drawing.Point(266, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 48);
             this.label1.TabIndex = 4;
@@ -177,21 +188,21 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(226, 211);
+            this.button1.Location = new System.Drawing.Point(234, 82);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
+            this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(351, 211);
+            this.button2.Location = new System.Drawing.Point(359, 82);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
-            this.button2.Text = "button2";
+            this.button2.Text = "Stop";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -199,11 +210,132 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.tick_EventHandler);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("SimSun", 48F);
+            this.label2.Location = new System.Drawing.Point(244, 170);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 64);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("SimSun", 48F);
+            this.label3.Location = new System.Drawing.Point(366, 170);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 64);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "0";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(167, 277);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(326, 96);
+            this.textBox1.TabIndex = 9;
+            // 
+            // buttonLeftTry
+            // 
+            this.buttonLeftTry.Enabled = false;
+            this.buttonLeftTry.Location = new System.Drawing.Point(64, 209);
+            this.buttonLeftTry.Name = "buttonLeftTry";
+            this.buttonLeftTry.Size = new System.Drawing.Size(75, 23);
+            this.buttonLeftTry.TabIndex = 10;
+            this.buttonLeftTry.Text = "Try";
+            this.buttonLeftTry.UseVisualStyleBackColor = true;
+            this.buttonLeftTry.Click += new System.EventHandler(this.buttonLeftTry_Click);
+            // 
+            // buttonLeftConversion
+            // 
+            this.buttonLeftConversion.Enabled = false;
+            this.buttonLeftConversion.Location = new System.Drawing.Point(64, 240);
+            this.buttonLeftConversion.Name = "buttonLeftConversion";
+            this.buttonLeftConversion.Size = new System.Drawing.Size(75, 23);
+            this.buttonLeftConversion.TabIndex = 11;
+            this.buttonLeftConversion.Text = "Conversion";
+            this.buttonLeftConversion.UseVisualStyleBackColor = true;
+            // 
+            // buttonLeftPenalty
+            // 
+            this.buttonLeftPenalty.Enabled = false;
+            this.buttonLeftPenalty.Location = new System.Drawing.Point(64, 270);
+            this.buttonLeftPenalty.Name = "buttonLeftPenalty";
+            this.buttonLeftPenalty.Size = new System.Drawing.Size(75, 23);
+            this.buttonLeftPenalty.TabIndex = 12;
+            this.buttonLeftPenalty.Text = "Penalty";
+            this.buttonLeftPenalty.UseVisualStyleBackColor = true;
+            // 
+            // buttonLeftDrop
+            // 
+            this.buttonLeftDrop.Enabled = false;
+            this.buttonLeftDrop.Location = new System.Drawing.Point(64, 300);
+            this.buttonLeftDrop.Name = "buttonLeftDrop";
+            this.buttonLeftDrop.Size = new System.Drawing.Size(75, 23);
+            this.buttonLeftDrop.TabIndex = 13;
+            this.buttonLeftDrop.Text = "Drop";
+            this.buttonLeftDrop.UseVisualStyleBackColor = true;
+            // 
+            // buttonRightDrop
+            // 
+            this.buttonRightDrop.Enabled = false;
+            this.buttonRightDrop.Location = new System.Drawing.Point(524, 302);
+            this.buttonRightDrop.Name = "buttonRightDrop";
+            this.buttonRightDrop.Size = new System.Drawing.Size(75, 23);
+            this.buttonRightDrop.TabIndex = 17;
+            this.buttonRightDrop.Text = "Drop";
+            this.buttonRightDrop.UseVisualStyleBackColor = true;
+            // 
+            // buttonRightPenalty
+            // 
+            this.buttonRightPenalty.Enabled = false;
+            this.buttonRightPenalty.Location = new System.Drawing.Point(524, 272);
+            this.buttonRightPenalty.Name = "buttonRightPenalty";
+            this.buttonRightPenalty.Size = new System.Drawing.Size(75, 23);
+            this.buttonRightPenalty.TabIndex = 16;
+            this.buttonRightPenalty.Text = "Penalty";
+            this.buttonRightPenalty.UseVisualStyleBackColor = true;
+            // 
+            // buttonRightConversion
+            // 
+            this.buttonRightConversion.Enabled = false;
+            this.buttonRightConversion.Location = new System.Drawing.Point(524, 242);
+            this.buttonRightConversion.Name = "buttonRightConversion";
+            this.buttonRightConversion.Size = new System.Drawing.Size(75, 23);
+            this.buttonRightConversion.TabIndex = 15;
+            this.buttonRightConversion.Text = "Conversion";
+            this.buttonRightConversion.UseVisualStyleBackColor = true;
+            // 
+            // buttonRightTry
+            // 
+            this.buttonRightTry.Enabled = false;
+            this.buttonRightTry.Location = new System.Drawing.Point(524, 211);
+            this.buttonRightTry.Name = "buttonRightTry";
+            this.buttonRightTry.Size = new System.Drawing.Size(75, 23);
+            this.buttonRightTry.TabIndex = 14;
+            this.buttonRightTry.Text = "Try";
+            this.buttonRightTry.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 411);
+            this.ClientSize = new System.Drawing.Size(708, 394);
+            this.Controls.Add(this.buttonRightDrop);
+            this.Controls.Add(this.buttonRightPenalty);
+            this.Controls.Add(this.buttonRightConversion);
+            this.Controls.Add(this.buttonRightTry);
+            this.Controls.Add(this.buttonLeftDrop);
+            this.Controls.Add(this.buttonLeftPenalty);
+            this.Controls.Add(this.buttonLeftConversion);
+            this.Controls.Add(this.buttonLeftTry);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -240,6 +372,17 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonLeftTry;
+        private System.Windows.Forms.Button buttonLeftConversion;
+        private System.Windows.Forms.Button buttonLeftPenalty;
+        private System.Windows.Forms.Button buttonLeftDrop;
+        private System.Windows.Forms.Button buttonRightDrop;
+        private System.Windows.Forms.Button buttonRightPenalty;
+        private System.Windows.Forms.Button buttonRightConversion;
+        private System.Windows.Forms.Button buttonRightTry;
     }
 }
 

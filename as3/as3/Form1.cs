@@ -77,6 +77,11 @@ namespace as3
         private int elapsed;
         delegate bool lambda(int i);
 
+        private void buttonLeftTry_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
