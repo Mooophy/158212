@@ -12,8 +12,13 @@ namespace as3
 {
     using Images = global::as3.Properties.Resources;
 
+
     public partial class Form1 : Form
     {
+
+        private int elapsed;
+        delegate bool lambda(int i);
+
         public Form1()
         {
             InitializeComponent();
@@ -59,6 +64,13 @@ namespace as3
         {
             timer1.Start();
             groupBox1.Enabled = groupBox2.Enabled = false;
+            enableAllScoreButtons();
+        }
+
+        private void enableAllScoreButtons()
+        {
+            buttonLeftConversion.Enabled    =   buttonLeftDrop.Enabled  =   buttonLeftPenalty.Enabled   =   buttonLeftTry.Enabled   =   true;
+            buttonRightConversion.Enabled   =   buttonRightDrop.Enabled =   buttonRightPenalty.Enabled  =   buttonRightTry.Enabled  =   true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -73,10 +85,7 @@ namespace as3
             var sec = (isTooShort(elapsed % 60) ? "0" : "") + (elapsed % 60).ToString();
             return min + ":" + sec;
         }
-
-        private int elapsed;
-        delegate bool lambda(int i);
-
+        
         private void buttonLeftTry_Click(object sender, EventArgs e)
         {
 
