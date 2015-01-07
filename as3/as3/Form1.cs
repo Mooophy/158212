@@ -12,14 +12,14 @@ namespace as3
 {
     using Images = global::as3.Properties.Resources;
 
-    public partial class Form1 : Form
+    public partial class Rugby : Form
     {
 
         private int elapsed, scoreLeft, scoreRight;
         private string leftNation = "Cameroon", rightNation = "Germany";
         delegate bool lambda(int i);
 
-        public Form1()
+        public Rugby()
         {
             InitializeComponent();
         }
@@ -38,7 +38,8 @@ namespace as3
                 return;
             }
             timer1.Start();
-            groupBox1.Enabled = groupBox2.Enabled = false;
+            groupBox1.Enabled = groupBox2.Enabled = buttonStart.Enabled = false;
+            buttonStop.Enabled = true;
             enableAllScoreButtons();
         }
 
@@ -51,6 +52,10 @@ namespace as3
         private void buttonStop_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+            int l = scoreLeft, r = scoreRight;
+            string gameResult = l==r ? "A Tie" :  l>r ? (leftNation + " Won!") : (rightNation + " Won!");
+            MessageBox.Show(gameResult, "Result");
+            this.Close();
         }
 
         private String getTimeStr()
@@ -59,16 +64,6 @@ namespace as3
             var min = (isTooShort(elapsed / 60) ? "0" : "") + (elapsed / 60).ToString();
             var sec = (isTooShort(elapsed % 60) ? "0" : "") + (elapsed % 60).ToString();
             return min + ":" + sec;
-        }
-        
-        private void buttonLeftTry_Click(object sender, EventArgs e)
-        {
-            score(0, true);
-        }
-
-        private void buttonLeftConversion_Click(object sender, EventArgs e)
-        {
-            score(1, true);
         }
 
         delegate int map(int scoreType);
@@ -84,7 +79,7 @@ namespace as3
 
             str make = (string n, int t) => {
                 string scoreName = t == 0 ? "try" : t == 1 ? "conversion" : t == 2 ? "drop" : "penalty";
-                return n + " " + scoreName + " at " + labelElapsed.Text + "\n";
+                return n + " scores a " + scoreName + " at " + labelElapsed.Text + ".\n";
             };
 
             if (isLeft)
@@ -95,6 +90,7 @@ namespace as3
             else
             {
                 labelRightScore.Text= (scoreRight+= getPoints(scoreType)).ToString();
+                log.AppendText(make(rightNation, scoreType));
             }
         }
 
@@ -134,7 +130,44 @@ namespace as3
             rightNation = "Cameroon";
         }
 
+        private void buttonLeftTry_Click(object sender, EventArgs e)
+        {
+            score(0, true);
+        }
 
+        private void buttonLeftConversion_Click(object sender, EventArgs e)
+        {
+            score(1, true);
+        }
 
+        private void buttonLeftPenalty_Click(object sender, EventArgs e)
+        {
+            score(2, true);
+        }
+
+        private void buttonLeftDrop_Click(object sender, EventArgs e)
+        {
+            score(3, true);
+        }
+
+        private void buttonRightTry_Click(object sender, EventArgs e)
+        {
+            score(0, false);
+        }
+
+        private void buttonRightConversion_Click(object sender, EventArgs e)
+        {
+            score(1, false);
+        }
+
+        private void buttonRightPenalty_Click(object sender, EventArgs e)
+        {
+            score(2, false);
+        }
+
+        private void buttonRightDrop_Click(object sender, EventArgs e)
+        {
+            score(3, false);
+        }
     }
 }

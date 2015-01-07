@@ -1,6 +1,6 @@
 ﻿namespace as3
 {
-    partial class Form1
+    partial class Rugby
     {
         /// <summary>
         /// Required designer variable.
@@ -127,7 +127,6 @@
             this.radioButtonRightCameroon.Name = "radioButtonRightCameroon";
             this.radioButtonRightCameroon.Size = new System.Drawing.Size(71, 16);
             this.radioButtonRightCameroon.TabIndex = 5;
-            this.radioButtonRightCameroon.TabStop = true;
             this.radioButtonRightCameroon.Text = "Cameroon";
             this.radioButtonRightCameroon.UseVisualStyleBackColor = true;
             this.radioButtonRightCameroon.CheckedChanged += new System.EventHandler(this.radioButtonRightCameroon_CheckedChanged);
@@ -135,6 +134,7 @@
             // radioButtonRightGermany
             // 
             this.radioButtonRightGermany.AutoSize = true;
+            this.radioButtonRightGermany.Checked = true;
             this.radioButtonRightGermany.Location = new System.Drawing.Point(23, 46);
             this.radioButtonRightGermany.Name = "radioButtonRightGermany";
             this.radioButtonRightGermany.Size = new System.Drawing.Size(65, 16);
@@ -151,7 +151,6 @@
             this.radioButtonRightChile.Name = "radioButtonRightChile";
             this.radioButtonRightChile.Size = new System.Drawing.Size(53, 16);
             this.radioButtonRightChile.TabIndex = 3;
-            this.radioButtonRightChile.TabStop = true;
             this.radioButtonRightChile.Text = "Chile";
             this.radioButtonRightChile.UseVisualStyleBackColor = true;
             this.radioButtonRightChile.CheckedChanged += new System.EventHandler(this.radioButtonRightChile_CheckedChanged);
@@ -198,6 +197,7 @@
             // 
             // buttonStop
             // 
+            this.buttonStop.Enabled = false;
             this.buttonStop.Location = new System.Drawing.Point(359, 82);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(75, 23);
@@ -270,6 +270,7 @@
             this.buttonLeftPenalty.TabIndex = 12;
             this.buttonLeftPenalty.Text = "Penalty";
             this.buttonLeftPenalty.UseVisualStyleBackColor = true;
+            this.buttonLeftPenalty.Click += new System.EventHandler(this.buttonLeftPenalty_Click);
             // 
             // buttonLeftDrop
             // 
@@ -280,6 +281,7 @@
             this.buttonLeftDrop.TabIndex = 13;
             this.buttonLeftDrop.Text = "Drop";
             this.buttonLeftDrop.UseVisualStyleBackColor = true;
+            this.buttonLeftDrop.Click += new System.EventHandler(this.buttonLeftDrop_Click);
             // 
             // buttonRightDrop
             // 
@@ -290,6 +292,7 @@
             this.buttonRightDrop.TabIndex = 17;
             this.buttonRightDrop.Text = "Drop";
             this.buttonRightDrop.UseVisualStyleBackColor = true;
+            this.buttonRightDrop.Click += new System.EventHandler(this.buttonRightDrop_Click);
             // 
             // buttonRightPenalty
             // 
@@ -300,6 +303,7 @@
             this.buttonRightPenalty.TabIndex = 16;
             this.buttonRightPenalty.Text = "Penalty";
             this.buttonRightPenalty.UseVisualStyleBackColor = true;
+            this.buttonRightPenalty.Click += new System.EventHandler(this.buttonRightPenalty_Click);
             // 
             // buttonRightConversion
             // 
@@ -310,6 +314,7 @@
             this.buttonRightConversion.TabIndex = 15;
             this.buttonRightConversion.Text = "Conversion";
             this.buttonRightConversion.UseVisualStyleBackColor = true;
+            this.buttonRightConversion.Click += new System.EventHandler(this.buttonRightConversion_Click);
             // 
             // buttonRightTry
             // 
@@ -320,8 +325,9 @@
             this.buttonRightTry.TabIndex = 14;
             this.buttonRightTry.Text = "Try";
             this.buttonRightTry.UseVisualStyleBackColor = true;
+            this.buttonRightTry.Click += new System.EventHandler(this.buttonRightTry_Click);
             // 
-            // Form1
+            // Rugby
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -344,8 +350,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBoxRight);
             this.Controls.Add(this.pictureBoxLeft);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Rugby";
+            this.Text = "Rugby";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
