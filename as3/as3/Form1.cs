@@ -14,7 +14,6 @@ namespace as3
 
     public partial class Rugby : Form
     {
-
         private int elapsed, scoreLeft, scoreRight;
         private string leftNation = "Cameroon", rightNation = "Germany";
         delegate bool lambda(int i);

@@ -70,7 +70,6 @@
             this.groupBox1.Size = new System.Drawing.Size(143, 100);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // radioButtonLeftCameroon
             // 
@@ -118,7 +117,6 @@
             this.groupBox2.Size = new System.Drawing.Size(138, 100);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
             // 
             // radioButtonRightCameroon
             // 
