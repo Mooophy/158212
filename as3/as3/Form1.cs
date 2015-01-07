@@ -36,7 +36,7 @@ namespace as3
                 MessageBox.Show("The two sides cann't be the same nation.","Note!");
                 return;
             }
-            timer1.Start();
+            timer.Start();
             groupBox1.Enabled = groupBox2.Enabled = buttonStart.Enabled = false;
             buttonStop.Enabled = true;
             enableAllScoreButtons();
@@ -50,7 +50,7 @@ namespace as3
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
+            timer.Stop();
             int l = scoreLeft, r = scoreRight;
             string gameResult = l==r ? "A Tie" :  l>r ? (leftNation + " Won!") : (rightNation + " Won!");
             MessageBox.Show(gameResult, "Result");

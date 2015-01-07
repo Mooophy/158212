@@ -42,7 +42,7 @@
             this.labelElapsed = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.labelLeftScore = new System.Windows.Forms.Label();
             this.labelRightScore = new System.Windows.Forms.Label();
             this.log = new System.Windows.Forms.TextBox();
@@ -204,9 +204,9 @@
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
-            // timer1
+            // timer
             // 
-            this.timer1.Tick += new System.EventHandler(this.tick_EventHandler);
+            this.timer.Tick += new System.EventHandler(this.tick_EventHandler);
             // 
             // labelLeftScore
             // 
@@ -376,7 +376,7 @@
         private System.Windows.Forms.Label labelElapsed;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonStop;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label labelLeftScore;
         private System.Windows.Forms.Label labelRightScore;
         private System.Windows.Forms.TextBox log;
