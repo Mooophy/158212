@@ -39,13 +39,13 @@
             this.radioButtonRightChile = new System.Windows.Forms.RadioButton();
             this.pictureBoxRight = new System.Windows.Forms.PictureBox();
             this.pictureBoxLeft = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelElapsed = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.labelLeftScore = new System.Windows.Forms.Label();
             this.labelRightScore = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.log = new System.Windows.Forms.TextBox();
             this.buttonLeftTry = new System.Windows.Forms.Button();
             this.buttonLeftConversion = new System.Windows.Forms.Button();
             this.buttonLeftPenalty = new System.Windows.Forms.Button();
@@ -176,15 +176,15 @@
             this.pictureBoxLeft.TabIndex = 0;
             this.pictureBoxLeft.TabStop = false;
             // 
-            // label1
+            // labelElapsed
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SimSun", 36F);
-            this.label1.Location = new System.Drawing.Point(266, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 48);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "00:00";
+            this.labelElapsed.AutoSize = true;
+            this.labelElapsed.Font = new System.Drawing.Font("SimSun", 36F);
+            this.labelElapsed.Location = new System.Drawing.Point(266, 17);
+            this.labelElapsed.Name = "labelElapsed";
+            this.labelElapsed.Size = new System.Drawing.Size(140, 48);
+            this.labelElapsed.TabIndex = 4;
+            this.labelElapsed.Text = "00:00";
             // 
             // buttonStart
             // 
@@ -230,14 +230,14 @@
             this.labelRightScore.TabIndex = 8;
             this.labelRightScore.Text = "0";
             // 
-            // textBox1
+            // log
             // 
-            this.textBox1.Location = new System.Drawing.Point(167, 277);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(326, 96);
-            this.textBox1.TabIndex = 9;
+            this.log.Location = new System.Drawing.Point(167, 277);
+            this.log.Multiline = true;
+            this.log.Name = "log";
+            this.log.ReadOnly = true;
+            this.log.Size = new System.Drawing.Size(326, 96);
+            this.log.TabIndex = 9;
             // 
             // buttonLeftTry
             // 
@@ -334,12 +334,12 @@
             this.Controls.Add(this.buttonLeftPenalty);
             this.Controls.Add(this.buttonLeftConversion);
             this.Controls.Add(this.buttonLeftTry);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.log);
             this.Controls.Add(this.labelRightScore);
             this.Controls.Add(this.labelLeftScore);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonStart);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelElapsed);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBoxRight);
@@ -369,13 +369,13 @@
         private System.Windows.Forms.RadioButton radioButtonRightCameroon;
         private System.Windows.Forms.RadioButton radioButtonRightGermany;
         private System.Windows.Forms.RadioButton radioButtonRightChile;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelElapsed;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label labelLeftScore;
         private System.Windows.Forms.Label labelRightScore;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox log;
         private System.Windows.Forms.Button buttonLeftTry;
         private System.Windows.Forms.Button buttonLeftConversion;
         private System.Windows.Forms.Button buttonLeftPenalty;

@@ -27,11 +27,16 @@ namespace as3
         private void tick_EventHandler(object sender, EventArgs e)
         {
             ++elapsed;
-            label1.Text = getTimeStr();
+            labelElapsed.Text = getTimeStr();
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            if (leftNation == rightNation)
+            {
+                MessageBox.Show("The two sides cann't be the same nation.","Note!");
+                return;
+            }
             timer1.Start();
             groupBox1.Enabled = groupBox2.Enabled = false;
             enableAllScoreButtons();
@@ -67,6 +72,7 @@ namespace as3
         }
 
         delegate int map(int scoreType);
+        delegate string str(string nation, int scoreType);
         private void score(int scoreType, bool isLeft)
         {
             map getPoints = t => {
@@ -76,9 +82,15 @@ namespace as3
                 return 0;
             };
 
+            str make = (string n, int t) => {
+                string scoreName = t == 0 ? "try" : t == 1 ? "conversion" : t == 2 ? "drop" : "penalty";
+                return n + " " + scoreName + " at " + labelElapsed.Text + "\n";
+            };
+
             if (isLeft)
             {
                 labelLeftScore.Text = (scoreLeft += getPoints(scoreType)).ToString();
+                log.AppendText(make(leftNation, scoreType));
             }
             else
             {
