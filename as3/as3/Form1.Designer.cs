@@ -37,8 +37,8 @@
             this.radioButtonRightCameroon = new System.Windows.Forms.RadioButton();
             this.radioButtonRightGermany = new System.Windows.Forms.RadioButton();
             this.radioButtonRightChile = new System.Windows.Forms.RadioButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRight = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLeft = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -56,8 +56,8 @@
             this.buttonRightTry = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLeft)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -82,7 +82,7 @@
             this.radioButtonLeftCameroon.TabStop = true;
             this.radioButtonLeftCameroon.Text = "Cameroon";
             this.radioButtonLeftCameroon.UseVisualStyleBackColor = true;
-            this.radioButtonLeftCameroon.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.radioButtonLeftCameroon.CheckedChanged += new System.EventHandler(this.radioButtonLeftCameroon_CheckedChanged);
             // 
             // radioButtonLeftGermany
             // 
@@ -94,7 +94,7 @@
             this.radioButtonLeftGermany.TabStop = true;
             this.radioButtonLeftGermany.Text = "Germany";
             this.radioButtonLeftGermany.UseVisualStyleBackColor = true;
-            this.radioButtonLeftGermany.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioButtonLeftGermany.CheckedChanged += new System.EventHandler(this.radioButtonLeftGermany_CheckedChanged);
             // 
             // radioButtonLeftChile
             // 
@@ -106,7 +106,7 @@
             this.radioButtonLeftChile.TabStop = true;
             this.radioButtonLeftChile.Text = "Chile";
             this.radioButtonLeftChile.UseVisualStyleBackColor = true;
-            this.radioButtonLeftChile.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButtonLeftChile.CheckedChanged += new System.EventHandler(this.radioButtonLeftChile_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -130,7 +130,7 @@
             this.radioButtonRightCameroon.TabStop = true;
             this.radioButtonRightCameroon.Text = "Cameroon";
             this.radioButtonRightCameroon.UseVisualStyleBackColor = true;
-            this.radioButtonRightCameroon.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            this.radioButtonRightCameroon.CheckedChanged += new System.EventHandler(this.radioButtonRightCameroon_CheckedChanged);
             // 
             // radioButtonRightGermany
             // 
@@ -142,7 +142,7 @@
             this.radioButtonRightGermany.TabStop = true;
             this.radioButtonRightGermany.Text = "Germany";
             this.radioButtonRightGermany.UseVisualStyleBackColor = true;
-            this.radioButtonRightGermany.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            this.radioButtonRightGermany.CheckedChanged += new System.EventHandler(this.radioButtonRightGermany_CheckedChanged);
             // 
             // radioButtonRightChile
             // 
@@ -154,27 +154,27 @@
             this.radioButtonRightChile.TabStop = true;
             this.radioButtonRightChile.Text = "Chile";
             this.radioButtonRightChile.UseVisualStyleBackColor = true;
-            this.radioButtonRightChile.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.radioButtonRightChile.CheckedChanged += new System.EventHandler(this.radioButtonRightChile_CheckedChanged);
             // 
-            // pictureBox2
+            // pictureBoxRight
             // 
-            this.pictureBox2.Image = global::as3.Properties.Resources.Germany;
-            this.pictureBox2.Location = new System.Drawing.Point(517, 17);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxRight.Image = global::as3.Properties.Resources.Germany;
+            this.pictureBoxRight.Location = new System.Drawing.Point(517, 17);
+            this.pictureBoxRight.Name = "pictureBoxRight";
+            this.pictureBoxRight.Size = new System.Drawing.Size(100, 50);
+            this.pictureBoxRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxRight.TabIndex = 1;
+            this.pictureBoxRight.TabStop = false;
             // 
-            // pictureBox1
+            // pictureBoxLeft
             // 
-            this.pictureBox1.Image = global::as3.Properties.Resources.Cameroon;
-            this.pictureBox1.Location = new System.Drawing.Point(48, 17);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxLeft.Image = global::as3.Properties.Resources.Cameroon;
+            this.pictureBoxLeft.Location = new System.Drawing.Point(48, 17);
+            this.pictureBoxLeft.Name = "pictureBoxLeft";
+            this.pictureBoxLeft.Size = new System.Drawing.Size(100, 50);
+            this.pictureBoxLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLeft.TabIndex = 0;
+            this.pictureBoxLeft.TabStop = false;
             // 
             // label1
             // 
@@ -342,16 +342,16 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxRight);
+            this.Controls.Add(this.pictureBoxLeft);
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLeft)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,8 +359,8 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBoxLeft;
+        private System.Windows.Forms.PictureBox pictureBoxRight;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButtonLeftCameroon;
         private System.Windows.Forms.RadioButton radioButtonLeftGermany;

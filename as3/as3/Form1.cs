@@ -24,35 +24,9 @@ namespace as3
             InitializeComponent();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            pictureBox1.Image = Images.Chile;
-        }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            pictureBox1.Image = Images.Germany;
-        }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            pictureBox1.Image = Images.Cameroon;
-        }
 
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            pictureBox2.Image = Images.Chile;
-        }
-
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
-        {
-            pictureBox2.Image = Images.Germany;
-        }
-
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
-        {
-            pictureBox2.Image = Images.Cameroon;
-        }
 
         private void tick_EventHandler(object sender, EventArgs e)
         {
@@ -115,5 +89,38 @@ namespace as3
                 labelRightScore.Text= (scoreRight+= getPoints(scoreType)).ToString();
             }
         }
+
+        private void radioButtonLeftChile_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBoxLeft.Image = Images.Chile;
+        }
+
+        private void radioButtonLeftGermany_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBoxLeft.Image = Images.Germany;
+        }
+
+        private void radioButtonLeftCameroon_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBoxLeft.Image = Images.Cameroon;
+        }
+
+        private void radioButtonRightChile_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBoxRight.Image = Images.Chile;
+        }
+
+        private void radioButtonRightGermany_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBoxRight.Image = Images.Germany;
+        }
+
+        private void radioButtonRightCameroon_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBoxRight.Image = Images.Cameroon;
+        }
+
+
+
     }
 }
