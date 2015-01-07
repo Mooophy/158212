@@ -12,11 +12,10 @@ namespace as3
 {
     using Images = global::as3.Properties.Resources;
 
-
     public partial class Form1 : Form
     {
 
-        private int elapsed;
+        private int elapsed, scoreLeft, scoreRight;
         delegate bool lambda(int i);
 
         public Form1()
@@ -88,9 +87,32 @@ namespace as3
         
         private void buttonLeftTry_Click(object sender, EventArgs e)
         {
-
+            score(0, true);
         }
 
+        private void buttonLeftConversion_Click(object sender, EventArgs e)
+        {
+            score(1, true);
+        }
 
+        delegate int map(int scoreType);
+        private void score(int scoreType, bool isLeft)
+        {
+            map getPoints = t => {
+                if (t == 0)             return 5;   //try
+                if (t == 1)             return 2;   //conversion
+                if (t == 2 || t == 3)   return 3;   //drop and penalty
+                return 0;
+            };
+
+            if (isLeft == true)
+            {
+                labelLeftScore.Text = (scoreLeft += getPoints(scoreType)).ToString();
+            }
+            else
+            {
+                labelRightScore.Text= (scoreRight+= getPoints(scoreType)).ToString();
+            }
+        }
     }
 }

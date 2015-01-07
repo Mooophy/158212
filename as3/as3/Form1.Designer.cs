@@ -43,8 +43,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelLeftScore = new System.Windows.Forms.Label();
+            this.labelRightScore = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonLeftTry = new System.Windows.Forms.Button();
             this.buttonLeftConversion = new System.Windows.Forms.Button();
@@ -210,25 +210,25 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.tick_EventHandler);
             // 
-            // label2
+            // labelLeftScore
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("SimSun", 48F);
-            this.label2.Location = new System.Drawing.Point(244, 170);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 64);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "0";
+            this.labelLeftScore.AutoSize = true;
+            this.labelLeftScore.Font = new System.Drawing.Font("SimSun", 48F);
+            this.labelLeftScore.Location = new System.Drawing.Point(244, 170);
+            this.labelLeftScore.Name = "labelLeftScore";
+            this.labelLeftScore.Size = new System.Drawing.Size(60, 64);
+            this.labelLeftScore.TabIndex = 7;
+            this.labelLeftScore.Text = "0";
             // 
-            // label3
+            // labelRightScore
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("SimSun", 48F);
-            this.label3.Location = new System.Drawing.Point(366, 170);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 64);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "0";
+            this.labelRightScore.AutoSize = true;
+            this.labelRightScore.Font = new System.Drawing.Font("SimSun", 48F);
+            this.labelRightScore.Location = new System.Drawing.Point(366, 170);
+            this.labelRightScore.Name = "labelRightScore";
+            this.labelRightScore.Size = new System.Drawing.Size(60, 64);
+            this.labelRightScore.TabIndex = 8;
+            this.labelRightScore.Text = "0";
             // 
             // textBox1
             // 
@@ -259,6 +259,7 @@
             this.buttonLeftConversion.TabIndex = 11;
             this.buttonLeftConversion.Text = "Conversion";
             this.buttonLeftConversion.UseVisualStyleBackColor = true;
+            this.buttonLeftConversion.Click += new System.EventHandler(this.buttonLeftConversion_Click);
             // 
             // buttonLeftPenalty
             // 
@@ -334,8 +335,8 @@
             this.Controls.Add(this.buttonLeftConversion);
             this.Controls.Add(this.buttonLeftTry);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelRightScore);
+            this.Controls.Add(this.labelLeftScore);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -372,8 +373,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelLeftScore;
+        private System.Windows.Forms.Label labelRightScore;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonLeftTry;
         private System.Windows.Forms.Button buttonLeftConversion;
