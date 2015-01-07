@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonLeftCameroon = new System.Windows.Forms.RadioButton();
+            this.radioButtonLeftGermany = new System.Windows.Forms.RadioButton();
+            this.radioButtonLeftChile = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButtonRightCameroon = new System.Windows.Forms.RadioButton();
+            this.radioButtonRightGermany = new System.Windows.Forms.RadioButton();
+            this.radioButtonRightChile = new System.Windows.Forms.RadioButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,9 +62,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.radioButtonLeftCameroon);
+            this.groupBox1.Controls.Add(this.radioButtonLeftGermany);
+            this.groupBox1.Controls.Add(this.radioButtonLeftChile);
             this.groupBox1.Location = new System.Drawing.Point(48, 94);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(143, 100);
@@ -72,47 +72,47 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // radioButton3
+            // radioButtonLeftCameroon
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(16, 64);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(95, 16);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.radioButtonLeftCameroon.AutoSize = true;
+            this.radioButtonLeftCameroon.Location = new System.Drawing.Point(16, 64);
+            this.radioButtonLeftCameroon.Name = "radioButtonLeftCameroon";
+            this.radioButtonLeftCameroon.Size = new System.Drawing.Size(71, 16);
+            this.radioButtonLeftCameroon.TabIndex = 2;
+            this.radioButtonLeftCameroon.TabStop = true;
+            this.radioButtonLeftCameroon.Text = "Cameroon";
+            this.radioButtonLeftCameroon.UseVisualStyleBackColor = true;
+            this.radioButtonLeftCameroon.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
-            // radioButton2
+            // radioButtonLeftGermany
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(16, 42);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(95, 16);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioButtonLeftGermany.AutoSize = true;
+            this.radioButtonLeftGermany.Location = new System.Drawing.Point(16, 42);
+            this.radioButtonLeftGermany.Name = "radioButtonLeftGermany";
+            this.radioButtonLeftGermany.Size = new System.Drawing.Size(65, 16);
+            this.radioButtonLeftGermany.TabIndex = 1;
+            this.radioButtonLeftGermany.TabStop = true;
+            this.radioButtonLeftGermany.Text = "Germany";
+            this.radioButtonLeftGermany.UseVisualStyleBackColor = true;
+            this.radioButtonLeftGermany.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioButton1
+            // radioButtonLeftChile
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(16, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(95, 16);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButtonLeftChile.AutoSize = true;
+            this.radioButtonLeftChile.Location = new System.Drawing.Point(16, 20);
+            this.radioButtonLeftChile.Name = "radioButtonLeftChile";
+            this.radioButtonLeftChile.Size = new System.Drawing.Size(53, 16);
+            this.radioButtonLeftChile.TabIndex = 0;
+            this.radioButtonLeftChile.TabStop = true;
+            this.radioButtonLeftChile.Text = "Chile";
+            this.radioButtonLeftChile.UseVisualStyleBackColor = true;
+            this.radioButtonLeftChile.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton6);
-            this.groupBox2.Controls.Add(this.radioButton5);
-            this.groupBox2.Controls.Add(this.radioButton4);
+            this.groupBox2.Controls.Add(this.radioButtonRightCameroon);
+            this.groupBox2.Controls.Add(this.radioButtonRightGermany);
+            this.groupBox2.Controls.Add(this.radioButtonRightChile);
             this.groupBox2.Location = new System.Drawing.Point(501, 90);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(138, 100);
@@ -120,41 +120,41 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // radioButton6
+            // radioButtonRightCameroon
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(23, 68);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(95, 16);
-            this.radioButton6.TabIndex = 5;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "radioButton6";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            this.radioButtonRightCameroon.AutoSize = true;
+            this.radioButtonRightCameroon.Location = new System.Drawing.Point(23, 68);
+            this.radioButtonRightCameroon.Name = "radioButtonRightCameroon";
+            this.radioButtonRightCameroon.Size = new System.Drawing.Size(71, 16);
+            this.radioButtonRightCameroon.TabIndex = 5;
+            this.radioButtonRightCameroon.TabStop = true;
+            this.radioButtonRightCameroon.Text = "Cameroon";
+            this.radioButtonRightCameroon.UseVisualStyleBackColor = true;
+            this.radioButtonRightCameroon.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
-            // radioButton5
+            // radioButtonRightGermany
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(23, 46);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(95, 16);
-            this.radioButton5.TabIndex = 4;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "radioButton5";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            this.radioButtonRightGermany.AutoSize = true;
+            this.radioButtonRightGermany.Location = new System.Drawing.Point(23, 46);
+            this.radioButtonRightGermany.Name = "radioButtonRightGermany";
+            this.radioButtonRightGermany.Size = new System.Drawing.Size(65, 16);
+            this.radioButtonRightGermany.TabIndex = 4;
+            this.radioButtonRightGermany.TabStop = true;
+            this.radioButtonRightGermany.Text = "Germany";
+            this.radioButtonRightGermany.UseVisualStyleBackColor = true;
+            this.radioButtonRightGermany.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
-            // radioButton4
+            // radioButtonRightChile
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(23, 24);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(95, 16);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "radioButton4";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.radioButtonRightChile.AutoSize = true;
+            this.radioButtonRightChile.Location = new System.Drawing.Point(23, 24);
+            this.radioButtonRightChile.Name = "radioButtonRightChile";
+            this.radioButtonRightChile.Size = new System.Drawing.Size(53, 16);
+            this.radioButtonRightChile.TabIndex = 3;
+            this.radioButtonRightChile.TabStop = true;
+            this.radioButtonRightChile.Text = "Chile";
+            this.radioButtonRightChile.UseVisualStyleBackColor = true;
+            this.radioButtonRightChile.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // pictureBox2
             // 
@@ -362,13 +362,13 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButtonLeftCameroon;
+        private System.Windows.Forms.RadioButton radioButtonLeftGermany;
+        private System.Windows.Forms.RadioButton radioButtonLeftChile;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButtonRightCameroon;
+        private System.Windows.Forms.RadioButton radioButtonRightGermany;
+        private System.Windows.Forms.RadioButton radioButtonRightChile;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

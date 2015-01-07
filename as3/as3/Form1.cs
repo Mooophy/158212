@@ -16,6 +16,7 @@ namespace as3
     {
 
         private int elapsed, scoreLeft, scoreRight;
+        private string leftNation = "Cameroon", rightNation = "Germany";
         delegate bool lambda(int i);
 
         public Form1()
@@ -105,7 +106,7 @@ namespace as3
                 return 0;
             };
 
-            if (isLeft == true)
+            if (isLeft)
             {
                 labelLeftScore.Text = (scoreLeft += getPoints(scoreType)).ToString();
             }
