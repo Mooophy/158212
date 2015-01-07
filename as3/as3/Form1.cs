@@ -24,10 +24,6 @@ namespace as3
             InitializeComponent();
         }
 
-
-
-
-
         private void tick_EventHandler(object sender, EventArgs e)
         {
             ++elapsed;
@@ -93,31 +89,37 @@ namespace as3
         private void radioButtonLeftChile_CheckedChanged(object sender, EventArgs e)
         {
             pictureBoxLeft.Image = Images.Chile;
+            leftNation = "Chile";
         }
 
         private void radioButtonLeftGermany_CheckedChanged(object sender, EventArgs e)
         {
             pictureBoxLeft.Image = Images.Germany;
+            leftNation = "Germany";
         }
 
         private void radioButtonLeftCameroon_CheckedChanged(object sender, EventArgs e)
         {
             pictureBoxLeft.Image = Images.Cameroon;
+            leftNation = "Cameroon";
         }
 
         private void radioButtonRightChile_CheckedChanged(object sender, EventArgs e)
         {
             pictureBoxRight.Image = Images.Chile;
+            rightNation = "Chile";
         }
 
         private void radioButtonRightGermany_CheckedChanged(object sender, EventArgs e)
         {
             pictureBoxRight.Image = Images.Germany;
+            rightNation = "Germany";
         }
 
         private void radioButtonRightCameroon_CheckedChanged(object sender, EventArgs e)
         {
             pictureBoxRight.Image = Images.Cameroon;
+            rightNation = "Cameroon";
         }
 
 
