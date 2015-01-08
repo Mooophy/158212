@@ -12,13 +12,13 @@ namespace as3
 {
     using Images = global::as3.Properties.Resources;
 
-    public partial class Rugby : Form
+    public partial class MainForm : Form
     {
         private int elapsed, scoreLeft, scoreRight;
         private string leftNation = "Cameroon", rightNation = "Germany";
         delegate bool lambda(int i);
 
-        public Rugby()
+        public MainForm()
         {
             InitializeComponent();
         }

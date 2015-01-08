@@ -1,6 +1,6 @@
 ﻿namespace as3
 {
-    partial class Rugby
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.

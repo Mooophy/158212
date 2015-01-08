@@ -16,7 +16,7 @@ namespace as3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Rugby());
+            Application.Run(new MainForm());
         }
     }
 }
