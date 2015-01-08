@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.log = new System.Windows.Forms.TextBox();
             this.picLeft = new System.Windows.Forms.PictureBox();
             this.picRight = new System.Windows.Forms.PictureBox();
@@ -40,6 +41,9 @@
             this.rbtnGermanyRight = new System.Windows.Forms.RadioButton();
             this.rbtnChileRight = new System.Windows.Forms.RadioButton();
             this.lblElapsed = new System.Windows.Forms.Label();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRight)).BeginInit();
             this.boxLeft.SuspendLayout();
@@ -177,11 +181,37 @@
             this.lblElapsed.TabIndex = 5;
             this.lblElapsed.Text = "00:00";
             // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(252, 130);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.TabIndex = 6;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Enabled = false;
+            this.btnStop.Location = new System.Drawing.Point(333, 130);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(75, 23);
+            this.btnStop.TabIndex = 7;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.tick_eventHandler);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(716, 392);
+            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblElapsed);
             this.Controls.Add(this.boxRight);
             this.Controls.Add(this.boxLeft);
@@ -215,6 +245,9 @@
         private System.Windows.Forms.RadioButton rbtnChileRight;
         private System.Windows.Forms.RadioButton rbtnGermanyRight;
         private System.Windows.Forms.Label lblElapsed;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

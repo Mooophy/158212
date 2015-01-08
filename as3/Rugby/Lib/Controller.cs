@@ -8,38 +8,15 @@ namespace Lib
 {
     public class Controller
     {
-        private string leftNation = "Chile";
-        private string rightNation = "Germany";
-
         public Controller(): base(){}
 
-        public Controller(string lhs, string rhs)
+        delegate bool Predicate(int i); 
+        public string elapsedToString(int elapsed)
         {
-            leftNation = lhs;
-            rightNation = rhs;
-        }
-
-        public string LeftNation
-        {
-            get
-            {
-                return leftNation;
-            }
-            set
-            {
-                leftNation = value;
-            }
-        }
-        public string RightNation
-        {
-            get 
-            {
-                return rightNation;
-            }
-            set
-            {
-                rightNation = value;
-            }
+            Predicate isTooSmall = i => i < 10;
+            var min = (isTooSmall(elapsed / 60) ? "0" : "") + (elapsed / 60).ToString();
+            var sec = (isTooSmall(elapsed % 60) ? "0" : "") + (elapsed % 60).ToString();
+            return min + ":" + sec;
         }
     }
 }
