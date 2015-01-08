@@ -37,7 +37,7 @@ namespace as3
                 return;
             }
             timer.Start();
-            groupBox1.Enabled = groupBox2.Enabled = buttonStart.Enabled = false;
+            groupBoxLeft.Enabled = groupBoxRight.Enabled = buttonStart.Enabled = false;
             buttonStop.Enabled = true;
             enableAllScoreButtons();
         }

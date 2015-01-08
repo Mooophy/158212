@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxLeft = new System.Windows.Forms.GroupBox();
             this.radioButtonLeftCameroon = new System.Windows.Forms.RadioButton();
             this.radioButtonLeftGermany = new System.Windows.Forms.RadioButton();
             this.radioButtonLeftChile = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxRight = new System.Windows.Forms.GroupBox();
             this.radioButtonRightCameroon = new System.Windows.Forms.RadioButton();
             this.radioButtonRightGermany = new System.Windows.Forms.RadioButton();
             this.radioButtonRightChile = new System.Windows.Forms.RadioButton();
@@ -54,22 +54,22 @@
             this.buttonRightPenalty = new System.Windows.Forms.Button();
             this.buttonRightConversion = new System.Windows.Forms.Button();
             this.buttonRightTry = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxLeft.SuspendLayout();
+            this.groupBoxRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLeft)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxLeft
             // 
-            this.groupBox1.Controls.Add(this.radioButtonLeftCameroon);
-            this.groupBox1.Controls.Add(this.radioButtonLeftGermany);
-            this.groupBox1.Controls.Add(this.radioButtonLeftChile);
-            this.groupBox1.Location = new System.Drawing.Point(48, 94);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(143, 100);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
+            this.groupBoxLeft.Controls.Add(this.radioButtonLeftCameroon);
+            this.groupBoxLeft.Controls.Add(this.radioButtonLeftGermany);
+            this.groupBoxLeft.Controls.Add(this.radioButtonLeftChile);
+            this.groupBoxLeft.Location = new System.Drawing.Point(48, 94);
+            this.groupBoxLeft.Name = "groupBoxLeft";
+            this.groupBoxLeft.Size = new System.Drawing.Size(143, 100);
+            this.groupBoxLeft.TabIndex = 2;
+            this.groupBoxLeft.TabStop = false;
             // 
             // radioButtonLeftCameroon
             // 
@@ -107,16 +107,16 @@
             this.radioButtonLeftChile.UseVisualStyleBackColor = true;
             this.radioButtonLeftChile.CheckedChanged += new System.EventHandler(this.radioButtonLeftChile_CheckedChanged);
             // 
-            // groupBox2
+            // groupBoxRight
             // 
-            this.groupBox2.Controls.Add(this.radioButtonRightCameroon);
-            this.groupBox2.Controls.Add(this.radioButtonRightGermany);
-            this.groupBox2.Controls.Add(this.radioButtonRightChile);
-            this.groupBox2.Location = new System.Drawing.Point(501, 90);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(138, 100);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
+            this.groupBoxRight.Controls.Add(this.radioButtonRightCameroon);
+            this.groupBoxRight.Controls.Add(this.radioButtonRightGermany);
+            this.groupBoxRight.Controls.Add(this.radioButtonRightChile);
+            this.groupBoxRight.Location = new System.Drawing.Point(501, 90);
+            this.groupBoxRight.Name = "groupBoxRight";
+            this.groupBoxRight.Size = new System.Drawing.Size(138, 100);
+            this.groupBoxRight.TabIndex = 3;
+            this.groupBoxRight.TabStop = false;
             // 
             // radioButtonRightCameroon
             // 
@@ -325,7 +325,7 @@
             this.buttonRightTry.UseVisualStyleBackColor = true;
             this.buttonRightTry.Click += new System.EventHandler(this.buttonRightTry_Click);
             // 
-            // Rugby
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -344,16 +344,16 @@
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.labelElapsed);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxRight);
+            this.Controls.Add(this.groupBoxLeft);
             this.Controls.Add(this.pictureBoxRight);
             this.Controls.Add(this.pictureBoxLeft);
-            this.Name = "Rugby";
+            this.Name = "MainForm";
             this.Text = "Rugby";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxLeft.ResumeLayout(false);
+            this.groupBoxLeft.PerformLayout();
+            this.groupBoxRight.ResumeLayout(false);
+            this.groupBoxRight.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLeft)).EndInit();
             this.ResumeLayout(false);
@@ -365,11 +365,11 @@
 
         private System.Windows.Forms.PictureBox pictureBoxLeft;
         private System.Windows.Forms.PictureBox pictureBoxRight;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxLeft;
         private System.Windows.Forms.RadioButton radioButtonLeftCameroon;
         private System.Windows.Forms.RadioButton radioButtonLeftGermany;
         private System.Windows.Forms.RadioButton radioButtonLeftChile;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxRight;
         private System.Windows.Forms.RadioButton radioButtonRightCameroon;
         private System.Windows.Forms.RadioButton radioButtonRightGermany;
         private System.Windows.Forms.RadioButton radioButtonRightChile;
