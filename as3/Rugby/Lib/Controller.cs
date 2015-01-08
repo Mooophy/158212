@@ -8,9 +8,38 @@ namespace Lib
 {
     public class Controller
     {
-        public string hello()
+        private string leftNation = "Chile";
+        private string rightNation = "Germany";
+
+        public Controller(): base(){}
+
+        public Controller(string lhs, string rhs)
         {
-            return "hello";
+            leftNation = lhs;
+            rightNation = rhs;
+        }
+
+        public string LeftNation
+        {
+            get
+            {
+                return leftNation;
+            }
+            set
+            {
+                leftNation = value;
+            }
+        }
+        public string RightNation
+        {
+            get 
+            {
+                return rightNation;
+            }
+            set
+            {
+                rightNation = value;
+            }
         }
     }
 }

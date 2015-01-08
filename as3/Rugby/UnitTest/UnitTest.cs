@@ -11,8 +11,6 @@ namespace UnitTest
         public void TestMethodHello()
         {
             var c = new Lib.Controller();
-            Assert.AreEqual("hello", c.hello());
-            
         }
     }
 }
