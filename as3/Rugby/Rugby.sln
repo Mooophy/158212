@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rugby", "Rugby\Rugby.csproj", "{AE63E193-6C77-4B99-AC65-14FD63B9B134}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "Lib\Lib.csproj", "{0FBBD57C-E9AD-45D5-A940-23B6A42A9CEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{268476BA-0B14-4946-A98E-1C92F4C43EB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AE63E193-6C77-4B99-AC65-14FD63B9B134}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE63E193-6C77-4B99-AC65-14FD63B9B134}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE63E193-6C77-4B99-AC65-14FD63B9B134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FBBD57C-E9AD-45D5-A940-23B6A42A9CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FBBD57C-E9AD-45D5-A940-23B6A42A9CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FBBD57C-E9AD-45D5-A940-23B6A42A9CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FBBD57C-E9AD-45D5-A940-23B6A42A9CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268476BA-0B14-4946-A98E-1C92F4C43EB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268476BA-0B14-4946-A98E-1C92F4C43EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268476BA-0B14-4946-A98E-1C92F4C43EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268476BA-0B14-4946-A98E-1C92F4C43EB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
