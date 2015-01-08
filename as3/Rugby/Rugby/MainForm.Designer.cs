@@ -39,6 +39,7 @@
             this.rbtnCameroonRight = new System.Windows.Forms.RadioButton();
             this.rbtnGermanyRight = new System.Windows.Forms.RadioButton();
             this.rbtnChileRight = new System.Windows.Forms.RadioButton();
+            this.lblElapsed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRight)).BeginInit();
             this.boxLeft.SuspendLayout();
@@ -47,7 +48,7 @@
             // 
             // log
             // 
-            this.log.Location = new System.Drawing.Point(187, 144);
+            this.log.Location = new System.Drawing.Point(191, 178);
             this.log.Multiline = true;
             this.log.Name = "log";
             this.log.ReadOnly = true;
@@ -107,6 +108,7 @@
             this.rbtnChileLeft.TabStop = true;
             this.rbtnChileLeft.Text = "Chile";
             this.rbtnChileLeft.UseVisualStyleBackColor = true;
+            this.rbtnChileLeft.CheckedChanged += new System.EventHandler(this.rbtnChileLeft_CheckedChanged);
             // 
             // rbtnGermanyLeft
             // 
@@ -115,9 +117,9 @@
             this.rbtnGermanyLeft.Name = "rbtnGermanyLeft";
             this.rbtnGermanyLeft.Size = new System.Drawing.Size(65, 16);
             this.rbtnGermanyLeft.TabIndex = 1;
-            this.rbtnGermanyLeft.TabStop = true;
             this.rbtnGermanyLeft.Text = "Germany";
             this.rbtnGermanyLeft.UseVisualStyleBackColor = true;
+            this.rbtnGermanyLeft.CheckedChanged += new System.EventHandler(this.rbtnGermanyLeft_CheckedChanged);
             // 
             // rbtnCameroonLeft
             // 
@@ -126,9 +128,9 @@
             this.rbtnCameroonLeft.Name = "rbtnCameroonLeft";
             this.rbtnCameroonLeft.Size = new System.Drawing.Size(71, 16);
             this.rbtnCameroonLeft.TabIndex = 2;
-            this.rbtnCameroonLeft.TabStop = true;
             this.rbtnCameroonLeft.Text = "Cameroon";
             this.rbtnCameroonLeft.UseVisualStyleBackColor = true;
+            this.rbtnCameroonLeft.CheckedChanged += new System.EventHandler(this.rbtnCameroonLeft_CheckedChanged);
             // 
             // rbtnCameroonRight
             // 
@@ -137,9 +139,9 @@
             this.rbtnCameroonRight.Name = "rbtnCameroonRight";
             this.rbtnCameroonRight.Size = new System.Drawing.Size(71, 16);
             this.rbtnCameroonRight.TabIndex = 7;
-            this.rbtnCameroonRight.TabStop = true;
             this.rbtnCameroonRight.Text = "Cameroon";
             this.rbtnCameroonRight.UseVisualStyleBackColor = true;
+            this.rbtnCameroonRight.CheckedChanged += new System.EventHandler(this.rbtnCameroonRight_CheckedChanged);
             // 
             // rbtnGermanyRight
             // 
@@ -152,6 +154,7 @@
             this.rbtnGermanyRight.TabStop = true;
             this.rbtnGermanyRight.Text = "Germany";
             this.rbtnGermanyRight.UseVisualStyleBackColor = true;
+            this.rbtnGermanyRight.CheckedChanged += new System.EventHandler(this.rbtnGermanyRight_CheckedChanged);
             // 
             // rbtnChileRight
             // 
@@ -160,15 +163,26 @@
             this.rbtnChileRight.Name = "rbtnChileRight";
             this.rbtnChileRight.Size = new System.Drawing.Size(53, 16);
             this.rbtnChileRight.TabIndex = 5;
-            this.rbtnChileRight.TabStop = true;
             this.rbtnChileRight.Text = "Chile";
             this.rbtnChileRight.UseVisualStyleBackColor = true;
+            this.rbtnChileRight.CheckedChanged += new System.EventHandler(this.rbtnChileRight_CheckedChanged);
+            // 
+            // lblElapsed
+            // 
+            this.lblElapsed.AutoSize = true;
+            this.lblElapsed.Font = new System.Drawing.Font("SimSun", 24F);
+            this.lblElapsed.Location = new System.Drawing.Point(286, 57);
+            this.lblElapsed.Name = "lblElapsed";
+            this.lblElapsed.Size = new System.Drawing.Size(95, 33);
+            this.lblElapsed.TabIndex = 5;
+            this.lblElapsed.Text = "00:00";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(716, 392);
+            this.Controls.Add(this.lblElapsed);
             this.Controls.Add(this.boxRight);
             this.Controls.Add(this.boxLeft);
             this.Controls.Add(this.picRight);
@@ -200,6 +214,7 @@
         private System.Windows.Forms.RadioButton rbtnCameroonRight;
         private System.Windows.Forms.RadioButton rbtnChileRight;
         private System.Windows.Forms.RadioButton rbtnGermanyRight;
+        private System.Windows.Forms.Label lblElapsed;
     }
 }
 
