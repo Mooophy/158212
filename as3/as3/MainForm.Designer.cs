@@ -330,6 +330,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 394);
+            this.ControlBox = false;
             this.Controls.Add(this.buttonRightDrop);
             this.Controls.Add(this.buttonRightPenalty);
             this.Controls.Add(this.buttonRightConversion);
