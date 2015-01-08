@@ -52,7 +52,8 @@ namespace as3
         {
             timer.Stop();
             int l = scoreLeft, r = scoreRight;
-            string gameResult = l==r ? "A Tie" :  l>r ? (leftNation + " Won!") : (rightNation + " Won!");
+            string gameResult = labelLeftScore.Text + " : " + labelRightScore.Text + "  ";
+            gameResult += l==r ? "A Tie" :  l>r ? (leftNation + " Won!") : (rightNation + " Won!");
             MessageBox.Show(gameResult, "Result");
             this.Close();
         }
