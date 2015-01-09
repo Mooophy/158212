@@ -15,11 +15,12 @@ namespace Rugby
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Logic controller
+        /// Fields
         /// </summary>
         private Lib.Controller c = new Controller();
         private string nationLeft = "Chile", nationRight="Germany";
         private int elapsed;
+        
         public MainForm()
         {
             InitializeComponent();

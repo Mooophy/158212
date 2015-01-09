@@ -44,6 +44,16 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.lblScoreLeft = new System.Windows.Forms.Label();
+            this.lblScoreRight = new System.Windows.Forms.Label();
+            this.btnTryLeft = new System.Windows.Forms.Button();
+            this.btnConversionLeft = new System.Windows.Forms.Button();
+            this.btnPenaltyLeft = new System.Windows.Forms.Button();
+            this.btnDropLeft = new System.Windows.Forms.Button();
+            this.btnDropRight = new System.Windows.Forms.Button();
+            this.btnPenaltyright = new System.Windows.Forms.Button();
+            this.btnConversionRight = new System.Windows.Forms.Button();
+            this.btnTryRight = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRight)).BeginInit();
             this.boxLeft.SuspendLayout();
@@ -52,7 +62,7 @@
             // 
             // log
             // 
-            this.log.Location = new System.Drawing.Point(191, 178);
+            this.log.Location = new System.Drawing.Point(191, 243);
             this.log.Multiline = true;
             this.log.Name = "log";
             this.log.ReadOnly = true;
@@ -84,7 +94,7 @@
             this.boxLeft.Controls.Add(this.rbtnCameroonLeft);
             this.boxLeft.Controls.Add(this.rbtnGermanyLeft);
             this.boxLeft.Controls.Add(this.rbtnChileLeft);
-            this.boxLeft.Location = new System.Drawing.Point(18, 117);
+            this.boxLeft.Location = new System.Drawing.Point(18, 100);
             this.boxLeft.Name = "boxLeft";
             this.boxLeft.Size = new System.Drawing.Size(148, 100);
             this.boxLeft.TabIndex = 3;
@@ -95,7 +105,7 @@
             this.boxRight.Controls.Add(this.rbtnCameroonRight);
             this.boxRight.Controls.Add(this.rbtnChileRight);
             this.boxRight.Controls.Add(this.rbtnGermanyRight);
-            this.boxRight.Location = new System.Drawing.Point(531, 117);
+            this.boxRight.Location = new System.Drawing.Point(531, 100);
             this.boxRight.Name = "boxRight";
             this.boxRight.Size = new System.Drawing.Size(148, 100);
             this.boxRight.TabIndex = 4;
@@ -175,7 +185,7 @@
             // 
             this.lblElapsed.AutoSize = true;
             this.lblElapsed.Font = new System.Drawing.Font("SimSun", 24F);
-            this.lblElapsed.Location = new System.Drawing.Point(286, 57);
+            this.lblElapsed.Location = new System.Drawing.Point(286, 36);
             this.lblElapsed.Name = "lblElapsed";
             this.lblElapsed.Size = new System.Drawing.Size(95, 33);
             this.lblElapsed.TabIndex = 5;
@@ -183,9 +193,9 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(252, 130);
+            this.btnStart.Location = new System.Drawing.Point(256, 81);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(75, 22);
             this.btnStart.TabIndex = 6;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -194,9 +204,9 @@
             // btnStop
             // 
             this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(333, 130);
+            this.btnStop.Location = new System.Drawing.Point(337, 81);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
+            this.btnStop.Size = new System.Drawing.Size(75, 22);
             this.btnStop.TabIndex = 7;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -205,11 +215,113 @@
             // 
             this.timer.Tick += new System.EventHandler(this.tick_eventHandler);
             // 
+            // lblScoreLeft
+            // 
+            this.lblScoreLeft.AutoSize = true;
+            this.lblScoreLeft.Font = new System.Drawing.Font("SimSun", 36F);
+            this.lblScoreLeft.Location = new System.Drawing.Point(269, 153);
+            this.lblScoreLeft.Name = "lblScoreLeft";
+            this.lblScoreLeft.Size = new System.Drawing.Size(44, 48);
+            this.lblScoreLeft.TabIndex = 8;
+            this.lblScoreLeft.Text = "0";
+            // 
+            // lblScoreRight
+            // 
+            this.lblScoreRight.AutoSize = true;
+            this.lblScoreRight.Font = new System.Drawing.Font("SimSun", 36F);
+            this.lblScoreRight.Location = new System.Drawing.Point(360, 154);
+            this.lblScoreRight.Name = "lblScoreRight";
+            this.lblScoreRight.Size = new System.Drawing.Size(44, 48);
+            this.lblScoreRight.TabIndex = 9;
+            this.lblScoreRight.Text = "0";
+            // 
+            // btnTryLeft
+            // 
+            this.btnTryLeft.Location = new System.Drawing.Point(45, 226);
+            this.btnTryLeft.Name = "btnTryLeft";
+            this.btnTryLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnTryLeft.TabIndex = 10;
+            this.btnTryLeft.Text = "Try";
+            this.btnTryLeft.UseVisualStyleBackColor = true;
+            // 
+            // btnConversionLeft
+            // 
+            this.btnConversionLeft.Location = new System.Drawing.Point(45, 255);
+            this.btnConversionLeft.Name = "btnConversionLeft";
+            this.btnConversionLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnConversionLeft.TabIndex = 11;
+            this.btnConversionLeft.Text = "Conversion";
+            this.btnConversionLeft.UseVisualStyleBackColor = true;
+            // 
+            // btnPenaltyLeft
+            // 
+            this.btnPenaltyLeft.Location = new System.Drawing.Point(45, 284);
+            this.btnPenaltyLeft.Name = "btnPenaltyLeft";
+            this.btnPenaltyLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnPenaltyLeft.TabIndex = 12;
+            this.btnPenaltyLeft.Text = "Penalty";
+            this.btnPenaltyLeft.UseVisualStyleBackColor = true;
+            // 
+            // btnDropLeft
+            // 
+            this.btnDropLeft.Location = new System.Drawing.Point(45, 313);
+            this.btnDropLeft.Name = "btnDropLeft";
+            this.btnDropLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnDropLeft.TabIndex = 13;
+            this.btnDropLeft.Text = "Drop";
+            this.btnDropLeft.UseVisualStyleBackColor = true;
+            // 
+            // btnDropRight
+            // 
+            this.btnDropRight.Location = new System.Drawing.Point(565, 313);
+            this.btnDropRight.Name = "btnDropRight";
+            this.btnDropRight.Size = new System.Drawing.Size(75, 23);
+            this.btnDropRight.TabIndex = 17;
+            this.btnDropRight.Text = "Drop";
+            this.btnDropRight.UseVisualStyleBackColor = true;
+            // 
+            // btnPenaltyright
+            // 
+            this.btnPenaltyright.Location = new System.Drawing.Point(565, 284);
+            this.btnPenaltyright.Name = "btnPenaltyright";
+            this.btnPenaltyright.Size = new System.Drawing.Size(75, 23);
+            this.btnPenaltyright.TabIndex = 16;
+            this.btnPenaltyright.Text = "Penalty";
+            this.btnPenaltyright.UseVisualStyleBackColor = true;
+            // 
+            // btnConversionRight
+            // 
+            this.btnConversionRight.Location = new System.Drawing.Point(565, 255);
+            this.btnConversionRight.Name = "btnConversionRight";
+            this.btnConversionRight.Size = new System.Drawing.Size(75, 23);
+            this.btnConversionRight.TabIndex = 15;
+            this.btnConversionRight.Text = "Conversion";
+            this.btnConversionRight.UseVisualStyleBackColor = true;
+            // 
+            // btnTryRight
+            // 
+            this.btnTryRight.Location = new System.Drawing.Point(565, 226);
+            this.btnTryRight.Name = "btnTryRight";
+            this.btnTryRight.Size = new System.Drawing.Size(75, 23);
+            this.btnTryRight.TabIndex = 14;
+            this.btnTryRight.Text = "Try";
+            this.btnTryRight.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(716, 392);
+            this.Controls.Add(this.btnDropRight);
+            this.Controls.Add(this.btnPenaltyright);
+            this.Controls.Add(this.btnConversionRight);
+            this.Controls.Add(this.btnTryRight);
+            this.Controls.Add(this.btnDropLeft);
+            this.Controls.Add(this.btnPenaltyLeft);
+            this.Controls.Add(this.btnConversionLeft);
+            this.Controls.Add(this.btnTryLeft);
+            this.Controls.Add(this.lblScoreRight);
+            this.Controls.Add(this.lblScoreLeft);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblElapsed);
@@ -248,6 +360,16 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label lblScoreLeft;
+        private System.Windows.Forms.Label lblScoreRight;
+        private System.Windows.Forms.Button btnTryLeft;
+        private System.Windows.Forms.Button btnConversionLeft;
+        private System.Windows.Forms.Button btnPenaltyLeft;
+        private System.Windows.Forms.Button btnDropLeft;
+        private System.Windows.Forms.Button btnDropRight;
+        private System.Windows.Forms.Button btnPenaltyright;
+        private System.Windows.Forms.Button btnConversionRight;
+        private System.Windows.Forms.Button btnTryRight;
     }
 }
 
