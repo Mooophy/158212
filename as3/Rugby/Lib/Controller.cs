@@ -29,5 +29,13 @@ namespace Lib
         {
             return t == 0 ? 5 : t == 1 ? 2 : 3;
         }
+
+        delegate string mapScoreType(int scoreType);
+        public string makeLog(bool isLeft, int scoreType, string elapsed)
+        {
+            mapScoreType scoreName = t => t==0 ? "Try" : t==1 ? "Conversion" : t==2 ? "Penalty" : "Drop";
+            var nation = isLeft ? nationLeft : nationRight;
+            return nation + " scores a " + scoreName(scoreType) + " at " + elapsed; 
+        }
     }
 }
