@@ -1,4 +1,10 @@
-﻿using System;
+﻿﻿﻿/*  
+ *  Main  
+ *  by Boxi Zhang 12238967 (gernerated by Visual Studio)
+ *  for Assignment III, 159.212 Application Software Development Summer 2014 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
