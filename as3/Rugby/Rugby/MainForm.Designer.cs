@@ -210,6 +210,7 @@
             this.btnStop.TabIndex = 7;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // timer
             // 
@@ -338,6 +339,7 @@
             this.Controls.Add(this.picRight);
             this.Controls.Add(this.picLeft);
             this.Controls.Add(this.log);
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Rugby";
             ((System.ComponentModel.ISupportInitialize)(this.picLeft)).EndInit();

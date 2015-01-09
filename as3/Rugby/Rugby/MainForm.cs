@@ -137,5 +137,15 @@ namespace Rugby
             lblScoreRight.Text = (scoreRight += c.mapPoints(3)).ToString();
             log.AppendText(c.makeLog(false, 3, lblElapsed.Text) + "\n");
         }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            timer.Stop();
+            int l = scoreLeft, r = scoreRight;
+            string msg = l == r ? "A Tie." : l > r ? (nationLeft + " Won!") : (nationRight + " Won!");
+            msg += " " + "Final score " + lblScoreLeft.Text + " : " + lblScoreRight.Text;
+            MessageBox.Show(msg,"Result");
+            this.Close();
+        }
     }
 }
