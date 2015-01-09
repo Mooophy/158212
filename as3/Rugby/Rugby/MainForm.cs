@@ -19,11 +19,20 @@ namespace Rugby
         /// </summary>
         private Lib.Controller c = new Controller();
         private string nationLeft = "Chile", nationRight="Germany";
-        private int elapsed;
+        private int elapsed, scoreLeft, scoreRight;
         
         public MainForm()
         {
             InitializeComponent();
+            disableAllScoreButtons();
+        }
+
+        void disableAllScoreButtons()
+        {
+            btnConversionLeft.Enabled   =   btnConversionRight.Enabled  = false;
+            btnDropLeft.Enabled         =   btnDropRight.Enabled        = false;
+            btnPenaltyLeft.Enabled      =   btnPenaltyRight.Enabled     = false;
+            btnTryLeft.Enabled          =   btnTryRight.Enabled         = false;
         }
 
         private void rbtnChileLeft_CheckedChanged(object sender, EventArgs e)
@@ -72,11 +81,52 @@ namespace Rugby
             boxLeft.Enabled = boxRight.Enabled = btnStart.Enabled = false;
             btnStop.Enabled = true;
             timer.Start();
+            c = new Controller(nationLeft, nationRight);
         }
 
         private void tick_eventHandler(object sender, EventArgs e)
         {
             lblElapsed.Text = c.elapsedToString(++elapsed);
+        }
+
+        private void btnTryLeft_Click(object sender, EventArgs e)
+        {
+            lblScoreLeft.Text = (scoreLeft += c.mapPoints(0)).ToString();
+        }
+
+        private void btnConversionLeft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPenaltyLeft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDropLeft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTryRight_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConversionRight_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPenaltyRight_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDropRight_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

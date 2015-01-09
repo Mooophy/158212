@@ -33,13 +33,13 @@
             this.picLeft = new System.Windows.Forms.PictureBox();
             this.picRight = new System.Windows.Forms.PictureBox();
             this.boxLeft = new System.Windows.Forms.GroupBox();
-            this.boxRight = new System.Windows.Forms.GroupBox();
-            this.rbtnChileLeft = new System.Windows.Forms.RadioButton();
-            this.rbtnGermanyLeft = new System.Windows.Forms.RadioButton();
             this.rbtnCameroonLeft = new System.Windows.Forms.RadioButton();
+            this.rbtnGermanyLeft = new System.Windows.Forms.RadioButton();
+            this.rbtnChileLeft = new System.Windows.Forms.RadioButton();
+            this.boxRight = new System.Windows.Forms.GroupBox();
             this.rbtnCameroonRight = new System.Windows.Forms.RadioButton();
-            this.rbtnGermanyRight = new System.Windows.Forms.RadioButton();
             this.rbtnChileRight = new System.Windows.Forms.RadioButton();
+            this.rbtnGermanyRight = new System.Windows.Forms.RadioButton();
             this.lblElapsed = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
@@ -51,7 +51,7 @@
             this.btnPenaltyLeft = new System.Windows.Forms.Button();
             this.btnDropLeft = new System.Windows.Forms.Button();
             this.btnDropRight = new System.Windows.Forms.Button();
-            this.btnPenaltyright = new System.Windows.Forms.Button();
+            this.btnPenaltyRight = new System.Windows.Forms.Button();
             this.btnConversionRight = new System.Windows.Forms.Button();
             this.btnTryRight = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picLeft)).BeginInit();
@@ -100,16 +100,27 @@
             this.boxLeft.TabIndex = 3;
             this.boxLeft.TabStop = false;
             // 
-            // boxRight
+            // rbtnCameroonLeft
             // 
-            this.boxRight.Controls.Add(this.rbtnCameroonRight);
-            this.boxRight.Controls.Add(this.rbtnChileRight);
-            this.boxRight.Controls.Add(this.rbtnGermanyRight);
-            this.boxRight.Location = new System.Drawing.Point(531, 100);
-            this.boxRight.Name = "boxRight";
-            this.boxRight.Size = new System.Drawing.Size(148, 100);
-            this.boxRight.TabIndex = 4;
-            this.boxRight.TabStop = false;
+            this.rbtnCameroonLeft.AutoSize = true;
+            this.rbtnCameroonLeft.Location = new System.Drawing.Point(24, 63);
+            this.rbtnCameroonLeft.Name = "rbtnCameroonLeft";
+            this.rbtnCameroonLeft.Size = new System.Drawing.Size(71, 16);
+            this.rbtnCameroonLeft.TabIndex = 2;
+            this.rbtnCameroonLeft.Text = "Cameroon";
+            this.rbtnCameroonLeft.UseVisualStyleBackColor = true;
+            this.rbtnCameroonLeft.CheckedChanged += new System.EventHandler(this.rbtnCameroonLeft_CheckedChanged);
+            // 
+            // rbtnGermanyLeft
+            // 
+            this.rbtnGermanyLeft.AutoSize = true;
+            this.rbtnGermanyLeft.Location = new System.Drawing.Point(24, 42);
+            this.rbtnGermanyLeft.Name = "rbtnGermanyLeft";
+            this.rbtnGermanyLeft.Size = new System.Drawing.Size(65, 16);
+            this.rbtnGermanyLeft.TabIndex = 1;
+            this.rbtnGermanyLeft.Text = "Germany";
+            this.rbtnGermanyLeft.UseVisualStyleBackColor = true;
+            this.rbtnGermanyLeft.CheckedChanged += new System.EventHandler(this.rbtnGermanyLeft_CheckedChanged);
             // 
             // rbtnChileLeft
             // 
@@ -124,27 +135,16 @@
             this.rbtnChileLeft.UseVisualStyleBackColor = true;
             this.rbtnChileLeft.CheckedChanged += new System.EventHandler(this.rbtnChileLeft_CheckedChanged);
             // 
-            // rbtnGermanyLeft
+            // boxRight
             // 
-            this.rbtnGermanyLeft.AutoSize = true;
-            this.rbtnGermanyLeft.Location = new System.Drawing.Point(24, 42);
-            this.rbtnGermanyLeft.Name = "rbtnGermanyLeft";
-            this.rbtnGermanyLeft.Size = new System.Drawing.Size(65, 16);
-            this.rbtnGermanyLeft.TabIndex = 1;
-            this.rbtnGermanyLeft.Text = "Germany";
-            this.rbtnGermanyLeft.UseVisualStyleBackColor = true;
-            this.rbtnGermanyLeft.CheckedChanged += new System.EventHandler(this.rbtnGermanyLeft_CheckedChanged);
-            // 
-            // rbtnCameroonLeft
-            // 
-            this.rbtnCameroonLeft.AutoSize = true;
-            this.rbtnCameroonLeft.Location = new System.Drawing.Point(24, 63);
-            this.rbtnCameroonLeft.Name = "rbtnCameroonLeft";
-            this.rbtnCameroonLeft.Size = new System.Drawing.Size(71, 16);
-            this.rbtnCameroonLeft.TabIndex = 2;
-            this.rbtnCameroonLeft.Text = "Cameroon";
-            this.rbtnCameroonLeft.UseVisualStyleBackColor = true;
-            this.rbtnCameroonLeft.CheckedChanged += new System.EventHandler(this.rbtnCameroonLeft_CheckedChanged);
+            this.boxRight.Controls.Add(this.rbtnCameroonRight);
+            this.boxRight.Controls.Add(this.rbtnChileRight);
+            this.boxRight.Controls.Add(this.rbtnGermanyRight);
+            this.boxRight.Location = new System.Drawing.Point(531, 100);
+            this.boxRight.Name = "boxRight";
+            this.boxRight.Size = new System.Drawing.Size(148, 100);
+            this.boxRight.TabIndex = 4;
+            this.boxRight.TabStop = false;
             // 
             // rbtnCameroonRight
             // 
@@ -156,6 +156,17 @@
             this.rbtnCameroonRight.Text = "Cameroon";
             this.rbtnCameroonRight.UseVisualStyleBackColor = true;
             this.rbtnCameroonRight.CheckedChanged += new System.EventHandler(this.rbtnCameroonRight_CheckedChanged);
+            // 
+            // rbtnChileRight
+            // 
+            this.rbtnChileRight.AutoSize = true;
+            this.rbtnChileRight.Location = new System.Drawing.Point(24, 28);
+            this.rbtnChileRight.Name = "rbtnChileRight";
+            this.rbtnChileRight.Size = new System.Drawing.Size(53, 16);
+            this.rbtnChileRight.TabIndex = 5;
+            this.rbtnChileRight.Text = "Chile";
+            this.rbtnChileRight.UseVisualStyleBackColor = true;
+            this.rbtnChileRight.CheckedChanged += new System.EventHandler(this.rbtnChileRight_CheckedChanged);
             // 
             // rbtnGermanyRight
             // 
@@ -169,17 +180,6 @@
             this.rbtnGermanyRight.Text = "Germany";
             this.rbtnGermanyRight.UseVisualStyleBackColor = true;
             this.rbtnGermanyRight.CheckedChanged += new System.EventHandler(this.rbtnGermanyRight_CheckedChanged);
-            // 
-            // rbtnChileRight
-            // 
-            this.rbtnChileRight.AutoSize = true;
-            this.rbtnChileRight.Location = new System.Drawing.Point(24, 28);
-            this.rbtnChileRight.Name = "rbtnChileRight";
-            this.rbtnChileRight.Size = new System.Drawing.Size(53, 16);
-            this.rbtnChileRight.TabIndex = 5;
-            this.rbtnChileRight.Text = "Chile";
-            this.rbtnChileRight.UseVisualStyleBackColor = true;
-            this.rbtnChileRight.CheckedChanged += new System.EventHandler(this.rbtnChileRight_CheckedChanged);
             // 
             // lblElapsed
             // 
@@ -243,6 +243,7 @@
             this.btnTryLeft.TabIndex = 10;
             this.btnTryLeft.Text = "Try";
             this.btnTryLeft.UseVisualStyleBackColor = true;
+            this.btnTryLeft.Click += new System.EventHandler(this.btnTryLeft_Click);
             // 
             // btnConversionLeft
             // 
@@ -252,6 +253,7 @@
             this.btnConversionLeft.TabIndex = 11;
             this.btnConversionLeft.Text = "Conversion";
             this.btnConversionLeft.UseVisualStyleBackColor = true;
+            this.btnConversionLeft.Click += new System.EventHandler(this.btnConversionLeft_Click);
             // 
             // btnPenaltyLeft
             // 
@@ -261,6 +263,7 @@
             this.btnPenaltyLeft.TabIndex = 12;
             this.btnPenaltyLeft.Text = "Penalty";
             this.btnPenaltyLeft.UseVisualStyleBackColor = true;
+            this.btnPenaltyLeft.Click += new System.EventHandler(this.btnPenaltyLeft_Click);
             // 
             // btnDropLeft
             // 
@@ -270,6 +273,7 @@
             this.btnDropLeft.TabIndex = 13;
             this.btnDropLeft.Text = "Drop";
             this.btnDropLeft.UseVisualStyleBackColor = true;
+            this.btnDropLeft.Click += new System.EventHandler(this.btnDropLeft_Click);
             // 
             // btnDropRight
             // 
@@ -279,15 +283,17 @@
             this.btnDropRight.TabIndex = 17;
             this.btnDropRight.Text = "Drop";
             this.btnDropRight.UseVisualStyleBackColor = true;
+            this.btnDropRight.Click += new System.EventHandler(this.btnDropRight_Click);
             // 
-            // btnPenaltyright
+            // btnPenaltyRight
             // 
-            this.btnPenaltyright.Location = new System.Drawing.Point(565, 284);
-            this.btnPenaltyright.Name = "btnPenaltyright";
-            this.btnPenaltyright.Size = new System.Drawing.Size(75, 23);
-            this.btnPenaltyright.TabIndex = 16;
-            this.btnPenaltyright.Text = "Penalty";
-            this.btnPenaltyright.UseVisualStyleBackColor = true;
+            this.btnPenaltyRight.Location = new System.Drawing.Point(565, 284);
+            this.btnPenaltyRight.Name = "btnPenaltyRight";
+            this.btnPenaltyRight.Size = new System.Drawing.Size(75, 23);
+            this.btnPenaltyRight.TabIndex = 16;
+            this.btnPenaltyRight.Text = "Penalty";
+            this.btnPenaltyRight.UseVisualStyleBackColor = true;
+            this.btnPenaltyRight.Click += new System.EventHandler(this.btnPenaltyRight_Click);
             // 
             // btnConversionRight
             // 
@@ -297,6 +303,7 @@
             this.btnConversionRight.TabIndex = 15;
             this.btnConversionRight.Text = "Conversion";
             this.btnConversionRight.UseVisualStyleBackColor = true;
+            this.btnConversionRight.Click += new System.EventHandler(this.btnConversionRight_Click);
             // 
             // btnTryRight
             // 
@@ -306,6 +313,7 @@
             this.btnTryRight.TabIndex = 14;
             this.btnTryRight.Text = "Try";
             this.btnTryRight.UseVisualStyleBackColor = true;
+            this.btnTryRight.Click += new System.EventHandler(this.btnTryRight_Click);
             // 
             // MainForm
             // 
@@ -313,7 +321,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(716, 392);
             this.Controls.Add(this.btnDropRight);
-            this.Controls.Add(this.btnPenaltyright);
+            this.Controls.Add(this.btnPenaltyRight);
             this.Controls.Add(this.btnConversionRight);
             this.Controls.Add(this.btnTryRight);
             this.Controls.Add(this.btnDropLeft);
@@ -367,7 +375,7 @@
         private System.Windows.Forms.Button btnPenaltyLeft;
         private System.Windows.Forms.Button btnDropLeft;
         private System.Windows.Forms.Button btnDropRight;
-        private System.Windows.Forms.Button btnPenaltyright;
+        private System.Windows.Forms.Button btnPenaltyRight;
         private System.Windows.Forms.Button btnConversionRight;
         private System.Windows.Forms.Button btnTryRight;
     }
