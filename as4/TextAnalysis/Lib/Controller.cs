@@ -16,7 +16,7 @@ namespace Lib
             Data = new List<string>(data);
             Occu = new Dictionary<string, int>();
             foreach (var word in Data)
-                Occu[word] = Occu.ContainsKey(word) ? Occu[word] + 1 : 0;
+                Occu[word] = Occu.ContainsKey(word) ? Occu[word] + 1 : 1;
         }
 
         public override string ToString()

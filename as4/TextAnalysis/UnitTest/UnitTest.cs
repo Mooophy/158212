@@ -13,8 +13,9 @@ namespace UnitTest
         {
             var li = new List<string> { "aa", "bb"};
             var cl = new Lib.Controller(li);
-            //Assert.AreEqual("aa bb ", cl.ToString());
-            //Assert.AreEqual(1, cl.howOften("aa"));
+            Assert.AreEqual("aa bb ", cl.ToString());
+            Assert.AreEqual(1, cl.howOften("aa"));
+            Assert.AreEqual(0, cl.howOften("cc"));
         }
     }
 }
