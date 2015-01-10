@@ -6,22 +6,25 @@ using System.Threading.Tasks;
 
 namespace Lib
 {
+    using Seq = List<string>;
+    using Dic = Dictionary<string, int>;
     public class Controller
     {
-        private List<string> Data;
-        private Dictionary<string, int> Occu;
+        private Seq Data;
+        private Dic Occu, Leng;
 
-        private Dictionary<string, int> BuildOccu(List<string> li)
+        public Dic BuildOccu(Seq li)
         {
-            var occu = new Dictionary<string, int>();
+            var occu = new Dic();
             foreach (var key in li)
                 occu[key] = occu.ContainsKey(key) ? occu[key] + 1 : 1;
             return occu;
         }
 
-        public Controller(List<string> data) 
+
+        public Controller(Seq data) 
         {
-            Data = new List<string>(data);
+            Data = new Seq(data);
             Occu = BuildOccu(data);
         }
 
@@ -38,13 +41,13 @@ namespace Lib
             return Occu.ContainsKey(key) ? Occu[key] : 0;
         }
 
-        public Tuple<int, List<string>> MostCommon()
+        public Tuple<int, Seq> MostCommon()
         {
             var max = Occu.Values.Max();
-            List<string> lst = new List<string>();
+            var lst = new Seq();
             foreach(var entry in Occu)
                 if (entry.Value == max) lst.Add(entry.Key);
-            return new Tuple<int, List<string>>(max, lst);
+            return new Tuple<int, Seq>(max, lst);
         }
     }
 }
