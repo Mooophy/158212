@@ -15,8 +15,8 @@ namespace Lib
         {
             Data = new List<string>(data);
             Occu = new Dictionary<string, int>();
-            foreach (var word in Data)
-                Occu[word] = Occu.ContainsKey(word) ? Occu[word] + 1 : 1;
+            foreach (var key in Data)
+                Occu[key] = Occu.ContainsKey(key) ? Occu[key] + 1 : 1;
         }
 
         public override string ToString()
@@ -27,9 +27,9 @@ namespace Lib
             return contents;
         }
 
-        public int howOften(string w)
+        public int howOften(string key)
         {
-            return Occu.ContainsKey(w) ? Occu[w] : 0;
+            return Occu.ContainsKey(key) ? Occu[key] : 0;
         }
     }
 }
