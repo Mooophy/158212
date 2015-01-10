@@ -11,12 +11,18 @@ namespace Lib
         private List<string> Data;
         private Dictionary<string, int> Occu;
 
+        private Dictionary<string, int> BuildOccu(List<string> li)
+        {
+            var occu = new Dictionary<string, int>();
+            foreach (var key in li)
+                occu[key] = occu.ContainsKey(key) ? occu[key] + 1 : 1;
+            return occu;
+        }
+
         public Controller(List<string> data) 
         {
             Data = new List<string>(data);
-            Occu = new Dictionary<string, int>();
-            foreach (var key in Data)
-                Occu[key] = Occu.ContainsKey(key) ? Occu[key] + 1 : 1;
+            Occu = BuildOccu(data);
         }
 
         public override string ToString()
