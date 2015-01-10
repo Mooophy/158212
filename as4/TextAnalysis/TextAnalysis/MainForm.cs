@@ -14,24 +14,29 @@ namespace TextAnalysis
 {
     public partial class MainForm : Form
     {
-        List<string> Data;
+        List<string> Data = new List<string>();
 
         public MainForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// this experiment suggests that string should be the interface between UI and Controller
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //Stream fs = null;
                 try
                 {
                     using (var sr = new StreamReader(openFileDialog.FileName))
                     {
-                        string[] content = sr.ReadToEnd().Split('\n');
-                        MessageBox.Show(content[0]);
+                        string[] content = sr.ReadLine().Split(' ');
+                        Data.AddRange(content);
+                        foreach (var str in Data)   MessageBox.Show(str);
                     }
                 }
                 catch (Exception ex)
