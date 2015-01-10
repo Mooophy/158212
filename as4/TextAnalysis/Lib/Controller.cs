@@ -27,9 +27,18 @@ namespace Lib
             return contents;
         }
 
-        public int howOften(string key)
+        public int HowOften(string key)
         {
             return Occu.ContainsKey(key) ? Occu[key] : 0;
+        }
+
+        public Tuple<int, List<string>> MostCommon()
+        {
+            var max = Occu.Values.Max();
+            List<string> lst = new List<string>();
+            foreach(var entry in Occu)
+                if (entry.Value == max) lst.Add(entry.Key);
+            return new Tuple<int, List<string>>(max, lst);
         }
     }
 }
