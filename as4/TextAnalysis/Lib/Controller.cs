@@ -83,7 +83,9 @@ namespace Lib
 
         public Seq LookupByLength(int len)
         {
-            return Leng.ContainsKey(len) ? Leng[len] : new Seq();
+            var ret = Leng.ContainsKey(len) ? Leng[len] : new Seq();
+            ret.Sort();
+            return ret;
         }
     }
 }
