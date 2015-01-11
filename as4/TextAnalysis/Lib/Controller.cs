@@ -39,6 +39,7 @@ namespace Lib
         {
             Data = new Seq(data);
             Occu = BuildOccu(data);
+            Leng = BuildLeng(data);
         }
 
         public override string ToString()
@@ -61,6 +62,12 @@ namespace Lib
             foreach(var entry in Occu)
                 if (entry.Value == max) lst.Add(entry.Key);
             return new Tuple<int, Seq>(max, lst);
+        }
+
+        public Tuple<int, Seq>Longest()
+        {
+            var max = Leng.Keys.Max();
+            return new Tuple<int, Seq>(max,Leng[max]);
         }
     }
 }
