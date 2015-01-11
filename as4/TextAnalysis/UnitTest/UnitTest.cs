@@ -77,5 +77,13 @@ namespace UnitTest
             var c = new Lib.Controller(li);
             Assert.AreEqual(1, c.Shortest().Item1);
         }
+
+        [TestMethod]
+        public void TestMethod_Average()
+        {
+            var li = new Seq {"22", "22", "333", "333", "333" };
+            var c = new Lib.Controller(li);
+            Assert.AreEqual(2, c.Average());
+        }
     }
 }

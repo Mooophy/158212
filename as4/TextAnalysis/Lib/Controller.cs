@@ -75,5 +75,10 @@ namespace Lib
             var min = Leng.Keys.Min();
             return new Tuple<int, Seq>(min, Leng[min]);
         }
+
+        public int Average()
+        {
+            return Convert.ToInt32(Leng.Keys.Average());
+        }
     }
 }
