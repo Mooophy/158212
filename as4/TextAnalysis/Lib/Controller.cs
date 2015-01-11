@@ -10,6 +10,7 @@ namespace Lib
     using Tpl = Tuple<int, List<string>>;
     using DicOcc = Dictionary<string, int>;
     using DicLen = Dictionary<int, List<string>>;
+
     public class Controller
     {
         private Seq Data;
