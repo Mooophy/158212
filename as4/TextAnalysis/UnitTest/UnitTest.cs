@@ -61,13 +61,21 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestMethod_longest()
+        public void TestMethod_Longest()
         {
             var li = new Seq{"1", "22","22","333","333","333"};
             var c = new Lib.Controller(li);
             Assert.AreEqual(3, c.Longest().Item1);
             foreach (string w in c.Longest().Item2)
                 Assert.AreEqual("333", w);
+        }
+
+        [TestMethod]
+        public void TestMethod_Shortest()
+        {
+            var li = new Seq { "1", "22", "22", "333", "333", "333" };
+            var c = new Lib.Controller(li);
+            Assert.AreEqual(1, c.Shortest().Item1);
         }
     }
 }

@@ -67,7 +67,13 @@ namespace Lib
         public Tuple<int, Seq>Longest()
         {
             var max = Leng.Keys.Max();
-            return new Tuple<int, Seq>(max,Leng[max]);
+            return new Tuple<int, Seq>(max, Leng[max]);
+        }
+
+        public Tuple<int, Seq>Shortest()
+        {
+            var min = Leng.Keys.Min();
+            return new Tuple<int, Seq>(min, Leng[min]);
         }
     }
 }
