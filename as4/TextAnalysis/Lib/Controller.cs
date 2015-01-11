@@ -21,6 +21,7 @@ namespace Lib
             return occu;
         }
 
+        public Controller() : base(){}
 
         public Controller(Seq data) 
         {

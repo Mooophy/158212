@@ -5,9 +5,23 @@ using Lib;
 
 namespace UnitTest
 {
+    using Seq = List<string>;
+    using Dic = Dictionary<string, int>;
+    
     [TestClass]
     public class UnitTest
     {
+        [TestMethod]
+        public void TestMethod_BuildOccu()
+        {
+            var li = new List<string> { "aa", "bb", "aa", "cc", "bb" };
+            var c  = new Lib.Controller();
+            var occu = c.BuildOccu(li);
+            Assert.AreEqual(1, occu["cc"]);
+            Assert.AreEqual(2, occu["aa"]);
+            Assert.AreEqual(3, occu.Count);
+        }
+
         [TestMethod]
         public void TestMethod_ToString()
         {
