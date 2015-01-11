@@ -199,6 +199,7 @@
             this.btnByWord.TabIndex = 11;
             this.btnByWord.Text = "Enter";
             this.btnByWord.UseVisualStyleBackColor = true;
+            this.btnByWord.Click += new System.EventHandler(this.btnByWord_Click);
             // 
             // MainForm
             // 

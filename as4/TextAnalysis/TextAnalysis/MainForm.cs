@@ -93,5 +93,19 @@ namespace TextAnalysis
                 MessageBox.Show("Please enter a lenth.");
             }
         }
+
+        private void btnByWord_Click(object sender, EventArgs e)
+        {
+            if(txtWord.Text.Length != 0)
+            {
+                string s = "The word '" + txtWord.Text + "' occurs ";
+                s += backend.HowOften(txtWord.Text).ToString() + " times.\n";
+                display.AppendText(s);
+            }
+            else
+            {
+                MessageBox.Show("Please enter a word.");
+            }
+        }
     }
 }
