@@ -6,7 +6,6 @@ using Lib;
 namespace UnitTest
 {
     using Seq = List<string>;
-    using DicOcc = Dictionary<string, int>;
     
     [TestClass]
     public class UnitTest
