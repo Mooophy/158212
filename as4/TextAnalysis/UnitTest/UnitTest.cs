@@ -28,7 +28,7 @@ namespace UnitTest
             var c = new Lib.Controller();
             var leng = c.BuildLeng(li);
             Assert.AreEqual(1, leng.Count);
-            Assert.AreEqual(5, leng[2].Count);
+            Assert.AreEqual(3, leng[2].Count);
         }
 
         [TestMethod]

@@ -9,7 +9,7 @@ namespace Lib
     using Seq = List<string>;
     using Tpl = Tuple<int, List<string>>;
     using DicOcc = Dictionary<string, int>;
-    using DicLen = Dictionary<int, List<string>>;
+    using DicLen = Dictionary<int, HashSet<string>>;
 
     public class Controller
     {
@@ -29,8 +29,8 @@ namespace Lib
         {
             var leng = new DicLen();
             foreach (string w in li)
-                if (leng.ContainsKey(w.Length)) leng[w.Length].Add(w);
-                else                            leng[w.Length] = new Seq { w };
+                if (leng.ContainsKey(w.Length))     leng[w.Length].Add(w);
+                else                                leng[w.Length] = new HashSet<string> { w };
             return leng;
         }
 
@@ -66,16 +66,16 @@ namespace Lib
             return new Tpl(max, lst);
         }
 
-        public Tpl Longest()
+        public Tuple<int, HashSet<string>> Longest()
         {
             var max = Leng.Keys.Max();
-            return new Tpl(max, Leng[max]);
+            return new Tuple<int, HashSet<string>>(max, Leng[max]);
         }
 
-        public Tpl Shortest()
+        public Tuple<int, HashSet<string>> Shortest()
         {
             var min = Leng.Keys.Min();
-            return new Tpl(min, Leng[min]);
+            return new Tuple<int, HashSet<string>>(min, Leng[min]);
         }
 
         public int Average()
@@ -83,11 +83,9 @@ namespace Lib
             return Convert.ToInt32(Leng.Keys.Average());
         }
 
-        public Seq LookupByLength(int len)
+        public HashSet<string> LookupByLength(int len)
         {
-            var ret = Leng.ContainsKey(len) ? Leng[len] : new Seq();
-            ret.Sort();
-            return ret;
+            return Leng.ContainsKey(len) ? Leng[len] : new HashSet<string>();
         }
     }
 }
