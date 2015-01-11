@@ -106,6 +106,7 @@
             this.btnMostCommon.TabIndex = 1;
             this.btnMostCommon.Text = "Most Common";
             this.btnMostCommon.UseVisualStyleBackColor = true;
+            this.btnMostCommon.Click += new System.EventHandler(this.btnMostCommon_Click);
             // 
             // btnLongest
             // 

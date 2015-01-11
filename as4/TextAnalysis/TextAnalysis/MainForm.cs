@@ -107,5 +107,15 @@ namespace TextAnalysis
                 MessageBox.Show("Please enter a word.");
             }
         }
+
+        private void btnMostCommon_Click(object sender, EventArgs e)
+        {
+            var mc = backend.MostCommon();
+            string s = "The most common word" + (mc.Item2.Count>2 ? "s are :\n" : " is :\n");
+            foreach( var w in mc.Item2)
+                s += "'" + w + "'";
+            s += " (" + mc.Item1.ToString() + " times).\n";
+            display.AppendText(s);
+        }
     }
 }
