@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Lib
 {
     using Seq = List<string>;
+    using Tpl = Tuple<int, List<string>>;
     using DicOcc = Dictionary<string, int>;
     using DicLen = Dictionary<int, List<string>>;
     public class Controller
@@ -55,25 +56,25 @@ namespace Lib
             return Occu.ContainsKey(key) ? Occu[key] : 0;
         }
 
-        public Tuple<int, Seq> MostCommon()
+        public Tpl MostCommon()
         {
             var max = Occu.Values.Max();
             var lst = new Seq();
             foreach(var entry in Occu)
                 if (entry.Value == max) lst.Add(entry.Key);
-            return new Tuple<int, Seq>(max, lst);
+            return new Tpl(max, lst);
         }
 
-        public Tuple<int, Seq>Longest()
+        public Tpl Longest()
         {
             var max = Leng.Keys.Max();
-            return new Tuple<int, Seq>(max, Leng[max]);
+            return new Tpl(max, Leng[max]);
         }
 
-        public Tuple<int, Seq>Shortest()
+        public Tpl Shortest()
         {
             var min = Leng.Keys.Min();
-            return new Tuple<int, Seq>(min, Leng[min]);
+            return new Tpl(min, Leng[min]);
         }
 
         public int Average()

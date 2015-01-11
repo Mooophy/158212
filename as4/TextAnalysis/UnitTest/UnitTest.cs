@@ -37,7 +37,6 @@ namespace UnitTest
             var li = new List<string> { "aa", "bb"};
             var c  = new Lib.Controller(li);
             Assert.AreEqual("aa bb ", c.ToString());
-
         }
 
         [TestMethod]
