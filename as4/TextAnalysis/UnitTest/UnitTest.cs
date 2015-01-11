@@ -6,7 +6,7 @@ using Lib;
 namespace UnitTest
 {
     using Seq = List<string>;
-    using Dic = Dictionary<string, int>;
+    using DicOcc = Dictionary<string, int>;
     
     [TestClass]
     public class UnitTest
@@ -20,6 +20,16 @@ namespace UnitTest
             Assert.AreEqual(1, occu["cc"]);
             Assert.AreEqual(2, occu["aa"]);
             Assert.AreEqual(3, occu.Count);
+        }
+
+        [TestMethod]
+        public void TestMethod_BuildLeng()
+        {
+            var li = new List<string> { "aa", "bb", "aa", "cc", "bb" };
+            var c = new Lib.Controller();
+            var leng = c.BuildLeng(li);
+            Assert.AreEqual(1, leng.Count);
+            Assert.AreEqual(5, leng[2].Count);
         }
 
         [TestMethod]

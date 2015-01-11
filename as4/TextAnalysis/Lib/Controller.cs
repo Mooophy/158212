@@ -7,19 +7,31 @@ using System.Threading.Tasks;
 namespace Lib
 {
     using Seq = List<string>;
-    using Dic = Dictionary<string, int>;
+    using DicOcc = Dictionary<string, int>;
+    using DicLen = Dictionary<int, List<string>>;
     public class Controller
     {
         private Seq Data;
-        private Dic Occu, Leng;
+        private DicOcc Occu;
+        private DicLen Leng;
 
-        public Dic BuildOccu(Seq li)
+        public DicOcc BuildOccu(Seq li)
         {
-            var occu = new Dic();
+            var occu = new DicOcc();
             foreach (var key in li)
                 occu[key] = occu.ContainsKey(key) ? occu[key] + 1 : 1;
             return occu;
         }
+
+        public DicLen BuildLeng(Seq li)
+        {
+            var leng = new DicLen();
+            foreach (string w in li)
+                if (leng.ContainsKey(w.Length)) leng[w.Length].Add(w);
+                else                            leng[w.Length] = new Seq { w };
+            return leng;
+        }
+
 
         public Controller() : base(){}
 
