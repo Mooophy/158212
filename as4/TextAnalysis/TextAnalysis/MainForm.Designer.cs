@@ -39,7 +39,7 @@
             this.btnShortest = new System.Windows.Forms.Button();
             this.btnAverage = new System.Windows.Forms.Button();
             this.display = new System.Windows.Forms.TextBox();
-            this.textLength = new System.Windows.Forms.TextBox();
+            this.txtLength = new System.Windows.Forms.TextBox();
             this.btnByLength = new System.Windows.Forms.Button();
             this.boxForLength = new System.Windows.Forms.GroupBox();
             this.boxForWord = new System.Windows.Forms.GroupBox();
@@ -141,15 +141,16 @@
             this.display.Multiline = true;
             this.display.Name = "display";
             this.display.ReadOnly = true;
+            this.display.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.display.Size = new System.Drawing.Size(584, 171);
             this.display.TabIndex = 5;
             // 
-            // textLength
+            // txtLength
             // 
-            this.textLength.Location = new System.Drawing.Point(22, 20);
-            this.textLength.Name = "textLength";
-            this.textLength.Size = new System.Drawing.Size(214, 21);
-            this.textLength.TabIndex = 6;
+            this.txtLength.Location = new System.Drawing.Point(22, 20);
+            this.txtLength.Name = "txtLength";
+            this.txtLength.Size = new System.Drawing.Size(214, 21);
+            this.txtLength.TabIndex = 6;
             // 
             // btnByLength
             // 
@@ -157,12 +158,13 @@
             this.btnByLength.Name = "btnByLength";
             this.btnByLength.Size = new System.Drawing.Size(214, 23);
             this.btnByLength.TabIndex = 11;
-            this.btnByLength.Text = "Average";
+            this.btnByLength.Text = "Enter";
             this.btnByLength.UseVisualStyleBackColor = true;
+            this.btnByLength.Click += new System.EventHandler(this.btnByLength_Click);
             // 
             // boxForLength
             // 
-            this.boxForLength.Controls.Add(this.textLength);
+            this.boxForLength.Controls.Add(this.txtLength);
             this.boxForLength.Controls.Add(this.btnByLength);
             this.boxForLength.Location = new System.Drawing.Point(99, 28);
             this.boxForLength.Name = "boxForLength";
@@ -195,7 +197,7 @@
             this.btnByWord.Name = "btnByWord";
             this.btnByWord.Size = new System.Drawing.Size(214, 23);
             this.btnByWord.TabIndex = 11;
-            this.btnByWord.Text = "Average";
+            this.btnByWord.Text = "Enter";
             this.btnByWord.UseVisualStyleBackColor = true;
             // 
             // MainForm
@@ -241,7 +243,7 @@
         private System.Windows.Forms.Button btnAverage;
         private System.Windows.Forms.TextBox display;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.TextBox textLength;
+        private System.Windows.Forms.TextBox txtLength;
         private System.Windows.Forms.Button btnByLength;
         private System.Windows.Forms.GroupBox boxForLength;
         private System.Windows.Forms.GroupBox boxForWord;

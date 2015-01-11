@@ -16,7 +16,7 @@ namespace TextAnalysis
 {
     public partial class MainForm : Form
     {
-        Lib.Controller logic;
+        Lib.Controller backend;
 
         /// <summary>
         /// Refer to a post on SO :
@@ -62,7 +62,7 @@ namespace TextAnalysis
                         var data = new List<string>();
                         while (sr.Peek() > 0)
                             data.AddRange(sr.ReadLine().Split(' '));
-                        logic = new Lib.Controller(data);
+                        backend = new Lib.Controller(data);
                     }
                     EnableAllButtons();
                 }
@@ -76,6 +76,22 @@ namespace TextAnalysis
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnByLength_Click(object sender, EventArgs e)
+        {
+            int len;
+            if(int.TryParse(txtLength.Text, out len))
+            {
+                string s = "The words that have length " + len.ToString() + " : \n";
+                foreach (var w in backend.LookupByLength(len)) 
+                    s += "'" + w + "'";
+                display.AppendText(s + ".\n");
+            }
+            else
+            {
+                MessageBox.Show("Please enter a lenth.");
+            }
         }
     }
 }
