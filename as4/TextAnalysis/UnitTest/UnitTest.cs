@@ -85,5 +85,16 @@ namespace UnitTest
             var c = new Lib.Controller(li);
             Assert.AreEqual(2, c.Average());
         }
+
+        [TestMethod]
+        public void TestMethod_LookupByLength()
+        {
+            var li = new Seq { "22", "22", "323", "113", "123" };
+            var c = new Lib.Controller(li);
+            var result = c.LookupByLength(3);
+            Assert.AreEqual(3, result.Count);
+            foreach (var w in result)
+                Assert.AreEqual(3, w.Length);
+        }
     }
 }

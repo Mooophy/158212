@@ -80,5 +80,10 @@ namespace Lib
         {
             return Convert.ToInt32(Leng.Keys.Average());
         }
+
+        public Seq LookupByLength(int len)
+        {
+            return Leng.ContainsKey(len) ? Leng[len] : new Seq();
+        }
     }
 }
