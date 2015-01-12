@@ -6,29 +6,26 @@ using System.Threading.Tasks;
 
 namespace Lib
 {
-    using Seq = List<string>;
-    using Tpl = Tuple<int, List<string>>;
-    using DicOcc = Dictionary<string, int>;
     using DicLen = Dictionary<int, SortedSet<string>>;
 
     public class Controller
     {
-        private Seq Data;
-        private DicOcc Occu;
-        private DicLen Leng;
+        private List<string> _data;
+        private Dictionary<string, int> _occurrences;
+        private DicLen _lengths;
 
-        public DicOcc BuildOccu(Seq li)
+        public Dictionary<string, int> BuildOccu(List<string> list)
         {
-            var occu = new DicOcc();
-            foreach (var key in li)
+            var occu = new Dictionary<string, int>();
+            foreach (var key in list)
                 occu[key] = occu.ContainsKey(key) ? occu[key] + 1 : 1;
             return occu;
         }
 
-        public DicLen BuildLeng(Seq li)
+        public DicLen BuildLeng(List<string> list)
         {
             var leng = new DicLen();
-            foreach (string w in li)
+            foreach (string w in list)
                 if (leng.ContainsKey(w.Length)) 
                     leng[w.Length].Add(w);
                 else 
@@ -38,55 +35,55 @@ namespace Lib
 
         public Controller() : base(){}
 
-        public Controller(Seq data) 
+        public Controller(List<string> data) 
         {
-            Data = new Seq(data);
-            Occu = BuildOccu(data);
-            Leng = BuildLeng(data);
+            _data = new List<string>(data);
+            _occurrences = BuildOccu(data);
+            _lengths = BuildLeng(data);
         }
 
         public override string ToString()
         {
             string contents = "";
-            foreach (var str in Data)   
+            foreach (var str in _data)   
                 contents += str + " ";
             return contents;
         }
 
         public int HowOften(string key)
         {
-            return Occu.ContainsKey(key) ? Occu[key] : 0;
+            return _occurrences.ContainsKey(key) ? _occurrences[key] : 0;
         }
 
-        public Tpl MostCommon()
+        public Tuple<int, List<string>> MostCommon()
         {
-            var max = Occu.Values.Max();
-            var lst = new Seq();
-            foreach(var entry in Occu)
+            var max = _occurrences.Values.Max();
+            var lst = new List<string>();
+            foreach(var entry in _occurrences)
                 if (entry.Value == max) lst.Add(entry.Key);
-            return new Tpl(max, lst);
+            return new Tuple<int, List<string>>(max, lst);
         }
 
         public Tuple<int, SortedSet<string>> Longest()
         {
-            var max = Leng.Keys.Max();
-            return new Tuple<int, SortedSet<string>>(max, Leng[max]);
+            var max = _lengths.Keys.Max();
+            return new Tuple<int, SortedSet<string>>(max, _lengths[max]);
         }
 
         public Tuple<int, SortedSet<string>> Shortest()
         {
-            var min = Leng.Keys.Min();
-            return new Tuple<int, SortedSet<string>>(min, Leng[min]);
+            var min = _lengths.Keys.Min();
+            return new Tuple<int, SortedSet<string>>(min, _lengths[min]);
         }
 
         public int Average()
         {
-            return Convert.ToInt32(Leng.Keys.Average());
+            return Convert.ToInt32(_lengths.Keys.Average());
         }
 
         public SortedSet<string> LookupByLength(int len)
         {
-            return Leng.ContainsKey(len) ? Leng[len] : new SortedSet<string>();
+            return _lengths.ContainsKey(len) ? _lengths[len] : new SortedSet<string>();
         }
     }
 }

@@ -5,13 +5,12 @@ using Lib;
 
 namespace UnitTest
 {
-    using Seq = List<string>;
-    
+    #region Unit tests for class Lib.Controller
     [TestClass]
     public class UnitTest
     {
         [TestMethod]
-        public void TestMethod_BuildOccu()
+        public void TestMethodBuildOccu()
         {
             var li = new List<string> { "aa", "bb", "aa", "cc", "bb" };
             var c  = new Lib.Controller();
@@ -22,7 +21,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestMethod_BuildLeng()
+        public void TestMethodBuildLeng()
         {
             var li = new List<string> { "aa", "bb", "aa", "cc", "bb" };
             var c = new Lib.Controller();
@@ -32,7 +31,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestMethod_ToString()
+        public void TestMethodToString()
         {
             var li = new List<string> { "aa", "bb"};
             var c  = new Lib.Controller(li);
@@ -40,7 +39,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestMethod_HowOften()
+        public void TestMethodHowOften()
         {
             var li = new List<string> { "aa", "bb" };
             var c  = new Lib.Controller(li);
@@ -49,9 +48,9 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestMethod_MostCommon()
+        public void TestMethodMostCommon()
         {
-            var li = new Seq{ "aa", "bb", "aa", "cc","bb" };
+            var li = new List<string>{ "aa", "bb", "aa", "cc","bb" };
             var c = new Lib.Controller(li);
             var mc = c.MostCommon();
             Assert.AreEqual(2, mc.Item1);
@@ -59,9 +58,9 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestMethod_Longest()
+        public void TestMethodLongest()
         {
-            var li = new Seq{"1", "22","22","333","333","333"};
+            var li = new List<string>{"1", "22","22","333","333","333"};
             var c = new Lib.Controller(li);
             Assert.AreEqual(3, c.Longest().Item1);
             foreach (string w in c.Longest().Item2)
@@ -69,30 +68,31 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestMethod_Shortest()
+        public void TestMethodShortest()
         {
-            var li = new Seq { "1", "22", "22", "333", "333", "333" };
+            var li = new List<string> { "1", "22", "22", "333", "333", "333" };
             var c = new Lib.Controller(li);
             Assert.AreEqual(1, c.Shortest().Item1);
         }
 
         [TestMethod]
-        public void TestMethod_Average()
+        public void TestMethodAverage()
         {
-            var li = new Seq {"22", "22", "333", "333", "333" };
+            var li = new List<string> {"22", "22", "333", "333", "333" };
             var c = new Lib.Controller(li);
             Assert.AreEqual(2, c.Average());
         }
 
         [TestMethod]
-        public void TestMethod_LookupByLength()
+        public void TestMethodLookupByLength()
         {
-            var li = new Seq { "22", "22", "323", "113", "123" };
+            var li = new List<string> { "22", "22", "323", "113", "123" };
             var c = new Lib.Controller(li);
             var result = c.LookupByLength(3);
             Assert.AreEqual(3, result.Count);
             foreach (var w in result)
                 Assert.AreEqual(3, w.Length);
         }
+    #endregion
     }
 }

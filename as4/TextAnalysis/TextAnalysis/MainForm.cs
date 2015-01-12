@@ -16,7 +16,7 @@ namespace TextAnalysis
 {
     public partial class MainForm : Form
     {
-        Lib.Controller backend;
+        Lib.Controller _backEnd;
 
         /// <summary>
         /// Refer to a post on SO :
@@ -51,7 +51,7 @@ namespace TextAnalysis
             DisableAllButtons();
         }
 
-        void openToolStripMenuItem_Click(object sender, EventArgs e)
+        void openToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -62,7 +62,7 @@ namespace TextAnalysis
                         var data = new List<string>();
                         while (sr.Peek() > 0)
                             data.AddRange(sr.ReadLine().Split(' '));
-                        backend = new Lib.Controller(data);
+                        _backEnd = new Lib.Controller(data);
                     }
                     EnableAllButtons();
                     display.Clear();
@@ -74,18 +74,18 @@ namespace TextAnalysis
             }
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItemClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnByLength_Click(object sender, EventArgs e)
+        private void btnByLengthClick(object sender, EventArgs e)
         {
             int len;
             if(int.TryParse(txtLength.Text, out len))
             {
                 string s = "The words that have length " + len.ToString() + " : \n";
-                foreach (var w in backend.LookupByLength(len)) 
+                foreach (var w in _backEnd.LookupByLength(len)) 
                     s += "'" + w + "'";
                 display.AppendText(s + ".\n");
             }
@@ -95,12 +95,12 @@ namespace TextAnalysis
             }
         }
 
-        private void btnByWord_Click(object sender, EventArgs e)
+        private void btnByWordClick(object sender, EventArgs e)
         {
             if(txtWord.Text.Length != 0)
             {
                 string s = "The word '" + txtWord.Text + "' occurs ";
-                s += backend.HowOften(txtWord.Text).ToString() + " times.\n";
+                s += _backEnd.HowOften(txtWord.Text).ToString() + " times.\n";
                 display.AppendText(s);
             }
             else
@@ -109,9 +109,9 @@ namespace TextAnalysis
             }
         }
 
-        private void btnMostCommon_Click(object sender, EventArgs e)
+        private void btnMostCommonClick(object sender, EventArgs e)
         {
-            var mc = backend.MostCommon();
+            var mc = _backEnd.MostCommon();
             string s = "The most common word" + (mc.Item2.Count>2 ? "s are :\n" : " is ");
             foreach( var w in mc.Item2)
                 s += "'" + w + "'";
@@ -119,9 +119,9 @@ namespace TextAnalysis
             display.AppendText(s);
         }
 
-        private void btnLongest_Click(object sender, EventArgs e)
+        private void btnLongestClick(object sender, EventArgs e)
         {
-            var longestTuple = backend.Longest();
+            var longestTuple = _backEnd.Longest();
             string s = "The longest word" + (longestTuple.Item2.Count > 2 ? "s are :\n" : " is ");
             foreach (var word in longestTuple.Item2)
                 s += "'" + word + "'";
@@ -129,9 +129,9 @@ namespace TextAnalysis
             display.AppendText(s);
         }
 
-        private void btnShortest_Click(object sender, EventArgs e)
+        private void btnShortestClick(object sender, EventArgs e)
         {
-            var shortestTuple = backend.Shortest();
+            var shortestTuple = _backEnd.Shortest();
             string s = "The shortest word" + (shortestTuple.Item2.Count > 2 ? "s are :\n" : " is ");
             foreach (var word in shortestTuple.Item2)
                 s += "'" + word + "'";
@@ -139,9 +139,9 @@ namespace TextAnalysis
             display.AppendText(s);
         }
 
-        private void btnAverage_Click(object sender, EventArgs e)
+        private void btnAverageClick(object sender, EventArgs e)
         {
-            display.AppendText("The average length : " + backend.Average().ToString() + "\r\n");
+            display.AppendText("The average length : " + _backEnd.Average().ToString() + "\r\n");
         }
     }
 }

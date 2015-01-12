@@ -75,14 +75,14 @@
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItemClick);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItemClick);
             // 
             // aboutToolStripMenuItem
             // 
@@ -106,7 +106,7 @@
             this.btnMostCommon.TabIndex = 1;
             this.btnMostCommon.Text = "Most Common";
             this.btnMostCommon.UseVisualStyleBackColor = true;
-            this.btnMostCommon.Click += new System.EventHandler(this.btnMostCommon_Click);
+            this.btnMostCommon.Click += new System.EventHandler(this.btnMostCommonClick);
             // 
             // btnLongest
             // 
@@ -116,7 +116,7 @@
             this.btnLongest.TabIndex = 2;
             this.btnLongest.Text = "Longest";
             this.btnLongest.UseVisualStyleBackColor = true;
-            this.btnLongest.Click += new System.EventHandler(this.btnLongest_Click);
+            this.btnLongest.Click += new System.EventHandler(this.btnLongestClick);
             // 
             // btnShortest
             // 
@@ -126,7 +126,7 @@
             this.btnShortest.TabIndex = 3;
             this.btnShortest.Text = "Shortest";
             this.btnShortest.UseVisualStyleBackColor = true;
-            this.btnShortest.Click += new System.EventHandler(this.btnShortest_Click);
+            this.btnShortest.Click += new System.EventHandler(this.btnShortestClick);
             // 
             // btnAverage
             // 
@@ -136,7 +136,7 @@
             this.btnAverage.TabIndex = 4;
             this.btnAverage.Text = "Average";
             this.btnAverage.UseVisualStyleBackColor = true;
-            this.btnAverage.Click += new System.EventHandler(this.btnAverage_Click);
+            this.btnAverage.Click += new System.EventHandler(this.btnAverageClick);
             // 
             // display
             // 
@@ -164,7 +164,7 @@
             this.btnByLength.TabIndex = 11;
             this.btnByLength.Text = "Enter";
             this.btnByLength.UseVisualStyleBackColor = true;
-            this.btnByLength.Click += new System.EventHandler(this.btnByLength_Click);
+            this.btnByLength.Click += new System.EventHandler(this.btnByLengthClick);
             // 
             // boxForLength
             // 
@@ -203,7 +203,7 @@
             this.btnByWord.TabIndex = 11;
             this.btnByWord.Text = "Enter";
             this.btnByWord.UseVisualStyleBackColor = true;
-            this.btnByWord.Click += new System.EventHandler(this.btnByWord_Click);
+            this.btnByWord.Click += new System.EventHandler(this.btnByWordClick);
             // 
             // MainForm
             // 
