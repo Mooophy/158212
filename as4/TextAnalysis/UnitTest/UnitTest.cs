@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Lib;
+using TextAnalysis;
 
 namespace UnitTest
 {
-    #region Unit tests for class Lib.Controller
     [TestClass]
     public class UnitTest
     {
+        #region Unit tests for class Lib.Controller
         [TestMethod]
         public void TestMethodBuildOccu()
         {
@@ -93,6 +94,14 @@ namespace UnitTest
             foreach (var w in result)
                 Assert.AreEqual(3, w.Length);
         }
-    #endregion
+        #endregion Unit tests for class Lib.Controller
+        #region for MainForm
+        [TestMethod]
+        public void TestMethodGetAll()
+        {
+            //var fm = new TextAnalysis.MainForm();
+            //fm.Show();
+        }
+        #endregion
     }
 }

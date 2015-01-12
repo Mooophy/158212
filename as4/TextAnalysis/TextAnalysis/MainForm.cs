@@ -18,6 +18,7 @@ namespace TextAnalysis
     {
         Lib.Controller _backEnd;
 
+        #region functions
         /// <summary>
         /// Refer to a post on SO :
         /// http://stackoverflow.com/questions/3419159/how-to-get-all-child-controls-of-a-windows-forms-form-of-a-specific-type-button
@@ -44,6 +45,7 @@ namespace TextAnalysis
             foreach (var c in GetAll(this, typeof(Button)))
                 c.Enabled = true;
         }
+        #endregion
 
         public MainForm()
         {
@@ -51,6 +53,7 @@ namespace TextAnalysis
             DisableAllButtons();
         }
 
+        #region event handlers
         void openToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -143,5 +146,6 @@ namespace TextAnalysis
         {
             display.AppendText("The average length : " + _backEnd.Average().ToString() + "\r\n");
         }
+        #endregion
     }
 }
