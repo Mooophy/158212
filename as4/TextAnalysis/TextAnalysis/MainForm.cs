@@ -26,7 +26,7 @@ namespace TextAnalysis
         /// <param name="control"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        IEnumerable<Control> GetAll(Control control, Type type)
+        public IEnumerable<Control> GetAll(Control control, Type type)
         {
             var controls = control.Controls.Cast<Control>();
             return controls.SelectMany( ctrl => GetAll(ctrl, type))

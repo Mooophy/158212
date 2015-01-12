@@ -1,7 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows;
+using System.IO;
 using Lib;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TextAnalysis;
 
 namespace UnitTest
@@ -96,11 +105,15 @@ namespace UnitTest
         }
         #endregion Unit tests for class Lib.Controller
         #region for MainForm
+        /// <summary>
+        /// for GetAll and test if all buttons are disabled initially.
+        /// </summary>
         [TestMethod]
         public void TestMethodGetAll()
         {
-            //var fm = new TextAnalysis.MainForm();
-            //fm.Show();
+            var fm = new TextAnalysis.MainForm();
+            foreach (Button b in fm.GetAll(fm, typeof(Button)))
+                Assert.AreEqual(false, b.Enabled);
         }
         #endregion
     }
