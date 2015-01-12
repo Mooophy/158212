@@ -36,7 +36,6 @@ namespace Lib
             return leng;
         }
 
-
         public Controller() : base(){}
 
         public Controller(Seq data) 

@@ -116,6 +116,7 @@
             this.btnLongest.TabIndex = 2;
             this.btnLongest.Text = "Longest";
             this.btnLongest.UseVisualStyleBackColor = true;
+            this.btnLongest.Click += new System.EventHandler(this.btnLongest_Click);
             // 
             // btnShortest
             // 
@@ -125,6 +126,7 @@
             this.btnShortest.TabIndex = 3;
             this.btnShortest.Text = "Shortest";
             this.btnShortest.UseVisualStyleBackColor = true;
+            this.btnShortest.Click += new System.EventHandler(this.btnShortest_Click);
             // 
             // btnAverage
             // 
@@ -134,6 +136,7 @@
             this.btnAverage.TabIndex = 4;
             this.btnAverage.Text = "Average";
             this.btnAverage.UseVisualStyleBackColor = true;
+            this.btnAverage.Click += new System.EventHandler(this.btnAverage_Click);
             // 
             // display
             // 

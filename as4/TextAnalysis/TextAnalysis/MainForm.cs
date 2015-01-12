@@ -65,6 +65,7 @@ namespace TextAnalysis
                         backend = new Lib.Controller(data);
                     }
                     EnableAllButtons();
+                    display.Clear();
                 }
                 catch (Exception ex)
                 {
@@ -111,11 +112,36 @@ namespace TextAnalysis
         private void btnMostCommon_Click(object sender, EventArgs e)
         {
             var mc = backend.MostCommon();
-            string s = "The most common word" + (mc.Item2.Count>2 ? "s are :\n" : " is :\n");
+            string s = "The most common word" + (mc.Item2.Count>2 ? "s are :\n" : " is ");
             foreach( var w in mc.Item2)
                 s += "'" + w + "'";
             s += " (" + mc.Item1.ToString() + " times).\n";
             display.AppendText(s);
+        }
+
+        private void btnLongest_Click(object sender, EventArgs e)
+        {
+            var longestTuple = backend.Longest();
+            string s = "The longest word" + (longestTuple.Item2.Count > 2 ? "s are :\n" : " is ");
+            foreach (var word in longestTuple.Item2)
+                s += "'" + word + "'";
+            s += " (length is " + longestTuple.Item1.ToString() + ").\n";
+            display.AppendText(s);
+        }
+
+        private void btnShortest_Click(object sender, EventArgs e)
+        {
+            var shortestTuple = backend.Shortest();
+            string s = "The shortest word" + (shortestTuple.Item2.Count > 2 ? "s are :\n" : " is ");
+            foreach (var word in shortestTuple.Item2)
+                s += "'" + word + "'";
+            s += " (length is " + shortestTuple.Item1.ToString() + ").\n";
+            display.AppendText(s);
+        }
+
+        private void btnAverage_Click(object sender, EventArgs e)
+        {
+            display.AppendText("The average length : " + backend.Average().ToString() + "\r\n");
         }
     }
 }
