@@ -7,7 +7,7 @@
     <ProjectGuid>{3DF2A559-4F3A-4CD3-89D4-BA9F27C7411D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lib</RootNamespace>
+    <RootNamespace>TextAnalysis</RootNamespace>
     <AssemblyName>Lib</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

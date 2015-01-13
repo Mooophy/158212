@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows;
 using System.IO;
-using Lib;
+using TextAnalysis;
 
 
 namespace TextAnalysis
 {
     public partial class MainForm : Form
     {
-        Lib.Controller _backEnd;
+        TextAnalysis.Controller _backEnd;
 
         #region functions
         void DisableAllButtons()
@@ -50,7 +50,7 @@ namespace TextAnalysis
                         var data = new List<string>();
                         while (sr.Peek() > 0)
                             data.AddRange(sr.ReadLine().Split(' '));
-                        _backEnd = new Lib.Controller(data);
+                        _backEnd = new TextAnalysis.Controller(data);
                     }
                     EnableAllButtons();
                     display.Clear();
