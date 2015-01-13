@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Lib
 {
@@ -84,6 +85,22 @@ namespace Lib
         public SortedSet<string> LookupByLength(int len)
         {
             return _lengths.ContainsKey(len) ? _lengths[len] : new SortedSet<string>();
+        }
+    }
+
+    /// <summary>
+    /// Refer to a post on SO :
+    /// http://stackoverflow.com/questions/3419159/how-to-get-all-child-controls-of-a-windows-forms-form-of-a-specific-type-button
+    /// </summary>
+    /// <param name="control"></param>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public class AllControls
+    {
+        public static IEnumerable<Control> Get(Control control, Type type)
+        {
+            var controls = control.Controls.Cast<Control>();
+            return controls.SelectMany(ctrl => Get(ctrl, type)).Concat(controls).Where(c => c.GetType() == type);
         }
     }
 }
