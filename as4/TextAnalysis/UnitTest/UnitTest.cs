@@ -11,7 +11,6 @@ using System.Windows;
 using System.IO;
 using TextAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TextAnalysis;
 
 namespace UnitTest
 {
@@ -107,15 +106,12 @@ namespace UnitTest
 
         #region for MainForm
         [TestMethod]
-        public void TestMainForm()
+        public void TestDefaultConstructor()
         {
-            var fm = new TextAnalysis.MainForm();
-            Application.EnableVisualStyles();
-            Application.Run(fm);
-            //var fm = new TextAnalysis.MainForm();
-            //fm.ShowDialog();
+            var form = new TextAnalysis.MainForm();
+            foreach( var button in AllControls.Get(form, typeof(Button)))
+                Assert.AreEqual(false, button.Enabled);
         }
-        
         #endregion
     }
 }
