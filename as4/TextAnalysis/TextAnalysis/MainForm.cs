@@ -14,16 +14,6 @@ using TextAnalysis;
 
 namespace TextAnalysis
 {
-    //public class AboutBox : Form
-    //{
-    //    private Label lable;
-    //    public AboutBox()
-    //    {
-    //        lable = new Label();
-    //        lable.Text = "This is an about text";
-    //        this.Controls.Add(lable);
-    //    }
-    //}
     public partial class MainForm : Form
     {
         TextAnalysis.Controller _backEnd;
