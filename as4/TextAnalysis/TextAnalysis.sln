@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalysis", "TextAnalysis\TextAnalysis.csproj", "{D51224F3-5C17-4E7B-A79F-FA59FFF6649D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "TextAnalysis\View.csproj", "{D51224F3-5C17-4E7B-A79F-FA59FFF6649D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "Lib\Lib.csproj", "{3DF2A559-4F3A-4CD3-89D4-BA9F27C7411D}"
 EndProject

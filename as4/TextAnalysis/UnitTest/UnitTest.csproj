@@ -60,9 +60,9 @@
       <Project>{3df2a559-4f3a-4cd3-89d4-ba9f27c7411d}</Project>
       <Name>Lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TextAnalysis\TextAnalysis.csproj">
+    <ProjectReference Include="..\TextAnalysis\View.csproj">
       <Project>{d51224f3-5c17-4e7b-a79f-fa59fff6649d}</Project>
-      <Name>TextAnalysis</Name>
+      <Name>View</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
