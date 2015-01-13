@@ -18,7 +18,7 @@ namespace UnitTest
     [TestClass]
     public class UnitTest
     {
-        #region Unit tests for class Lib.Controller
+        #region for class Lib.Controller
         [TestMethod]
         public void TestMethodBuildOccu()
         {
@@ -103,16 +103,19 @@ namespace UnitTest
             foreach (var w in result)
                 Assert.AreEqual(3, w.Length);
         }
-        #endregion Unit tests for class Lib.Controller
+        #endregion for class Lib.Controller
+
         #region for MainForm
-        /// <summary>
-        /// for GetAll and test if all buttons are disabled initially.
-        /// </summary>
         [TestMethod]
-        public void TestMethodGetAll()
+        public void TestMainForm()
         {
-            //not done yet.
+            var fm = new TextAnalysis.MainForm();
+            Application.EnableVisualStyles();
+            Application.Run(fm);
+            //var fm = new TextAnalysis.MainForm();
+            //fm.ShowDialog();
         }
+        
         #endregion
     }
 }
