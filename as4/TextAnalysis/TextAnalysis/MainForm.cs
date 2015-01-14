@@ -16,15 +16,24 @@ namespace TextAnalysis
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// back end for bussiness logic
+        /// </summary>
         TextAnalysis.Controller _backEnd;
 
         #region functions
+        /// <summary>
+        /// disable all buttons
+        /// </summary>
         void DisableAllButtons()
         {
             foreach (var c in AllControls.Get(this, typeof(Button)))
                 c.Enabled = false;
         }
 
+        /// <summary>
+        /// enabale all buttons
+        /// </summary>
         void EnableAllButtons()
         {
             foreach (var c in AllControls.Get(this, typeof(Button)))
@@ -32,6 +41,9 @@ namespace TextAnalysis
         }
         #endregion
 
+        /// <summary>
+        /// constructor
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -39,6 +51,11 @@ namespace TextAnalysis
         }
 
         #region event handlers
+        /// <summary>
+        /// on clilck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void openToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -62,11 +79,21 @@ namespace TextAnalysis
             }
         }
 
+        /// <summary>
+        /// on clilck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void exitToolStripMenuItemClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// on clilck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnByLengthClick(object sender, EventArgs e)
         {
             int len;
@@ -83,6 +110,11 @@ namespace TextAnalysis
             }
         }
 
+        /// <summary>
+        /// on clilck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnByWordClick(object sender, EventArgs e)
         {
             if(txtWord.Text.Length != 0)
@@ -97,6 +129,11 @@ namespace TextAnalysis
             }
         }
 
+        /// <summary>
+        /// on clilck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMostCommonClick(object sender, EventArgs e)
         {
             var mc = _backEnd.MostCommon();
@@ -107,6 +144,11 @@ namespace TextAnalysis
             display.AppendText(s);
         }
 
+        /// <summary>
+        /// on clilck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLongestClick(object sender, EventArgs e)
         {
             var longestTuple = _backEnd.Longest();
@@ -117,6 +159,11 @@ namespace TextAnalysis
             display.AppendText(s);
         }
 
+        /// <summary>
+        /// on clilck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnShortestClick(object sender, EventArgs e)
         {
             var shortestTuple = _backEnd.Shortest();
@@ -127,15 +174,25 @@ namespace TextAnalysis
             display.AppendText(s);
         }
 
+        /// <summary>
+        /// on clilck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAverageClick(object sender, EventArgs e)
         {
             display.AppendText("The average length : " + _backEnd.Average().ToString() + "\r\n");
         }
-        #endregion
 
+        /// <summary>
+        /// on clilck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Assignment IV, Application Development. By Boxi Zhang", "158.212");
         }
+        #endregion
     }
 }

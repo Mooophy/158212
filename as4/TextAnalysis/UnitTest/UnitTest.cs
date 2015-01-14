@@ -18,6 +18,9 @@ namespace UnitTest
     public class UnitTest
     {
         #region for class Lib.Controller
+        /// <summary>
+        /// for BuildOccu
+        /// </summary>
         [TestMethod]
         public void TestMethodBuildOccu()
         {
@@ -28,7 +31,9 @@ namespace UnitTest
             Assert.AreEqual(2, occu["aa"]);
             Assert.AreEqual(3, occu.Count);
         }
-
+        /// <summary>
+        /// for BuildLeng
+        /// </summary>
         [TestMethod]
         public void TestMethodBuildLeng()
         {
@@ -38,7 +43,9 @@ namespace UnitTest
             Assert.AreEqual(1, leng.Count);
             Assert.AreEqual(3, leng[2].Count);
         }
-
+        /// <summary>
+        /// for ToString
+        /// </summary>
         [TestMethod]
         public void TestMethodToString()
         {
@@ -46,7 +53,9 @@ namespace UnitTest
             var c  = new TextAnalysis.Controller(li);
             Assert.AreEqual("aa bb ", c.ToString());
         }
-
+        /// <summary>
+        /// for HowOfften
+        /// </summary>
         [TestMethod]
         public void TestMethodHowOften()
         {
@@ -55,7 +64,9 @@ namespace UnitTest
             Assert.AreEqual(1, c.HowOften("aa"));
             Assert.AreEqual(0, c.HowOften("cc"));
         }
-
+        /// <summary>
+        /// for MostCommon
+        /// </summary>
         [TestMethod]
         public void TestMethodMostCommon()
         {
@@ -65,7 +76,9 @@ namespace UnitTest
             Assert.AreEqual(2, mc.Item1);
             Assert.AreEqual(2, mc.Item2.Count);
         }
-
+        /// <summary>
+        /// for Longest
+        /// </summary>
         [TestMethod]
         public void TestMethodLongest()
         {
@@ -75,7 +88,9 @@ namespace UnitTest
             foreach (string w in c.Longest().Item2)
                 Assert.AreEqual("333", w);
         }
-
+        /// <summary>
+        /// for Shortest
+        /// </summary>
         [TestMethod]
         public void TestMethodShortest()
         {
@@ -83,7 +98,9 @@ namespace UnitTest
             var c = new TextAnalysis.Controller(li);
             Assert.AreEqual(1, c.Shortest().Item1);
         }
-
+        /// <summary>
+        /// for Average
+        /// </summary>
         [TestMethod]
         public void TestMethodAverage()
         {
@@ -91,7 +108,9 @@ namespace UnitTest
             var c = new TextAnalysis.Controller(li);
             Assert.AreEqual(2, c.Average());
         }
-
+        /// <summary>
+        /// for LookupBylength
+        /// </summary>
         [TestMethod]
         public void TestMethodLookupByLength()
         {
@@ -105,6 +124,9 @@ namespace UnitTest
         #endregion for class Lib.Controller
 
         #region for MainForm
+        /// <summary>
+        /// for default constructor
+        /// </summary>
         [TestMethod]
         public void TestDefaultConstructor()
         {
