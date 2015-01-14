@@ -13,17 +13,14 @@ namespace TextAnalysis
         /// field for raw data
         /// </summary>
         private List<string> _data;
-        
         /// <summary>
         /// a dictionary to store number of occurrences
         /// </summary>
         private Dictionary<string, int> _occurrences;
-
         /// <summary>
         /// a dictionary to store words that have same length.
         /// </summary>
         private Dictionary<int, SortedSet<string>> _lengths;
-
         /// <summary>
         /// build a occurrences dictionay and return it
         /// </summary>
@@ -36,7 +33,6 @@ namespace TextAnalysis
                 occu[key] = occu.ContainsKey(key) ? occu[key] + 1 : 1;
             return occu;
         }
-
         /// <summary>
         /// build a lengths dictionary and return it
         /// </summary>
@@ -52,12 +48,10 @@ namespace TextAnalysis
                     leng[w.Length] = new SortedSet<string> { w };
             return leng;
         }
-
         /// <summary>
         /// default constructor
         /// </summary>
         public Controller() : base(){}
-
         /// <summary>
         /// constructor with raw data
         /// </summary>
@@ -68,7 +62,6 @@ namespace TextAnalysis
             _occurrences = BuildOccu(data);
             _lengths = BuildLeng(data);
         }
-
         /// <summary>
         /// overloaded 
         /// </summary>
@@ -80,7 +73,6 @@ namespace TextAnalysis
                 contents += str + " ";
             return contents;
         }
-
         /// <summary>
         /// lookup by frequency
         /// </summary>
@@ -90,7 +82,6 @@ namespace TextAnalysis
         {
             return _occurrences.ContainsKey(key) ? _occurrences[key] : 0;
         }
-
         /// <summary>
         /// search for the most common words
         /// </summary>
@@ -103,7 +94,6 @@ namespace TextAnalysis
                 if (entry.Value == max) lst.Add(entry.Key);
             return new Tuple<int, List<string>>(max, lst);
         }
-
         /// <summary>
         /// search for the longest words
         /// </summary>
@@ -113,7 +103,6 @@ namespace TextAnalysis
             var max = _lengths.Keys.Max();
             return new Tuple<int, SortedSet<string>>(max, _lengths[max]);
         }
-
         /// <summary>
         /// search for the shortest words
         /// </summary>
@@ -123,7 +112,6 @@ namespace TextAnalysis
             var min = _lengths.Keys.Min();
             return new Tuple<int, SortedSet<string>>(min, _lengths[min]);
         }
-
         /// <summary>
         /// calcualte the average length
         /// </summary>
@@ -132,7 +120,11 @@ namespace TextAnalysis
         {
             return Convert.ToInt32(_lengths.Keys.Average());
         }
-
+        /// <summary>
+        ///  lookup by length
+        /// </summary>
+        /// <param name="len"></param>
+        /// <returns></returns>
         public SortedSet<string> LookupByLength(int len)
         {
             return _lengths.ContainsKey(len) ? _lengths[len] : new SortedSet<string>();

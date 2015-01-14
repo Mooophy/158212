@@ -93,10 +93,8 @@
             // 
             // openFileDialog
             // 
-            this.openFileDialog.FileName = "test.txt";
-            this.openFileDialog.Filter = "\"txt files (*.txt)|*.txt\"";
             this.openFileDialog.FilterIndex = 2;
-            this.openFileDialog.InitialDirectory = "d:\\";
+            this.openFileDialog.InitialDirectory = "c:\\";
             this.openFileDialog.RestoreDirectory = true;
             // 
             // btnMostCommon
