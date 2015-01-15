@@ -181,7 +181,7 @@ namespace TextAnalysis
         /// <param name="e"></param>
         private void btnAverageClick(object sender, EventArgs e)
         {
-            display.AppendText("The average length is " + _backEnd.Average().ToString() + "\r\n");
+            display.AppendText("The average length is " + _backEnd.Average().ToString() + ".\r\n");
         }
 
         /// <summary>

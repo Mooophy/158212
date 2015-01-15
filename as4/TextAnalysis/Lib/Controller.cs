@@ -41,12 +41,11 @@ namespace TextAnalysis
         public Dictionary<int, SortedSet<string>> BuildLeng(List<string> list)
         {
             var leng = new Dictionary<int, SortedSet<string>>();
-            foreach (string w in list)
-                if (leng.ContainsKey(w.Length)) 
+            foreach (string w in list.Where(word => word != ""))
+                if (leng.ContainsKey(w.Length))
                     leng[w.Length].Add(w);
-                else 
+                else
                     leng[w.Length] = new SortedSet<string> { w };
-            leng.Remove(0);
             return leng;
         }
         /// <summary>
