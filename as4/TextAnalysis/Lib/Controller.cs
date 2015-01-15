@@ -29,7 +29,7 @@ namespace TextAnalysis
         public Dictionary<string, int> BuildOccu(List<string> list)
         {
             var occu = new Dictionary<string, int>();
-            foreach (var key in list)
+            foreach (var key in list.Where(word => word != ""))
                 occu[key] = occu.ContainsKey(key) ? occu[key] + 1 : 1;
             return occu;
         }
