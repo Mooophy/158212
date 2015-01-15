@@ -46,6 +46,7 @@ namespace TextAnalysis
                     leng[w.Length].Add(w);
                 else 
                     leng[w.Length] = new SortedSet<string> { w };
+            leng.Remove(0);
             return leng;
         }
         /// <summary>

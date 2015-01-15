@@ -167,7 +167,7 @@ namespace TextAnalysis
         private void btnShortestClick(object sender, EventArgs e)
         {
             var shortestTuple = _backEnd.Shortest();
-            string s = "The shortest word" + (shortestTuple.Item2.Count > 2 ? "s are :\n" : " is ");
+            string s = "The shortest word" + (shortestTuple.Item2.Count > 1 ? "s are :\n" : " is ");
             foreach (var word in shortestTuple.Item2)
                 s += "'" + word + "'";
             s += " (length is " + shortestTuple.Item1.ToString() + ").\n";
