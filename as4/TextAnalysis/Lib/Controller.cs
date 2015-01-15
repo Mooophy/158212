@@ -91,8 +91,8 @@ namespace TextAnalysis
         {
             var max = _occurrences.Values.Max();
             var lst = new List<string>();
-            foreach(var entry in _occurrences)
-                if (entry.Value == max) lst.Add(entry.Key);
+            foreach (var entry in _occurrences.Where(entry => entry.Value == max))
+                lst.Add(entry.Key);
             return new Tuple<int, List<string>>(max, lst);
         }
         /// <summary>
