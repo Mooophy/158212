@@ -85,8 +85,7 @@ namespace UnitTest
             var li = new List<string>{"1", "22","22","333","333","333"};
             var c = new TextAnalysis.Controller(li);
             Assert.AreEqual(3, c.Longest().Item1);
-            foreach (string w in c.Longest().Item2)
-                Assert.AreEqual("333", w);
+            c.Longest().Item2.ToList().ForEach(s => Assert.AreEqual("333", s));
         }
         /// <summary>
         /// for Shortest
@@ -118,8 +117,7 @@ namespace UnitTest
             var c = new TextAnalysis.Controller(li);
             var result = c.LookupByLength(3);
             Assert.AreEqual(3, result.Count);
-            foreach (var w in result)
-                Assert.AreEqual(3, w.Length);
+            result.ToList().ForEach(s => Assert.AreEqual(3, s.Length));
         }
         #endregion for class Lib.Controller
 
