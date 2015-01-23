@@ -37,4 +37,14 @@ namespace UnitTest
             Assert.AreEqual("some one", paper.Coordinator);
         }
     }
+
+    [TestClass]
+    public class UnitTestUniversity
+    {
+        [TestMethod]
+        public void TestDefaultCtor()
+        {
+            var university = new University();
+        }
+    }
 }
