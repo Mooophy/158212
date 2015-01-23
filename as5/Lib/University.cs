@@ -13,5 +13,35 @@ namespace Lib
         public Dictionary<Paper, SortedSet<Student>> Enrollment { get; private set; }
 
         public University() { }
+
+        public void Add(Student student)
+        {
+            Students.Add(student);
+        }
+
+        public void Add(Paper paper)
+        {
+            Papers.Add(paper);
+        }
+
+        public void AddRange(IEnumerable<Student> collection)
+        {
+            Students.AddRange(collection);
+        }
+
+        public void AddRange(IEnumerable<Paper> collection)
+        {
+            Papers.AddRange(collection);
+        }
+
+        public IEnumerable<Student> find(Paper paper)
+        {
+            return Enrollment.ContainsKey(paper) ? Enrollment[paper].ToArray() : new Student[0];
+        }
+
+        public IEnumerable<Paper> find(Student student)
+        {
+            return from entry in Enrollment where entry.Value.Contains(student) select entry.Key;
+        }
     }
 }
