@@ -8,14 +8,14 @@ namespace Lib
 {
     public class University
     {
-        public List<Student> Students { get; private set; }
-        public List<Paper> Papers { get; private set; }
+        public SortedSet<Student> Students { get; private set; }
+        public SortedSet<Paper> Papers { get; private set; }
         public Dictionary<Paper, SortedSet<Student>> Enrollment { get; private set; }
 
         public University() 
         {
-            Students = new List<Student>();
-            Papers = new List<Paper>();
+            Students = new SortedSet<Student>();
+            Papers = new SortedSet<Paper>();
             Enrollment = new Dictionary<Paper, SortedSet<Student>>();
         }
 
@@ -27,16 +27,6 @@ namespace Lib
         public void Add(Paper paper)
         {
             Papers.Add(paper);
-        }
-
-        public void AddRange(IEnumerable<Student> collection)
-        {
-            Students.AddRange(collection);
-        }
-
-        public void AddRange(IEnumerable<Paper> collection)
-        {
-            Papers.AddRange(collection);
         }
 
         public IEnumerable<Student> find(Paper paper)

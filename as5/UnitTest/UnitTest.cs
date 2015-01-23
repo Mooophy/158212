@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Lib;
 
@@ -45,15 +47,6 @@ namespace UnitTest
         public void TestDefaultCtor()
         {
             var university = new University();
-        }
-
-        [TestMethod]
-        public void TestAddForStudent()
-        {
-            var university = new University();
-            university.Add(new Student(0, "Moophy", new DateTime(), "some place"));
-            university.Add(new Student(1, "Alan", new DateTime(), "some place"));
-            Assert.AreEqual(2, university.Students.Count);
         }
     }
 }
