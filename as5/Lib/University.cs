@@ -12,7 +12,12 @@ namespace Lib
         public List<Paper> Papers { get; private set; }
         public Dictionary<Paper, SortedSet<Student>> Enrollment { get; private set; }
 
-        public University() { }
+        public University() 
+        {
+            Students = new List<Student>();
+            Papers = new List<Paper>();
+            Enrollment = new Dictionary<Paper, SortedSet<Student>>();
+        }
 
         public void Add(Student student)
         {
