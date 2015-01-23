@@ -28,6 +28,13 @@ namespace UnitTest
     [TestClass]
     public class UnitTestPaper
     {
- 
+        [TestMethod]
+        public void TestCtor()
+        {
+            var paper = new Lib.Paper("some paper", 0, "some one");
+            Assert.AreEqual("some paper", paper.Name);
+            Assert.AreEqual(0, paper.Number);
+            Assert.AreEqual("some one", paper.Coordinator);
+        }
     }
 }

@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace Lib
 {
-    class Paper
+    public class Paper
     {
+        public readonly string Name;
+        public readonly int Number;
+        public readonly string Coordinator;
 
+        public Paper(string name, int number, string coodinator)
+        {
+            Name = name;
+            Number = number;
+            Coordinator = coodinator;
+        }
     }
 }
