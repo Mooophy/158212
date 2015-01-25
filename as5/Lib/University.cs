@@ -29,14 +29,50 @@ namespace Lib
             Papers.Add(paper);
         }
 
+        public void AddRange(IEnumerable<Student> collection)
+        {
+            foreach(var elem in collection) Students.Add(elem);
+        }
+
+        public void AddRange(IEnumerable<Paper> collection)
+        {
+            foreach (var elem in collection) Papers.Add(elem);
+        }
+
         public IEnumerable<Student> find(Paper paper)
         {
-            return Enrollment.ContainsKey(paper) ? Enrollment[paper].ToArray() : new Student[0];
+            return Enrollment.ContainsKey(paper) ? Enrollment[paper].AsEnumerable() : (new Student[0]).AsEnumerable();
         }
 
         public IEnumerable<Paper> find(Student student)
         {
             return from entry in Enrollment where entry.Value.Contains(student) select entry.Key;
+        }
+
+        public bool Enrol(Paper paper, Student student)
+        {
+            if (!Papers.Contains(paper) || !Students.Contains(student) || paper == null || student == null)
+                return false;
+            if (Enrollment.Keys.Contains(paper))
+                Enrollment[paper].Add(student);
+            else
+                Enrollment[paper] = new SortedSet<Student>();
+            return true;
+        }
+
+        public bool Enrol(int paperCode, int studentId)
+        {
+            return Enrol(FindPaper(paperCode), FindStudent(studentId));
+        }
+
+        public Paper FindPaper(int paperCode)
+        {
+            return Papers.First(p => p.Number == paperCode);
+        }
+
+        public Student FindStudent(int studentId)
+        {
+            return Students.First(s => s.Id == studentId);
         }
     }
 }

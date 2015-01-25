@@ -6,12 +6,27 @@ using System.Threading.Tasks;
 
 namespace Lib
 {
-    public class Student
+    public class Student : IComparable
     {
         public readonly int Id;
         public readonly string Name;
         public readonly DateTime BirthDate;
         public readonly string Address;
+
+        /// <summary>
+        /// Implementation for interface IComparable
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+            var other = obj as Student;
+            if (other != null)
+                return this.Id.CompareTo(other.Id);
+            else
+                throw new ArgumentException("object is not a Student");
+        }
         
         /// <summary>
         /// Instance Ctor
