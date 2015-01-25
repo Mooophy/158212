@@ -39,12 +39,12 @@ namespace Lib
             foreach (var elem in collection) Papers.Add(elem);
         }
 
-        public IEnumerable<Student> find(Paper paper)
+        public IEnumerable<Student> Find(Paper paper)
         {
             return Enrollment.ContainsKey(paper) ? Enrollment[paper].AsEnumerable() : (new Student[0]).AsEnumerable();
         }
 
-        public IEnumerable<Paper> find(Student student)
+        public IEnumerable<Paper> Find(Student student)
         {
             return from entry in Enrollment where entry.Value.Contains(student) select entry.Key;
         }

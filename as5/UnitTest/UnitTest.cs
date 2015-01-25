@@ -96,6 +96,35 @@ namespace UnitTest
         }
 
         [TestMethod]
+        public void TestFindPaper()
+        {
+            var university = new University();
+            Assert.AreEqual(0, university.Papers.Count);
+            university.AddRange(new List<Paper>{
+                new Paper("App Dev", 158212, "someone"),
+                new Paper("Algorithms", 159201, "someone else"),
+                new Paper("some paper", 12345678, "someone else again")
+            });
+
+            Assert.AreEqual("App Dev", university.FindPaper(158212).Name);
+            Assert.AreEqual("someone", university.FindPaper(158212).Coordinator);
+            Assert.AreEqual("Algorithms", university.FindPaper(159201).Name);
+        }
+
+        public void TestFindStudent()
+        {
+            var university = new University();
+            Assert.AreEqual(0, university.Students.Count);
+            university.AddRange(new List<Student>{
+                new Student(12027710, "Moophy", new DateTime(), "somewhere"),
+                new Student(12345678, "Alan", new DateTime(), "somewhere else")
+            });
+
+            Assert.AreEqual("Moophy", university.FindStudent(12027710));
+            Assert.AreEqual("Alan", university.FindStudent(12345678));
+        }
+
+        [TestMethod]
         public void TestEnrol()
         {
             var university = new University();
