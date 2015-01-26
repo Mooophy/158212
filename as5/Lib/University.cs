@@ -49,8 +49,11 @@ namespace Lib
             return from entry in Enrollment where entry.Value.Contains(student) select entry.Key;
         }
 
-        public bool Enrol(Paper paper, Student student)
+        public bool Enrol(int paperCode, int studentId)
         {
+            var paper = FindPaper(paperCode);
+            var student = FindStudent(studentId);
+
             if (!Papers.Contains(paper) || !Students.Contains(student) || paper == null || student == null)
                 return false;
             if (Enrollment.Keys.Contains(paper))
@@ -58,11 +61,6 @@ namespace Lib
             else
                 Enrollment[paper] = new SortedSet<Student> { student };
             return true;
-        }
-
-        public bool Enrol(int paperCode, int studentId)
-        {
-            return Enrol(FindPaper(paperCode), FindStudent(studentId));
         }
 
         public Paper FindPaper(int paperCode)
