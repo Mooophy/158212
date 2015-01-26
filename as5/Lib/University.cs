@@ -39,14 +39,17 @@ namespace Lib
             foreach (var elem in collection) Papers.Add(elem);
         }
 
-        public IEnumerable<Student> Find(Paper paper)
+        public List<Student> FindEnrolledByPaper(int paperNumber)
         {
-            return Enrollment.ContainsKey(paper) ? Enrollment[paper].AsEnumerable() : (new Student[0]).AsEnumerable();
+            var paper = FindPaper(paperNumber);
+            return Enrollment.ContainsKey(paper) ? Enrollment[paper].ToList() : (new Student[0]).ToList();
         }
 
-        public IEnumerable<Paper> Find(Student student)
+        public List<Paper> FindEnrolledByStudent(int studentId)
         {
-            return from entry in Enrollment where entry.Value.Contains(student) select entry.Key;
+            var student = FindStudent(studentId);
+            var ret = from entry in Enrollment where entry.Value.Contains(student) select entry.Key;
+            return ret.ToList();
         }
 
         public bool Enrol(int paperCode, int studentId)

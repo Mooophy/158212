@@ -111,6 +111,7 @@ namespace UnitTest
             Assert.AreEqual("Algorithms", university.FindPaper(159201).Name);
         }
 
+        [TestMethod]
         public void TestFindStudent()
         {
             var university = new University();
@@ -120,8 +121,8 @@ namespace UnitTest
                 new Student(12345678, "Alan", new DateTime(), "somewhere else")
             });
 
-            Assert.AreEqual("Moophy", university.FindStudent(12027710));
-            Assert.AreEqual("Alan", university.FindStudent(12345678));
+            Assert.AreEqual("Moophy", university.FindStudent(12027710).Name);
+            Assert.AreEqual("Alan", university.FindStudent(12345678).Name);
         }
 
         [TestMethod]
@@ -147,30 +148,45 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestFindByStudent()
+        public void TestFindEnrolledByPaper()
         {
-            //var university = new University();
-            
-            //university.AddRange(new List<Student>{
-            //    new Student(12027710, "Moophy", new DateTime(), "somewhere"),
-            //    new Student(13333333, "Alan", new DateTime(), "somewhere else")
-            //});
-            
-            //university.AddRange(new List<Paper>{
-            //    new Paper("App Dev", 158212, "someone"),
-            //    new Paper("Algorithms", 159201, "someone else"),
-            //    new Paper("some paper", 12345678, "someone else again")
-            //});
+            var university = new University();
+            university.AddRange(new List<Student>{
+                new Student(12027710, "Moophy", new DateTime(), "somewhere"),
+                new Student(13333333, "Alan", new DateTime(), "somewhere else")
+            });
+            university.AddRange(new List<Paper>{
+                new Paper("App Dev", 158212, "someone"),
+                new Paper("Algorithms", 159201, "someone else"),
+                new Paper("some paper", 12345678, "someone else again")
+            });
 
-            //bool result = university.Enrol(158212, 12027710);
-            //Assert.AreEqual(true, result);
-            //university.Enrol(158212, 13333333);
-            //Assert.AreEqual(1, university.Enrollment.Count);
+            Assert.AreEqual(true, university.Enrol(158212, 12027710));
+            Assert.AreEqual(true, university.Enrol(158212, 13333333));
 
-            //var appDev = university.FindPaper(158212);    
+            Assert.AreEqual(1, university.Enrollment.Count);
+            Assert.AreEqual(2, university.FindEnrolledByPaper(158212).Count);
+        }
 
-            //Assert.AreEqual(2, university.Enrollment[appDev].Count);
-            //not passed yet
+        public void TestFindEnrolledByStudent()
+        {
+            var university = new University();
+            university.AddRange(new List<Student>{
+                new Student(12027710, "Moophy", new DateTime(), "somewhere"),
+                new Student(13333333, "Alan", new DateTime(), "somewhere else")
+            });
+            university.AddRange(new List<Paper>{
+                new Paper("App Dev", 158212, "someone"),
+                new Paper("Algorithms", 159201, "someone else"),
+                new Paper("some paper", 12345678, "someone else again")
+            });
+
+            Assert.AreEqual(true, university.Enrol(158212, 12027710));
+            Assert.AreEqual(true, university.Enrol(158212, 13333333));
+            Assert.AreEqual(true, university.Enrol(159201, 13333333));
+
+            Assert.AreEqual(1, university.FindEnrolledByStudent(12027710).Count);
+            Assert.AreEqual(2, university.FindEnrolledByStudent(13333333).Count);
         }
     }
 }
