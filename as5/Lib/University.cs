@@ -3,11 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Lib
 {
     public class University
     {
+        /// <summary>
+        /// Utility to make student
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public Student MakeStudent(string[] line)
+        {
+            int id = Convert.ToInt32(line[0]);
+            string name = line[1];
+            DateTime birth = DateTime.Parse(line[2]);
+            string address = line[3];
+            return new Student(id, name, birth, address);
+        }
+
         public SortedSet<Student> Students { get; private set; }
         public SortedSet<Paper> Papers { get; private set; }
         public Dictionary<Paper, SortedSet<Student>> Enrollment { get; private set; }
@@ -17,6 +32,20 @@ namespace Lib
             Students = new SortedSet<Student>();
             Papers = new SortedSet<Paper>();
             Enrollment = new Dictionary<Paper, SortedSet<Student>>();
+        }
+
+        public void AddStudentByFile(string filename)
+        {
+            try
+            {
+                using (var reader = new StreamReader(filename))
+                    for (string[] line; reader.Peek() > 0; this.Add(MakeStudent(line)))
+                        line = reader.ReadLine().Split(',');
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "from Lib.University.cs");
+            }
         }
 
         public void Add(Student student)
