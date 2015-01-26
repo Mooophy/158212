@@ -56,7 +56,7 @@ namespace Lib
             if (Enrollment.Keys.Contains(paper))
                 Enrollment[paper].Add(student);
             else
-                Enrollment[paper] = new SortedSet<Student>();
+                Enrollment[paper] = new SortedSet<Student> { student };
             return true;
         }
 

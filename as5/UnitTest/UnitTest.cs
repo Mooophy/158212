@@ -129,8 +129,8 @@ namespace UnitTest
         {
             var university = new University();
             university.AddRange(new List<Student>{
-                new Student(0, "Moophy", new DateTime(), "somewhere"),
-                new Student(1, "Alan", new DateTime(), "somewhere else")
+                new Student(12027710, "Moophy", new DateTime(), "somewhere"),
+                new Student(13333333, "Alan", new DateTime(), "somewhere else")
             });
             university.AddRange(new List<Paper>{
                 new Paper("App Dev", 158212, "someone"),
@@ -138,41 +138,38 @@ namespace UnitTest
                 new Paper("some paper", 12345678, "someone else again")
             });
 
-            bool result = university.Enrol(158212, 0);
-            Assert.AreEqual(true, result);
-            university.Enrol(158212, 1);
+            var appDev = university.FindPaper(158212);
+            Assert.AreEqual(true, university.Enrol(158212, 12027710));
+            Assert.AreEqual(1, university.Enrollment[appDev].Count);
+            Assert.AreEqual(true, university.Enrol(158212, 13333333));
             Assert.AreEqual(1, university.Enrollment.Count);
+            Assert.AreEqual(2, university.Enrollment[appDev].Count);
         }
 
         [TestMethod]
         public void TestFindByStudent()
         {
-            var university = new University();
+            //var university = new University();
             
-            university.AddRange(new List<Student>{
-                new Student(12027710, "Moophy", new DateTime(), "somewhere"),
-                new Student(13333333, "Alan", new DateTime(), "somewhere else")
-            });
+            //university.AddRange(new List<Student>{
+            //    new Student(12027710, "Moophy", new DateTime(), "somewhere"),
+            //    new Student(13333333, "Alan", new DateTime(), "somewhere else")
+            //});
             
-            university.AddRange(new List<Paper>{
-                new Paper("App Dev", 158212, "someone"),
-                new Paper("Algorithms", 159201, "someone else"),
-                new Paper("some paper", 12345678, "someone else again")
-            });
+            //university.AddRange(new List<Paper>{
+            //    new Paper("App Dev", 158212, "someone"),
+            //    new Paper("Algorithms", 159201, "someone else"),
+            //    new Paper("some paper", 12345678, "someone else again")
+            //});
 
-            bool result = university.Enrol(158212, 12027710);
-            Assert.AreEqual(true, result);
-            university.Enrol(158212, 13333333);
-            Assert.AreEqual(1, university.Enrollment.Count);
-            
-            Paper appDev = null;
-            foreach (var paper in university.Papers)
-                if (paper.Number == 158212)
-                { 
-                    appDev = paper;
-                    break;
-                }
-            Assert.AreEqual(2, university.Enrollment[appDev].Count);
+            //bool result = university.Enrol(158212, 12027710);
+            //Assert.AreEqual(true, result);
+            //university.Enrol(158212, 13333333);
+            //Assert.AreEqual(1, university.Enrollment.Count);
+
+            //var appDev = university.FindPaper(158212);    
+
+            //Assert.AreEqual(2, university.Enrollment[appDev].Count);
             //not passed yet
         }
     }

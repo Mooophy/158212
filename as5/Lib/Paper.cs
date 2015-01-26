@@ -43,5 +43,10 @@ namespace Lib
         public Paper(Paper other)
             :this(other.Name,other.Number,other.Coordinator)
         { }
+
+        public override string ToString()
+        {
+            return Name + " " + Number + " " + Coordinator;
+        }
     }
 }
