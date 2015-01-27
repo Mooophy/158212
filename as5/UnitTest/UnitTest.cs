@@ -194,10 +194,20 @@ namespace UnitTest
         public void TestAddStudentsByFile()
         {
             var university = new University();
-            university.AddStudentsByFile(@"d:\test.csv");
+            university.AddStudentsByFile(@"d:\test_student.csv");
 
             Assert.AreEqual(1, university.Students.Count);
             Assert.AreEqual("Moophy", university.FindStudent(12027710).Name);
+        }
+
+        [TestMethod]
+        public void TestAddPapersByFile()
+        {
+            var university = new University();
+            university.AddPapersByFile(@"d:\test_paper.csv");
+
+            Assert.AreEqual(3, university.Papers.Count);
+            Assert.AreEqual("someone else", university.FindPaper(159201).Coordinator);
         }
     }
 }

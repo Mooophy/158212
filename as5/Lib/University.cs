@@ -20,6 +20,11 @@ namespace Lib
             Enrollment = new Dictionary<Paper, SortedSet<Student>>();
         }
 
+        /// <summary>
+        /// format : 
+        ///     id,name,birthdate,address
+        /// </summary>
+        /// <param name="filename"></param>
         public void AddStudentsByFile(string filename)
         {
             Func<string[], Student> makeStudent = (string[] line) =>
@@ -43,6 +48,11 @@ namespace Lib
             }
         }
 
+        /// <summary>
+        /// format:
+        ///     name,number,coordinator
+        /// </summary>
+        /// <param name="filename"></param>
         public void AddPapersByFile(string filename)
         {
             Func<string[], Paper> makePaper = (string[] line) =>
