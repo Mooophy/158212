@@ -9,20 +9,6 @@ namespace Lib
 {
     public class University
     {
-        /// <summary>
-        /// Utility to make student
-        /// </summary>
-        /// <param name="line"></param>
-        /// <returns></returns>
-        public Student MakeStudent(string[] line)
-        {
-            int id = Convert.ToInt32(line[0]);
-            string name = line[1];
-            DateTime birth = DateTime.Parse(line[2]);
-            string address = line[3];
-            return new Student(id, name, birth, address);
-        }
-
         public SortedSet<Student> Students { get; private set; }
         public SortedSet<Paper> Papers { get; private set; }
         public Dictionary<Paper, SortedSet<Student>> Enrollment { get; private set; }
@@ -34,15 +20,46 @@ namespace Lib
             Enrollment = new Dictionary<Paper, SortedSet<Student>>();
         }
 
-        public void AddStudentByFile(string filename)
+        public void AddStudentsByFile(string filename)
         {
+            Func<string[], Student> makeStudent = (string[] line) =>
+            {
+                int id = Convert.ToInt32(line[0]);
+                string name = line[1];
+                DateTime birth = DateTime.Parse(line[2]);
+                string address = line[3];
+                return new Student(id, name, birth, address);
+            };
+
             try
             {
                 using (var reader = new StreamReader(filename))
-                    for (string[] line; reader.Peek() > 0; this.Add(MakeStudent(line)))
+                    for (string[] line; reader.Peek() > 0; this.Add(makeStudent(line)))
                         line = reader.ReadLine().Split(',');
             }
             catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "from Lib.University.cs");
+            }
+        }
+
+        public void AddPapersByFile(string filename)
+        {
+            Func<string[], Paper> makePaper = (string[] line) =>
+            {
+                string name = line[0];
+                int number = Convert.ToInt32(line[1]);
+                string coordinator = line[2];
+                return new Paper(name, number, coordinator);
+            };
+
+            try
+            {
+                using (var reader = new StreamReader(filename))
+                    for (string[] line; reader.Peek() > 0; this.Add(makePaper(line)))
+                        line = reader.ReadLine().Split(',');
+            }
+            catch(Exception ex)
             {
                 throw new Exception(ex.Message + "from Lib.University.cs");
             }
