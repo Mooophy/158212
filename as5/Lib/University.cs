@@ -33,7 +33,7 @@ namespace Lib
 
             try
             {
-                using (var reader = new StreamReader(filename))
+                using (var reader = new StreamReader(filename)) 
                     for (string[] line; reader.Peek() > 0; this.Add(makeStudent(line)))
                         line = reader.ReadLine().Split(',');
             }

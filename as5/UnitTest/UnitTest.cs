@@ -168,6 +168,7 @@ namespace UnitTest
             Assert.AreEqual(2, university.FindEnrolledByPaper(158212).Count);
         }
 
+        [TestMethod]
         public void TestFindEnrolledByStudent()
         {
             var university = new University();
@@ -187,6 +188,16 @@ namespace UnitTest
 
             Assert.AreEqual(1, university.FindEnrolledByStudent(12027710).Count);
             Assert.AreEqual(2, university.FindEnrolledByStudent(13333333).Count);
+        }
+
+        [TestMethod]
+        public void TestAddStudentsByFile()
+        {
+            var university = new University();
+            university.AddStudentsByFile(@"d:\test.csv");
+
+            Assert.AreEqual(1, university.Students.Count);
+            Assert.AreEqual("Moophy", university.FindStudent(12027710).Name);
         }
     }
 }
