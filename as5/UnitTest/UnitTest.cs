@@ -243,5 +243,15 @@ namespace UnitTest
 
             Assert.AreEqual(true, File.Exists(@"d:\exported_students.csv"));
         }
+
+        [TestMethod]
+        public void TestExportPapersToFile()
+        {
+            var university = new University();
+            university.AddPapersByFile(@"d:\test_paper.csv");
+            university.ExportPapersToFile(@"d:\exported_papers.csv");
+
+            Assert.AreEqual(true, File.Exists(@"d:\exported_students.csv"));
+        }
     }
 }

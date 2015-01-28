@@ -162,11 +162,11 @@ namespace Lib
             return count;
         }
 
-        public void ExportStudentsToFile(string filename = "Students.csv")
+        public void ExportStudentsToFile(string path)
         {
             try
             {
-                using (var sw = new StreamWriter(filename, true))
+                using (var sw = new StreamWriter(path, true))
                     foreach (var s in Students) sw.WriteLine(s.ToString());
             }
             catch (Exception ex)
@@ -174,6 +174,20 @@ namespace Lib
                 throw new Exception(ex.Message + " from Lib.University.cs");
             }
         }
+
+        public void ExportPapersToFile(string path)
+        {
+            try
+            {
+                using (var sw = new StreamWriter(path, true))
+                    foreach (var p in Papers) sw.WriteLine(p.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + " from Lib.University.cs");
+            }
+        }
+
 
         public Paper FindPaper(int paperCode)
         {
@@ -184,7 +198,5 @@ namespace Lib
         {
             return Students.First(s => s.Id == studentId);
         }
-
-
     }
 }
