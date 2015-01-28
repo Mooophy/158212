@@ -30,19 +30,20 @@
         {
             this.menu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.papersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enrollmentInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuImportStudents = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuImportPapers = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuImportEnrollment = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.studentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.papersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.enrollemntInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExportStudents = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExportPapers = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExportEnrollment = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.studentsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.papersToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewStudents = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewPapers = new System.Windows.Forms.ToolStripMenuItem();
             this.grid = new System.Windows.Forms.DataGridView();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
@@ -63,96 +64,99 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
+            this.menuExit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // exitToolStripMenuItem
+            // menuExit
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.menuExit.Name = "menuExit";
+            this.menuExit.Size = new System.Drawing.Size(96, 22);
+            this.menuExit.Text = "Exit";
+            this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.studentsToolStripMenuItem,
-            this.papersToolStripMenuItem,
-            this.enrollmentInfoToolStripMenuItem});
+            this.menuImportStudents,
+            this.menuImportPapers,
+            this.menuImportEnrollment});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
             this.importToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
             this.importToolStripMenuItem.Text = "Import";
             // 
-            // studentsToolStripMenuItem
+            // menuImportStudents
             // 
-            this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.studentsToolStripMenuItem.Text = "Students";
+            this.menuImportStudents.Name = "menuImportStudents";
+            this.menuImportStudents.Size = new System.Drawing.Size(165, 22);
+            this.menuImportStudents.Text = "Students";
+            this.menuImportStudents.Click += new System.EventHandler(this.menuImportStudents_Click);
             // 
-            // papersToolStripMenuItem
+            // menuImportPapers
             // 
-            this.papersToolStripMenuItem.Name = "papersToolStripMenuItem";
-            this.papersToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.papersToolStripMenuItem.Text = "Papers";
+            this.menuImportPapers.Name = "menuImportPapers";
+            this.menuImportPapers.Size = new System.Drawing.Size(165, 22);
+            this.menuImportPapers.Text = "Papers";
+            this.menuImportPapers.Click += new System.EventHandler(this.menuImportPapers_Click);
             // 
-            // enrollmentInfoToolStripMenuItem
+            // menuImportEnrollment
             // 
-            this.enrollmentInfoToolStripMenuItem.Name = "enrollmentInfoToolStripMenuItem";
-            this.enrollmentInfoToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.enrollmentInfoToolStripMenuItem.Text = "Enrollment Info";
+            this.menuImportEnrollment.Name = "menuImportEnrollment";
+            this.menuImportEnrollment.Size = new System.Drawing.Size(165, 22);
+            this.menuImportEnrollment.Text = "Enrollment Info";
+            this.menuImportEnrollment.Click += new System.EventHandler(this.menuImportEnrollment_Click);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.studentsToolStripMenuItem1,
-            this.papersToolStripMenuItem1,
-            this.enrollemntInfoToolStripMenuItem});
+            this.menuExportStudents,
+            this.menuExportPapers,
+            this.menuExportEnrollment});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
             this.exportToolStripMenuItem.Text = "Export";
             // 
-            // studentsToolStripMenuItem1
+            // menuExportStudents
             // 
-            this.studentsToolStripMenuItem1.Name = "studentsToolStripMenuItem1";
-            this.studentsToolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
-            this.studentsToolStripMenuItem1.Text = "Students";
+            this.menuExportStudents.Name = "menuExportStudents";
+            this.menuExportStudents.Size = new System.Drawing.Size(165, 22);
+            this.menuExportStudents.Text = "Students";
             // 
-            // papersToolStripMenuItem1
+            // menuExportPapers
             // 
-            this.papersToolStripMenuItem1.Name = "papersToolStripMenuItem1";
-            this.papersToolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
-            this.papersToolStripMenuItem1.Text = "Papers";
+            this.menuExportPapers.Name = "menuExportPapers";
+            this.menuExportPapers.Size = new System.Drawing.Size(165, 22);
+            this.menuExportPapers.Text = "Papers";
             // 
-            // enrollemntInfoToolStripMenuItem
+            // menuExportEnrollment
             // 
-            this.enrollemntInfoToolStripMenuItem.Name = "enrollemntInfoToolStripMenuItem";
-            this.enrollemntInfoToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.enrollemntInfoToolStripMenuItem.Text = "Enrollemnt Info";
+            this.menuExportEnrollment.Name = "menuExportEnrollment";
+            this.menuExportEnrollment.Size = new System.Drawing.Size(165, 22);
+            this.menuExportEnrollment.Text = "Enrollemnt Info";
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.studentsToolStripMenuItem2,
-            this.papersToolStripMenuItem2});
+            this.menuViewStudents,
+            this.menuViewPapers});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
             this.viewToolStripMenuItem.Text = "View";
             // 
-            // studentsToolStripMenuItem2
+            // menuViewStudents
             // 
-            this.studentsToolStripMenuItem2.Name = "studentsToolStripMenuItem2";
-            this.studentsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.studentsToolStripMenuItem2.Text = "Students";
-            this.studentsToolStripMenuItem2.Click += new System.EventHandler(this.studentsToolStripMenuItem2_Click);
+            this.menuViewStudents.Name = "menuViewStudents";
+            this.menuViewStudents.Size = new System.Drawing.Size(126, 22);
+            this.menuViewStudents.Text = "Students";
+            this.menuViewStudents.Click += new System.EventHandler(this.menuViewStudents_Click);
             // 
-            // papersToolStripMenuItem2
+            // menuViewPapers
             // 
-            this.papersToolStripMenuItem2.Name = "papersToolStripMenuItem2";
-            this.papersToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.papersToolStripMenuItem2.Text = "Papers";
-            this.papersToolStripMenuItem2.Click += new System.EventHandler(this.papersToolStripMenuItem2_Click);
+            this.menuViewPapers.Name = "menuViewPapers";
+            this.menuViewPapers.Size = new System.Drawing.Size(126, 22);
+            this.menuViewPapers.Text = "Papers";
+            this.menuViewPapers.Click += new System.EventHandler(this.menuViewPapers_Click);
             // 
             // grid
             // 
@@ -165,6 +169,7 @@
             this.grid.RowTemplate.Height = 23;
             this.grid.Size = new System.Drawing.Size(879, 308);
             this.grid.TabIndex = 1;
+            this.grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCell_DoubleClick);
             // 
             // MainForm
             // 
@@ -188,19 +193,20 @@
 
         private System.Windows.Forms.MenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuExit;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem papersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem enrollmentInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuImportStudents;
+        private System.Windows.Forms.ToolStripMenuItem menuImportPapers;
+        private System.Windows.Forms.ToolStripMenuItem menuImportEnrollment;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem papersToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem enrollemntInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuExportStudents;
+        private System.Windows.Forms.ToolStripMenuItem menuExportPapers;
+        private System.Windows.Forms.ToolStripMenuItem menuExportEnrollment;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem papersToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem menuViewStudents;
+        private System.Windows.Forms.ToolStripMenuItem menuViewPapers;
         private System.Windows.Forms.DataGridView grid;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
 
 
     }

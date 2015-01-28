@@ -13,7 +13,7 @@ namespace as5
 {
     public partial class MainForm : Form
     {
-        Lib.University _uni;
+        private Lib.University _uni;
 
         public MainForm()
         {
@@ -35,21 +35,106 @@ namespace as5
                        select new { Code = p.Number, Name = p.Name, Corrdinator = p.Coordinator };
             grid.DataSource = data.ToArray();
         }
-        #endregion
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ImportStudents()
+        {
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try 
+                {
+                    _uni.AddStudentsByFile(openFileDialog.FileName);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void ImportPapers()
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    _uni.AddPapersByFile(openFileDialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void ImportEnrollment()
+        {
+            if(_uni.Students.Count == 0)
+            {
+                MessageBox.Show("Please import students and papers first.");
+                return;
+            }
+
+            if(_uni.Papers.Count == 0)
+            {
+                MessageBox.Show("Please import students and papers first.");
+                return;
+            }
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    _uni.EnrolByFile(openFileDialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        #endregion
+        
+        private void gridCell_DoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //var curr = grid.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewImageCell;
+            grid.ClearSelection();
+            grid.Rows[e.RowIndex].Selected = true;
+            //
+            //here to show the enrollment form
+            //
+            //MessageBox.Show(e.RowIndex + " : " + e.ColumnIndex);
+        }
+
+        private void menuExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void studentsToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void menuViewStudents_Click(object sender, EventArgs e)
         {
             this.DisplayStudents();
         }
 
-        private void papersToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void menuViewPapers_Click(object sender, EventArgs e)
         {
             this.DisplayPapers();
+        }
+
+        private void menuImportStudents_Click(object sender, EventArgs e)
+        {
+            this.ImportStudents();
+            this.DisplayStudents();
+        }
+
+        private void menuImportPapers_Click(object sender, EventArgs e)
+        {
+            this.ImportPapers();
+            this.DisplayPapers();
+        }
+
+        private void menuImportEnrollment_Click(object sender, EventArgs e)
+        {
+            this.ImportEnrollment();
         }
     }
 }
