@@ -46,7 +46,7 @@ namespace Lib
 
         public override string ToString()
         {
-            return Name + " " + Number + " " + Coordinator;
+            return Name + "," + Number + "," + Coordinator;
         }
     }
 }

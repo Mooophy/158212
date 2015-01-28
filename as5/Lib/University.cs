@@ -162,6 +162,19 @@ namespace Lib
             return count;
         }
 
+        public void ExportStudentsToFile(string filename = "Students.csv")
+        {
+            try
+            {
+                using (var sw = new StreamWriter(filename, true))
+                    foreach (var s in Students) sw.WriteLine(s.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + " from Lib.University.cs");
+            }
+        }
+
         public Paper FindPaper(int paperCode)
         {
             return Papers.First(p => p.Number == paperCode);
@@ -171,5 +184,7 @@ namespace Lib
         {
             return Students.First(s => s.Id == studentId);
         }
+
+
     }
 }

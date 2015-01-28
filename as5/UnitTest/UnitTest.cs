@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -23,7 +24,7 @@ namespace UnitTest
         public void TestToString()
         {
             Student student = new Student(0, "moophy", new DateTime(), "some street");
-            Assert.AreEqual("[moophy](0)(0001/1/1 0:00:00)(some street)",student.ToString());
+            Assert.AreEqual("0,moophy,0001/1/1 0:00:00,some street", student.ToString());
         }
     }
 
@@ -37,6 +38,13 @@ namespace UnitTest
             Assert.AreEqual("some paper", paper.Name);
             Assert.AreEqual(0, paper.Number);
             Assert.AreEqual("some one", paper.Coordinator);
+        }
+
+        [TestMethod]
+        public void TestToString()
+        {
+            var paper = new Lib.Paper("some paper", 0, "some one");
+            Assert.AreEqual("some paper,0,some one", paper.ToString());
         }
     }
 
@@ -224,6 +232,16 @@ namespace UnitTest
             Assert.AreEqual(2, university.Enrollment.Count);
             Assert.AreEqual(2, university.Enrollment[university.FindPaper(159201)].Count);
             Assert.AreEqual(1, university.Enrollment[university.FindPaper(159234)].Count);
+        }
+
+        [TestMethod]
+        public void TestExportStudentsToFile()
+        {
+            var university = new University();
+            university.AddStudentsByFile(@"d:\test_student.csv");
+            university.ExportStudentsToFile(@"d:\exported_students.csv");
+
+            Assert.AreEqual(true, File.Exists(@"d:\exported_students.csv"));
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Lib
 
         public override string ToString()
         {
-            return "[" + this.Name + "](" + Id + ")("+ BirthDate + ")(" + Address +")";
+            return Id + "," + Name + "," + BirthDate + "," + Address;
         }
 
 
