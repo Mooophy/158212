@@ -57,6 +57,9 @@ namespace UnitTest
             Assert.AreEqual(1, university.Students.Count);
             university.Add(new Student(1, "Alan", new DateTime(), "somewhere else"));
             Assert.AreEqual(2, university.Students.Count);
+            university.Add(new Student(0, "Moophy", new DateTime(), "somewhere"));
+            Assert.AreEqual(2, university.Students.Count);
+
         }
 
         [TestMethod]
@@ -196,7 +199,7 @@ namespace UnitTest
             var university = new University();
             university.AddStudentsByFile(@"d:\test_student.csv");
 
-            Assert.AreEqual(1, university.Students.Count);
+            Assert.AreEqual(2, university.Students.Count);
             Assert.AreEqual("Moophy", university.FindStudent(12027710).Name);
         }
 
@@ -208,6 +211,19 @@ namespace UnitTest
 
             Assert.AreEqual(3, university.Papers.Count);
             Assert.AreEqual("someone else", university.FindPaper(159201).Coordinator);
+        }
+
+        [TestMethod]
+        public void TestEnrolByFile()
+        {
+            var university = new University();
+            university.AddStudentsByFile(@"d:\test_student.csv");
+            university.AddPapersByFile(@"d:\test_paper.csv");
+            university.EnrolByFile(@"d:\test_enrol.csv");
+
+            Assert.AreEqual(2, university.Enrollment.Count);
+            Assert.AreEqual(2, university.Enrollment[university.FindPaper(159201)].Count);
+            Assert.AreEqual(1, university.Enrollment[university.FindPaper(159234)].Count);
         }
     }
 }

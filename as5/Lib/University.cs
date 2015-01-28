@@ -44,7 +44,7 @@ namespace Lib
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message + "from Lib.University.cs");
+                throw new Exception(ex.Message + " from Lib.University.cs");
             }
         }
 
@@ -65,13 +65,13 @@ namespace Lib
 
             try
             {
-                using (var reader = new StreamReader(filename))
-                    for (string[] line; reader.Peek() > 0; this.Add(makePaper(line)))
-                        line = reader.ReadLine().Split(',');
+                using (var sr = new StreamReader(filename))
+                    for (string[] line; sr.Peek() > 0; this.Add(makePaper(line)))
+                        line = sr.ReadLine().Split(',');
             }
             catch(Exception ex)
             {
-                throw new Exception(ex.Message + "from Lib.University.cs");
+                throw new Exception(ex.Message + " from Lib.University.cs");
             }
         }
 
@@ -120,6 +120,46 @@ namespace Lib
             else
                 Enrollment[paper] = new SortedSet<Student> { student };
             return true;
+        }
+
+        /// <summary>
+        /// format : 
+        ///     paper number, student id
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public bool Enrol(string line)
+        {
+            string[] buff = line.Split(',');
+            int paperNumber = 0, studentId = 0;
+            if(! Int32.TryParse(buff[0],out paperNumber))
+                throw new Exception(buff[0] + " is not a valid paper number");
+            if(! Int32.TryParse(buff[1], out studentId))
+                throw new Exception(buff[1] + " is not a valid student id");
+
+            return this.Enrol(paperNumber, studentId);
+        }
+
+        /// <summary>
+        /// load enrollment information from a csv file, format :
+        ///     paper number, student id
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns>number of enrollments successfully performed</returns>
+        public int EnrolByFile(string filename)
+        {
+            int count = 0;
+            try
+            {
+                using (var sr = new StreamReader(filename))
+                    for (string info; sr.Peek() > 0; count += Enrol(info) ? 1 : 0)
+                        info = sr.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "from Lib.University.cs");
+            }
+            return count;
         }
 
         public Paper FindPaper(int paperCode)
