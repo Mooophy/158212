@@ -98,7 +98,7 @@ namespace Lib
         public List<Student> FindEnrolledByPaper(int paperNumber)
         {
             var paper = FindPaper(paperNumber);
-            return Enrollment.ContainsKey(paper) ? Enrollment[paper].ToList() : (new Student[0]).ToList();
+            return Enrollment.ContainsKey(paper) ? Enrollment[paper].ToList() : new List<Student>();
         }
 
         public List<Paper> FindEnrolledByStudent(int studentId)
