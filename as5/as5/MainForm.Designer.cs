@@ -145,15 +145,19 @@
             this.studentsToolStripMenuItem2.Name = "studentsToolStripMenuItem2";
             this.studentsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.studentsToolStripMenuItem2.Text = "Students";
+            this.studentsToolStripMenuItem2.Click += new System.EventHandler(this.studentsToolStripMenuItem2_Click);
             // 
             // papersToolStripMenuItem2
             // 
             this.papersToolStripMenuItem2.Name = "papersToolStripMenuItem2";
             this.papersToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.papersToolStripMenuItem2.Text = "Papers";
+            this.papersToolStripMenuItem2.Click += new System.EventHandler(this.papersToolStripMenuItem2_Click);
             // 
             // grid
             // 
+            this.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 25);
