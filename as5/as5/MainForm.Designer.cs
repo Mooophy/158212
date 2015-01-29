@@ -45,6 +45,8 @@
             this.gridStudents = new System.Windows.Forms.DataGridView();
             this.pagePapers = new System.Windows.Forms.TabPage();
             this.gridPapers = new System.Windows.Forms.DataGridView();
+            this.menuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.tab.SuspendLayout();
             this.pageStudents.SuspendLayout();
@@ -68,6 +70,8 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuEdit,
+            this.menuSave,
             this.menuExit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
@@ -196,6 +200,20 @@
             this.gridPapers.TabIndex = 0;
             this.gridPapers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPaperOnDoubleClick);
             // 
+            // menuSave
+            // 
+            this.menuSave.Name = "menuSave";
+            this.menuSave.Size = new System.Drawing.Size(152, 22);
+            this.menuSave.Text = "Save";
+            this.menuSave.Click += new System.EventHandler(this.menuSave_Click);
+            // 
+            // menuEdit
+            // 
+            this.menuEdit.Name = "menuEdit";
+            this.menuEdit.Size = new System.Drawing.Size(152, 22);
+            this.menuEdit.Text = "Edit";
+            this.menuEdit.Click += new System.EventHandler(this.menuEdit_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -237,6 +255,8 @@
         private System.Windows.Forms.TabPage pagePapers;
         private System.Windows.Forms.DataGridView gridStudents;
         private System.Windows.Forms.DataGridView gridPapers;
+        private System.Windows.Forms.ToolStripMenuItem menuSave;
+        private System.Windows.Forms.ToolStripMenuItem menuEdit;
 
 
     }

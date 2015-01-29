@@ -117,6 +117,35 @@ namespace as5
                 }
             }
         }
+
+        private bool CheckGridStudents()
+        {
+            Func<DataGridViewRow, bool> checkCells = (row) =>
+            {
+                foreach (DataGridViewCell c in row.Cells)
+                    if (c.Value == null) return false;
+                return true;
+            };
+
+            this.gridStudents.EndEdit();
+            this.gridStudents.AllowUserToAddRows = this.gridStudents.AllowUserToDeleteRows = false;
+            foreach(DataGridViewRow row in this.gridStudents.Rows)
+            {
+                this.gridStudents.ClearSelection();
+                row.Selected = true;
+                if (! checkCells(row))
+                    return false;
+                
+                if (! row.Cells[0].Value.ToString().All(char.IsDigit)) 
+                    return false;
+
+                //
+                //more check needed
+                //
+            }
+            this.gridStudents.ClearSelection();
+            return true;
+        }
         #endregion
 
         private void menuImportStudents_Click(object sender, EventArgs e)
@@ -159,6 +188,16 @@ namespace as5
         private void menuExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void menuSave_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this.CheckGridStudents() ? "all checked" : "failed");
+        }
+
+        private void menuEdit_Click(object sender, EventArgs e)
+        {
+            this.gridStudents.ReadOnly = this.gridStudents.ReadOnly = false;
         }
     }
 }
