@@ -134,14 +134,6 @@ namespace as5
             this.ImportEnrollment();
         }
 
-        private void gridStudentsOnKeyPressed(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                _EnrolledPapers.ShowDialog();
-            }
-        }
-
         private void gridPaperOnDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < this.gridPapers.Rows.Count - 1)

@@ -37,11 +37,15 @@ namespace as5
             // 
             // grid
             // 
+            this.grid.AllowUserToAddRows = false;
+            this.grid.AllowUserToDeleteRows = false;
             this.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 0);
             this.grid.Name = "grid";
+            this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 23;
             this.grid.Size = new System.Drawing.Size(595, 262);
             this.grid.TabIndex = 0;
@@ -53,16 +57,19 @@ namespace as5
             this.Name = "EnrolledStudentsForm";
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         internal void populateGrid(int paperCode)
         {
             this.grid.Rows.Clear();
             this.grid.Refresh();
-
             var students = _University.FindEnrolledByPaper(paperCode);
             foreach (var s in students)
                 this.grid.Rows.Add(new string[] { s.Id.ToString(), s.Name, s.BirthDate.ToString(), s.Address });
+
+            var paper = _University.FindPaper(paperCode);
+            this.Text = "students enrolled in " + paper.Name + " " + paper.Number;
         }
     }
 }
