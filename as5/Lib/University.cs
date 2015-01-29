@@ -191,6 +191,8 @@ namespace Lib
 
         public Paper FindPaper(int paperCode)
         {
+            if (Papers.Count == 0)
+                throw new Exception("Papers are empty");
             return Papers.First(p => p.Number == paperCode);
         }
 

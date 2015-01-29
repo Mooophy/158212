@@ -144,5 +144,16 @@ namespace as5
                 _EnrolledStudents.ShowDialog();
             }
         }
+
+        private void gridStudentsOnDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex < this.gridStudents.Rows.Count - 1)
+            {
+                this.gridStudents.Rows[e.RowIndex].Selected = true;
+                int studentId = Convert.ToInt32(this.gridStudents.CurrentRow.Cells[0].Value.ToString());
+                _EnrolledPapers.populateGrid(studentId);
+                _EnrolledPapers.ShowDialog();
+            }
+        }
     }
 }

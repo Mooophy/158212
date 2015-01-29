@@ -57,7 +57,6 @@ namespace as5
             this.Name = "EnrolledStudentsForm";
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         internal void populateGrid(int paperCode)
