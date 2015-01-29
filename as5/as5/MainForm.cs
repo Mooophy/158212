@@ -142,11 +142,12 @@ namespace as5
             }
         }
 
-        private void gridPapersOnKeyPressed(object sender, KeyEventArgs e)
+        private void gridPaperOnDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && this.gridPapers.CurrentRow.Index < this.gridPapers.Rows.Count)
+            if (e.RowIndex < this.gridPapers.Rows.Count - 1)
             {
-                var paperCode = Convert.ToInt32(this.gridPapers.CurrentRow.Cells[1].Value.ToString());
+                this.gridPapers.Rows[e.RowIndex].Selected = true;
+                int paperCode = Convert.ToInt32(this.gridPapers.CurrentRow.Cells[1].Value.ToString());
                 _EnrolledStudents.populateGrid(paperCode);
                 _EnrolledStudents.ShowDialog();
             }
