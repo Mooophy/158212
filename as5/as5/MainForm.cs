@@ -13,38 +13,60 @@ namespace as5
 {
     public partial class MainForm : Form
     {
-        private Lib.University _uni;
+        private Lib.University _Uni;
 
         public MainForm()
         {
             InitializeComponent();
-            _uni = new University();
+
+            _Uni = new University();
+
+            this.SetupGridStudents();
+            //this.PopulateGridStudents();
+            
+            this.SetupGridPapers();
         }
 
         #region functions
-        private void DisplayStudents()
+        private void SetupGridStudents()
         {
-            var data = from s in _uni.Students
-                       select new { Id = s.Id, Name = s.Name, Birth = s.BirthDate.ToString(), Address = s.Address };
-            grid.DataSource = data.ToArray();
+
+            var titles = new string[] { "Id", "Name", "Birth", "Address" };
+            foreach (var t in titles)
+                this.gridStudents.Columns.Add(t, t);
         }
 
-        private void DisplayPapers()
+        private void PopulateGridStudents()
         {
-            var data = from p in _uni.Papers
-                       select new { Code = p.Number, Name = p.Name, Corrdinator = p.Coordinator };
-            grid.DataSource = data.ToArray();
+            this.gridStudents.Rows.Clear();
+            foreach (var s in _Uni.Students)
+                this.gridStudents.Rows.Add(new string[] { s.Id.ToString(), s.Name, s.BirthDate.ToString(), s.Address });
+        }
+
+        private void SetupGridPapers()
+        {
+            var titles = new string[] { "Name", "Code", "Coordinator" };
+            foreach (var t in titles)
+                this.gridPapers.Columns.Add(t, t);
+        }
+
+        private void PopulateGridPapers()
+        {
+            this.gridPapers.Rows.Clear();
+            foreach (var p in _Uni.Papers)
+                this.gridPapers.Rows.Add(new string[] { p.Name, p.Number.ToString(), p.Coordinator });
         }
 
         private void ImportStudents()
         {
-            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                try 
+                try
                 {
-                    _uni.AddStudentsByFile(openFileDialog.FileName);
+                    _Uni.AddStudentsByFile(openFileDialog.FileName);
+                    this.PopulateGridStudents();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -57,7 +79,8 @@ namespace as5
             {
                 try
                 {
-                    _uni.AddPapersByFile(openFileDialog.FileName);
+                    _Uni.AddPapersByFile(openFileDialog.FileName);
+                    this.PopulateGridPapers();
                 }
                 catch (Exception ex)
                 {
@@ -68,13 +91,13 @@ namespace as5
 
         private void ImportEnrollment()
         {
-            if(_uni.Students.Count == 0)
+            if (_Uni.Students.Count == 0)
             {
                 MessageBox.Show("Please import students and papers first.");
                 return;
             }
 
-            if(_uni.Papers.Count == 0)
+            if (_Uni.Papers.Count == 0)
             {
                 MessageBox.Show("Please import students and papers first.");
                 return;
@@ -84,7 +107,7 @@ namespace as5
             {
                 try
                 {
-                    _uni.EnrolByFile(openFileDialog.FileName);
+                    _Uni.EnrolByFile(openFileDialog.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -93,43 +116,15 @@ namespace as5
             }
         }
         #endregion
-        
-        private void gridCell_DoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //var curr = grid.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewImageCell;
-            grid.ClearSelection();
-            grid.Rows[e.RowIndex].Selected = true;
-            //
-            //here to show the enrollment form
-            //
-            //MessageBox.Show(e.RowIndex + " : " + e.ColumnIndex);
-        }
-
-        private void menuExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void menuViewStudents_Click(object sender, EventArgs e)
-        {
-            this.DisplayStudents();
-        }
-
-        private void menuViewPapers_Click(object sender, EventArgs e)
-        {
-            this.DisplayPapers();
-        }
 
         private void menuImportStudents_Click(object sender, EventArgs e)
         {
             this.ImportStudents();
-            this.DisplayStudents();
         }
 
         private void menuImportPapers_Click(object sender, EventArgs e)
         {
             this.ImportPapers();
-            this.DisplayPapers();
         }
 
         private void menuImportEnrollment_Click(object sender, EventArgs e)
