@@ -205,14 +205,12 @@
             this.menuSave.Name = "menuSave";
             this.menuSave.Size = new System.Drawing.Size(152, 22);
             this.menuSave.Text = "Save";
-            this.menuSave.Click += new System.EventHandler(this.menuSave_Click);
             // 
             // menuEdit
             // 
             this.menuEdit.Name = "menuEdit";
             this.menuEdit.Size = new System.Drawing.Size(152, 22);
             this.menuEdit.Text = "Edit";
-            this.menuEdit.Click += new System.EventHandler(this.menuEdit_Click);
             // 
             // MainForm
             // 
