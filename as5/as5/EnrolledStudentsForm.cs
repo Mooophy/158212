@@ -15,6 +15,20 @@ namespace as5
         private DataGridView grid;
         private University _University;
 
+        public EnrolledStudentsForm(University u)
+        {
+            this.InitializeComponent();
+            _University = u;
+            this.SetupGrid();
+        }
+
+        private void SetupGrid()
+        {
+            var titles = new string[] { "Id", "Name", "Birth", "Address" };
+            foreach (var t in titles)
+                this.grid.Columns.Add(t, t);
+        }
+
         private void InitializeComponent()
         {
             this.grid = new System.Windows.Forms.DataGridView();
@@ -23,27 +37,32 @@ namespace as5
             // 
             // grid
             // 
+            this.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 0);
             this.grid.Name = "grid";
             this.grid.RowTemplate.Height = 23;
-            this.grid.Size = new System.Drawing.Size(284, 262);
+            this.grid.Size = new System.Drawing.Size(595, 262);
             this.grid.TabIndex = 0;
             // 
             // EnrolledStudentsForm
             // 
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(595, 262);
             this.Controls.Add(this.grid);
             this.Name = "EnrolledStudentsForm";
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
         }
 
-        public EnrolledStudentsForm(University u)
+        internal void populateGrid(int paperCode)
         {
-            this.InitializeComponent();
-            _University = u;
+            this.grid.Rows.Clear();
+            this.grid.Refresh();
+
+            var students = _University.FindEnrolledByPaper(paperCode);
+            foreach (var s in students)
+                this.grid.Rows.Add(new string[] { s.Id.ToString(), s.Name, s.BirthDate.ToString(), s.Address });
         }
     }
 }

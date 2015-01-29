@@ -144,8 +144,10 @@ namespace as5
 
         private void gridPapersOnKeyPressed(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && this.gridPapers.CurrentRow.Index < this.gridPapers.Rows.Count)
             {
+                var paperCode = Convert.ToInt32(this.gridPapers.CurrentRow.Cells[1].Value.ToString());
+                _EnrolledStudents.populateGrid(paperCode);
                 _EnrolledStudents.ShowDialog();
             }
         }
