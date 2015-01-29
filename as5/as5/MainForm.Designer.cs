@@ -170,6 +170,7 @@
             this.gridStudents.RowTemplate.Height = 23;
             this.gridStudents.Size = new System.Drawing.Size(865, 276);
             this.gridStudents.TabIndex = 0;
+            this.gridStudents.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridStudentsOnKeyPressed);
             // 
             // pagePapers
             // 
@@ -192,6 +193,7 @@
             this.gridPapers.RowTemplate.Height = 23;
             this.gridPapers.Size = new System.Drawing.Size(865, 276);
             this.gridPapers.TabIndex = 0;
+            this.gridPapers.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridPapersOnKeyPressed);
             // 
             // MainForm
             // 

@@ -13,17 +13,19 @@ namespace as5
 {
     public partial class MainForm : Form
     {
-        private Lib.University _Uni;
+        private Lib.University _University;
+        private EnrolledPapersForm _EnrolledPapers;
+        private EnrolledStudentsForm _EnrolledStudents;
 
         public MainForm()
         {
             InitializeComponent();
 
-            _Uni = new University();
+            _University = new University();
+            _EnrolledPapers = new EnrolledPapersForm(_University);
+            _EnrolledStudents = new EnrolledStudentsForm(_University);
 
             this.SetupGridStudents();
-            //this.PopulateGridStudents();
-            
             this.SetupGridPapers();
         }
 
@@ -39,7 +41,7 @@ namespace as5
         private void PopulateGridStudents()
         {
             this.gridStudents.Rows.Clear();
-            foreach (var s in _Uni.Students)
+            foreach (var s in _University.Students)
                 this.gridStudents.Rows.Add(new string[] { s.Id.ToString(), s.Name, s.BirthDate.ToString(), s.Address });
         }
 
@@ -53,7 +55,7 @@ namespace as5
         private void PopulateGridPapers()
         {
             this.gridPapers.Rows.Clear();
-            foreach (var p in _Uni.Papers)
+            foreach (var p in _University.Papers)
                 this.gridPapers.Rows.Add(new string[] { p.Name, p.Number.ToString(), p.Coordinator });
         }
 
@@ -63,7 +65,7 @@ namespace as5
             {
                 try
                 {
-                    _Uni.AddStudentsByFile(openFileDialog.FileName);
+                    _University.AddStudentsByFile(openFileDialog.FileName);
                     this.PopulateGridStudents();
                 }
                 catch (Exception ex)
@@ -79,7 +81,7 @@ namespace as5
             {
                 try
                 {
-                    _Uni.AddPapersByFile(openFileDialog.FileName);
+                    _University.AddPapersByFile(openFileDialog.FileName);
                     this.PopulateGridPapers();
                 }
                 catch (Exception ex)
@@ -91,13 +93,13 @@ namespace as5
 
         private void ImportEnrollment()
         {
-            if (_Uni.Students.Count == 0)
+            if (_University.Students.Count == 0)
             {
                 MessageBox.Show("Please import students and papers first.");
                 return;
             }
 
-            if (_Uni.Papers.Count == 0)
+            if (_University.Papers.Count == 0)
             {
                 MessageBox.Show("Please import students and papers first.");
                 return;
@@ -107,7 +109,7 @@ namespace as5
             {
                 try
                 {
-                    _Uni.EnrolByFile(openFileDialog.FileName);
+                    _University.EnrolByFile(openFileDialog.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -130,6 +132,22 @@ namespace as5
         private void menuImportEnrollment_Click(object sender, EventArgs e)
         {
             this.ImportEnrollment();
+        }
+
+        private void gridStudentsOnKeyPressed(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                _EnrolledPapers.ShowDialog();
+            }
+        }
+
+        private void gridPapersOnKeyPressed(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                _EnrolledStudents.ShowDialog();
+            }
         }
     }
 }
