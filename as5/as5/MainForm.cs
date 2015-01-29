@@ -155,5 +155,10 @@ namespace as5
                 _EnrolledPapers.ShowDialog();
             }
         }
+
+        private void menuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
