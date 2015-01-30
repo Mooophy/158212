@@ -192,15 +192,24 @@ namespace as5
             }
         }
 
-        private void gridStudentsOnCellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void gridStudentsOnControlWPressed(object sender, KeyEventArgs e)
         {
-            if(e.RowIndex < this.gridStudents.Rows.Count - 1 && !this.gridStudents.Rows[e.RowIndex].IsNewRow)
+            if(this.gridStudents.Focused && e.Control && e.KeyCode == Keys.W)
             {
-                this.gridStudents.Rows[e.RowIndex].Selected = true;
-                int studentId = Convert.ToInt32(this.gridStudents.CurrentRow.Cells[0].Value.ToString());
-                _EnrolledPapers.populateGrid(studentId);
-                _EnrolledPapers.ShowDialog();
+                int id = 0;
+                if(Int32.TryParse( this.gridStudents.CurrentRow.Cells["Id"].Value.ToString(),out id))
+                {
+                    _EnrolledPapers.populateGrid(id);
+                    _EnrolledPapers.ShowDialog();
+                }
             }
+            //if(e.RowIndex < this.gridStudents.Rows.Count - 1 && !this.gridStudents.Rows[e.RowIndex].IsNewRow)
+            //{
+            //    this.gridStudents.Rows[e.RowIndex].Selected = true;
+            //    int studentId = Convert.ToInt32(this.gridStudents.CurrentRow.Cells[0].Value.ToString());
+            //    _EnrolledPapers.populateGrid(studentId);
+            //    _EnrolledPapers.ShowDialog();
+            //}
         }
 
         private void menuExit_Click(object sender, EventArgs e)

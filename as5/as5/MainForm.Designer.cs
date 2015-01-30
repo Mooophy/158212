@@ -190,8 +190,8 @@
             this.gridStudents.RowTemplate.Height = 23;
             this.gridStudents.Size = new System.Drawing.Size(865, 276);
             this.gridStudents.TabIndex = 0;
-            this.gridStudents.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridStudentsOnCellMouseDoubleClick);
             this.gridStudents.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.gridStudentsOnRowValidating);
+            this.gridStudents.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridStudentsOnControlWPressed);
             // 
             // pagePapers
             // 
