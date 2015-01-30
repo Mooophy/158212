@@ -16,6 +16,7 @@ namespace as5
         private Lib.University _University;
         private EnrolledPapersForm _EnrolledPapers;
         private EnrolledStudentsForm _EnrolledStudents;
+        private PapersList _PapersToChoose;
 
         public MainForm()
         {
@@ -24,6 +25,7 @@ namespace as5
             _University = new University();
             _EnrolledPapers = new EnrolledPapersForm(_University);
             _EnrolledStudents = new EnrolledStudentsForm(_University);
+            _PapersToChoose = new PapersList();
 
             this.SetupGridStudents();
             this.SetupGridPapers();
@@ -241,6 +243,14 @@ namespace as5
                     _EnrolledPapers.populateGrid(id);
                     _EnrolledPapers.ShowDialog();
                 }
+            }
+
+            if(e.Control && e.KeyCode == Keys.A)
+            {
+                _PapersToChoose.Populate(new string[]{"159201", "159302"});
+                _PapersToChoose.ShowDialog();
+                var result = _PapersToChoose.GetSelectedPaperCode();
+                MessageBox.Show(result != null ? result.ToString() : "no paper chosen");
             }
         }
 
