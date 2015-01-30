@@ -30,6 +30,8 @@
         {
             this.menu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuImportStudents = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,8 +47,6 @@
             this.gridStudents = new System.Windows.Forms.DataGridView();
             this.pagePapers = new System.Windows.Forms.TabPage();
             this.gridPapers = new System.Windows.Forms.DataGridView();
-            this.menuSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.tab.SuspendLayout();
             this.pageStudents.SuspendLayout();
@@ -77,10 +77,22 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // menuEdit
+            // 
+            this.menuEdit.Name = "menuEdit";
+            this.menuEdit.Size = new System.Drawing.Size(103, 22);
+            this.menuEdit.Text = "Edit";
+            // 
+            // menuSave
+            // 
+            this.menuSave.Name = "menuSave";
+            this.menuSave.Size = new System.Drawing.Size(103, 22);
+            this.menuSave.Text = "Save";
+            // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(152, 22);
+            this.menuExit.Size = new System.Drawing.Size(103, 22);
             this.menuExit.Text = "Exit";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
@@ -176,6 +188,7 @@
             this.gridStudents.Size = new System.Drawing.Size(865, 276);
             this.gridStudents.TabIndex = 0;
             this.gridStudents.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridStudentsOnDoubleClick);
+            this.gridStudents.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.gridStudentsOnRowValidating);
             // 
             // pagePapers
             // 
@@ -199,18 +212,6 @@
             this.gridPapers.Size = new System.Drawing.Size(865, 276);
             this.gridPapers.TabIndex = 0;
             this.gridPapers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPaperOnDoubleClick);
-            // 
-            // menuSave
-            // 
-            this.menuSave.Name = "menuSave";
-            this.menuSave.Size = new System.Drawing.Size(152, 22);
-            this.menuSave.Text = "Save";
-            // 
-            // menuEdit
-            // 
-            this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(152, 22);
-            this.menuEdit.Text = "Edit";
             // 
             // MainForm
             // 

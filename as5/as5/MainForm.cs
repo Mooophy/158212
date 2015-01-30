@@ -119,6 +119,46 @@ namespace as5
         }
         #endregion
 
+        #region branch new/edit
+        private void gridStudentsOnRowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.RowIndex != this.gridStudents.RowCount - 1)
+            {
+                var cells = this.gridStudents.Rows[e.RowIndex].Cells;
+                
+                //check if any cell is empty
+                if(cells.Cast<DataGridViewCell>().Any(c => c.Value == null))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Empty cell");
+                    return;
+                }
+
+                //check if id is not a number
+                if(! cells["Id"].Value.ToString().All(char.IsDigit))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Invalid Student Id");
+                    this.gridStudents.ClearSelection();
+                    cells["Id"].Selected = true;
+                    return;
+                }
+
+                //check birth date
+                DateTime date;
+                if(! DateTime.TryParse(cells["Birth"].Value.ToString(), out date))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Invalid Date");
+
+                    this.gridStudents.ClearSelection();
+                    cells["Birth"].Selected = true;
+                    return;
+                }
+            }
+        }
+        #endregion
+
         private void menuImportStudents_Click(object sender, EventArgs e)
         {
             this.ImportStudents();
@@ -147,7 +187,7 @@ namespace as5
 
         private void gridStudentsOnDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex < this.gridStudents.Rows.Count - 1)
+            if(e.RowIndex < this.gridStudents.Rows.Count - 1 && !this.gridStudents.Rows[e.RowIndex].IsNewRow)
             {
                 this.gridStudents.Rows[e.RowIndex].Selected = true;
                 int studentId = Convert.ToInt32(this.gridStudents.CurrentRow.Cells[0].Value.ToString());
