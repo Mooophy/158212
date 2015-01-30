@@ -181,17 +181,6 @@ namespace as5
             this.ImportEnrollment();
         }
 
-        //private void gridPaperOnDoubleClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (e.RowIndex < this.gridPapers.Rows.Count - 1)
-        //    {
-        //        this.gridPapers.Rows[e.RowIndex].Selected = true;
-        //        int paperCode = Convert.ToInt32(this.gridPapers.CurrentRow.Cells[1].Value.ToString());
-        //        _EnrolledStudents.populateGrid(paperCode);
-        //        _EnrolledStudents.ShowDialog();
-        //    }
-        //}
-
         private void gridPapersOnControlWPressed(object sender, KeyEventArgs e)
         {
              if(e.Control && e.KeyCode == Keys.W)
