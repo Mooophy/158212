@@ -179,15 +179,18 @@
             // 
             // gridStudents
             // 
+            this.gridStudents.AllowUserToDeleteRows = false;
             this.gridStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridStudents.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.gridStudents.Location = new System.Drawing.Point(3, 3);
+            this.gridStudents.MultiSelect = false;
             this.gridStudents.Name = "gridStudents";
             this.gridStudents.RowTemplate.Height = 23;
             this.gridStudents.Size = new System.Drawing.Size(865, 276);
             this.gridStudents.TabIndex = 0;
-            this.gridStudents.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridStudentsOnDoubleClick);
+            this.gridStudents.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridStudentsOnCellMouseDoubleClick);
             this.gridStudents.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.gridStudentsOnRowValidating);
             // 
             // pagePapers

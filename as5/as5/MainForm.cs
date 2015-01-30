@@ -135,7 +135,8 @@ namespace as5
                 }
 
                 //check if id is not a number
-                if(! cells["Id"].Value.ToString().All(char.IsDigit))
+                int id = 0;
+                if(! Int32.TryParse( cells["Id"].Value.ToString(), out id))
                 {
                     e.Cancel = true;
                     MessageBox.Show("Invalid Student Id");
@@ -145,8 +146,8 @@ namespace as5
                 }
 
                 //check birth date
-                DateTime date;
-                if(! DateTime.TryParse(cells["Birth"].Value.ToString(), out date))
+                DateTime birth;
+                if(! DateTime.TryParse(cells["Birth"].Value.ToString(), out birth))
                 {
                     e.Cancel = true;
                     MessageBox.Show("Invalid Date");
@@ -155,6 +156,12 @@ namespace as5
                     cells["Birth"].Selected = true;
                     return;
                 }
+
+                //creat new student and save.
+                string name = cells["Name"].Value.ToString();
+                string address = cells["Address"].Value.ToString();
+                var student = new Student(id, name, birth, address);
+                _University.Add(student);
             }
         }
         #endregion
@@ -185,7 +192,7 @@ namespace as5
             }
         }
 
-        private void gridStudentsOnDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void gridStudentsOnCellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if(e.RowIndex < this.gridStudents.Rows.Count - 1 && !this.gridStudents.Rows[e.RowIndex].IsNewRow)
             {
