@@ -120,49 +120,82 @@ namespace as5
         #endregion
 
         #region branch new/edit
+        private void gridPapersOnRowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.RowIndex == this.gridPapers.RowCount - 1)
+                return;
+
+            var cells = this.gridPapers.Rows[e.RowIndex].Cells;
+
+            //check if any cell is empty
+            if (cells.Cast<DataGridViewCell>().Any(c => c.Value == null))
+            {
+                e.Cancel = true;
+                MessageBox.Show("Empty cell");
+                return;
+            }
+
+            //check paper code
+            int code = 0;
+            if (!Int32.TryParse(cells["Code"].Value.ToString(), out code))
+            {
+                e.Cancel = true;
+                MessageBox.Show("Invalid Paper Code");
+                this.gridPapers.ClearSelection();
+                cells["Code"].Selected = true;
+                return;
+            }
+
+            //construct new paper and save
+            string name = cells["Name"].Value.ToString();
+            string coordinator = cells["Coordinator"].Value.ToString();
+            var paper = new Paper(name, code, coordinator);
+            _University.Add(paper);
+        }
+
         private void gridStudentsOnRowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
-            if (e.RowIndex != this.gridStudents.RowCount - 1)
+            if (e.RowIndex == this.gridStudents.RowCount - 1)
+                return;
+
+            var cells = this.gridStudents.Rows[e.RowIndex].Cells;
+
+            //check if any cell is empty
+            if (cells.Cast<DataGridViewCell>().Any(c => c.Value == null))
             {
-                var cells = this.gridStudents.Rows[e.RowIndex].Cells;
-                
-                //check if any cell is empty
-                if(cells.Cast<DataGridViewCell>().Any(c => c.Value == null))
-                {
-                    e.Cancel = true;
-                    MessageBox.Show("Empty cell");
-                    return;
-                }
-
-                //check if id is not a number
-                int id = 0;
-                if(! Int32.TryParse( cells["Id"].Value.ToString(), out id))
-                {
-                    e.Cancel = true;
-                    MessageBox.Show("Invalid Student Id");
-                    this.gridStudents.ClearSelection();
-                    cells["Id"].Selected = true;
-                    return;
-                }
-
-                //check birth date
-                DateTime birth;
-                if(! DateTime.TryParse(cells["Birth"].Value.ToString(), out birth))
-                {
-                    e.Cancel = true;
-                    MessageBox.Show("Invalid Date");
-
-                    this.gridStudents.ClearSelection();
-                    cells["Birth"].Selected = true;
-                    return;
-                }
-
-                //creat new student and save.
-                string name = cells["Name"].Value.ToString();
-                string address = cells["Address"].Value.ToString();
-                var student = new Student(id, name, birth, address);
-                _University.Add(student);
+                e.Cancel = true;
+                MessageBox.Show("Empty cell");
+                return;
             }
+
+            //check if id is not a number
+            int id = 0;
+            if (!Int32.TryParse(cells["Id"].Value.ToString(), out id))
+            {
+                e.Cancel = true;
+                MessageBox.Show("Invalid Student Id");
+                this.gridStudents.ClearSelection();
+                cells["Id"].Selected = true;
+                return;
+            }
+
+            //check birth date
+            DateTime birth;
+            if (!DateTime.TryParse(cells["Birth"].Value.ToString(), out birth))
+            {
+                e.Cancel = true;
+                MessageBox.Show("Invalid Date");
+
+                this.gridStudents.ClearSelection();
+                cells["Birth"].Selected = true;
+                return;
+            }
+
+            //creat new student and save.
+            string name = cells["Name"].Value.ToString();
+            string address = cells["Address"].Value.ToString();
+            var student = new Student(id, name, birth, address);
+            _University.Add(student);
         }
         #endregion
 
