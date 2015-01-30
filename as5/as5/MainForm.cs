@@ -181,35 +181,45 @@ namespace as5
             this.ImportEnrollment();
         }
 
-        private void gridPaperOnDoubleClick(object sender, DataGridViewCellEventArgs e)
+        //private void gridPaperOnDoubleClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex < this.gridPapers.Rows.Count - 1)
+        //    {
+        //        this.gridPapers.Rows[e.RowIndex].Selected = true;
+        //        int paperCode = Convert.ToInt32(this.gridPapers.CurrentRow.Cells[1].Value.ToString());
+        //        _EnrolledStudents.populateGrid(paperCode);
+        //        _EnrolledStudents.ShowDialog();
+        //    }
+        //}
+
+        private void gridPapersOnControlWPressed(object sender, KeyEventArgs e)
         {
-            if (e.RowIndex < this.gridPapers.Rows.Count - 1)
-            {
-                this.gridPapers.Rows[e.RowIndex].Selected = true;
-                int paperCode = Convert.ToInt32(this.gridPapers.CurrentRow.Cells[1].Value.ToString());
-                _EnrolledStudents.populateGrid(paperCode);
-                _EnrolledStudents.ShowDialog();
-            }
+             if(e.Control && e.KeyCode == Keys.W)
+             {
+                 if (this.gridPapers.CurrentRow.Cells["Code"].Value == null)
+                     return;
+                 int code = 0;
+                 if (Int32.TryParse(this.gridPapers.CurrentRow.Cells["Code"].Value.ToString(), out code))
+                 {
+                     _EnrolledStudents.populateGrid(code);
+                     _EnrolledStudents.ShowDialog();
+                 }
+             }
         }
 
         private void gridStudentsOnControlWPressed(object sender, KeyEventArgs e)
         {
-            if(this.gridStudents.Focused && e.Control && e.KeyCode == Keys.W)
+            if(e.Control && e.KeyCode == Keys.W)
             {
+                if (this.gridStudents.CurrentRow.Cells["Id"].Value == null)
+                    return;
                 int id = 0;
-                if(Int32.TryParse( this.gridStudents.CurrentRow.Cells["Id"].Value.ToString(),out id))
+                if (Int32.TryParse(this.gridStudents.CurrentRow.Cells["Id"].Value.ToString(), out id))
                 {
                     _EnrolledPapers.populateGrid(id);
                     _EnrolledPapers.ShowDialog();
                 }
             }
-            //if(e.RowIndex < this.gridStudents.Rows.Count - 1 && !this.gridStudents.Rows[e.RowIndex].IsNewRow)
-            //{
-            //    this.gridStudents.Rows[e.RowIndex].Selected = true;
-            //    int studentId = Convert.ToInt32(this.gridStudents.CurrentRow.Cells[0].Value.ToString());
-            //    _EnrolledPapers.populateGrid(studentId);
-            //    _EnrolledPapers.ShowDialog();
-            //}
         }
 
         private void menuExit_Click(object sender, EventArgs e)

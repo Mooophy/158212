@@ -214,7 +214,7 @@
             this.gridPapers.RowTemplate.Height = 23;
             this.gridPapers.Size = new System.Drawing.Size(865, 276);
             this.gridPapers.TabIndex = 0;
-            this.gridPapers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPaperOnDoubleClick);
+            this.gridPapers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridPapersOnControlWPressed);
             // 
             // MainForm
             // 
