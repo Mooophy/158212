@@ -247,7 +247,20 @@ namespace as5
 
             if(e.Control && e.KeyCode == Keys.A)
             {
-                _PapersToChoose.Populate(new string[]{"159201", "159302"});
+                if (this.gridStudents.CurrentRow.Cells["Id"].Value == null)
+                    return;
+
+                Func<string[]> papers = () =>
+                {
+                    var id = Convert.ToInt32(this.gridStudents.CurrentRow.Cells["Id"].Value);
+                    var availablePaperCodes = from p in _University.Papers
+                                              where _University.FindEnrolledByStudent(id).Contains(p) == false
+                                              select p.Number.ToString();
+                    return availablePaperCodes.ToArray();
+                };
+
+                //_PapersToChoose.Populate(new string[]{"159201", "159302"});
+                _PapersToChoose.Populate(papers());
                 _PapersToChoose.ShowDialog();
                 var result = _PapersToChoose.GetSelectedPaperCode();
                 MessageBox.Show(result != null ? result.ToString() : "no paper chosen");

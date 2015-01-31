@@ -40,8 +40,9 @@ namespace as5
             // list
             // 
             this.list.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.list.Font = new System.Drawing.Font("SimSun", 15F);
             this.list.FormattingEnabled = true;
-            this.list.ItemHeight = 12;
+            this.list.ItemHeight = 20;
             this.list.Location = new System.Drawing.Point(0, 0);
             this.list.Name = "list";
             this.list.Size = new System.Drawing.Size(229, 72);
@@ -54,6 +55,7 @@ namespace as5
             this.Name = "PapersList";
             this.Text = "Paper List";
             this.ResumeLayout(false);
+
         }
     }
 }
