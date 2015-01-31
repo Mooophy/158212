@@ -7,9 +7,15 @@ using Lib;
 
 namespace UnitTest
 {
-    [TestClass]//for Student
+    /// <summary>
+    /// Unit test for class Student
+    /// </summary>
+    [TestClass]
     public class UnitTestStudent
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         [TestMethod]
         public void TestCtor()
         {
@@ -19,7 +25,9 @@ namespace UnitTest
             Assert.AreEqual(new DateTime(), student.BirthDate);
             Assert.AreEqual("some street", student.Address);
         }
-
+        /// <summary>
+        /// ToString overloaded
+        /// </summary>
         [TestMethod]
         public void TestToString()
         {
@@ -27,10 +35,15 @@ namespace UnitTest
             Assert.AreEqual("0,moophy,0001/1/1 0:00:00,some street", student.ToString());
         }
     }
-
-    [TestClass]//for Paper
+    /// <summary>
+    /// Unit test for class Paper
+    /// </summary>
+    [TestClass]
     public class UnitTestPaper
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         [TestMethod]
         public void TestCtor()
         {
@@ -39,7 +52,9 @@ namespace UnitTest
             Assert.AreEqual(0, paper.Number);
             Assert.AreEqual("some one", paper.Coordinator);
         }
-
+        /// <summary>
+        /// ToString Overloaded
+        /// </summary>
         [TestMethod]
         public void TestToString()
         {
@@ -47,20 +62,29 @@ namespace UnitTest
             Assert.AreEqual("some paper,0,some one", paper.ToString());
         }
     }
-
-    [TestClass]//for University
+    /// <summary>
+    /// Unit test for class University
+    /// </summary>
+    [TestClass]
     public class UnitTestUniversity
     {
+        /// <summary>
+        /// data files used for testing
+        /// </summary>
         private readonly string _StudentsDataFile = @"Data\test_student.csv";
         private readonly string _PapersDataFile = @"Data\test_paper.csv";
         private readonly string _EnrollmentDataFile = @"Data\test_enrol.csv";
-
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         [TestMethod]
         public void TestDefaultCtor()
         {
             var university = new University();
         }
-
+        /// <summary>
+        /// AddStudent
+        /// </summary>
         [TestMethod]
         public void TestAddStudent()
         {
@@ -73,7 +97,9 @@ namespace UnitTest
             Assert.AreEqual(2, university.Students.Count);
 
         }
-
+        /// <summary>
+        /// AddPaper
+        /// </summary>
         [TestMethod]
         public void TestAddPaper()
         {
@@ -84,7 +110,9 @@ namespace UnitTest
             university.Add(new Paper("Algorithms", 159201, "someone else"));
             Assert.AreEqual(2, university.Papers.Count);
         }
-
+        /// <summary>
+        /// AddRangeStudent
+        /// </summary>
         [TestMethod]
         public void TestAddRangeStudent()
         {
@@ -96,7 +124,9 @@ namespace UnitTest
             });
             Assert.AreEqual(2, university.Students.Count);
         }
-
+        /// <summary>
+        /// AddRangePapers
+        /// </summary>
         [TestMethod]
         public void TestAddRangePapers()
         {
@@ -109,7 +139,9 @@ namespace UnitTest
             });
             Assert.AreEqual(3, university.Papers.Count);
         }
-
+        /// <summary>
+        /// FindPaper
+        /// </summary>
         [TestMethod]
         public void TestFindPaper()
         {
@@ -125,7 +157,9 @@ namespace UnitTest
             Assert.AreEqual("someone", university.FindPaper(158212).Coordinator);
             Assert.AreEqual("Algorithms", university.FindPaper(159201).Name);
         }
-
+        /// <summary>
+        /// FindStudent
+        /// </summary>
         [TestMethod]
         public void TestFindStudent()
         {
@@ -139,7 +173,9 @@ namespace UnitTest
             Assert.AreEqual("Moophy", university.FindStudent(12027710).Name);
             Assert.AreEqual("Alan", university.FindStudent(12345678).Name);
         }
-
+        /// <summary>
+        /// Enrol
+        /// </summary>
         [TestMethod]
         public void TestEnrol()
         {
@@ -161,7 +197,9 @@ namespace UnitTest
             Assert.AreEqual(1, university.Enrollment.Count);
             Assert.AreEqual(2, university.Enrollment[appDev].Count);
         }
-
+        /// <summary>
+        /// FindEnrolledByPaper
+        /// </summary>
         [TestMethod]
         public void TestFindEnrolledByPaper()
         {
@@ -182,7 +220,9 @@ namespace UnitTest
             Assert.AreEqual(1, university.Enrollment.Count);
             Assert.AreEqual(2, university.FindEnrolledByPaper(158212).Count);
         }
-
+        /// <summary>
+        /// FindEnrolledByStudent
+        /// </summary>
         [TestMethod]
         public void TestFindEnrolledByStudent()
         {
@@ -204,7 +244,9 @@ namespace UnitTest
             Assert.AreEqual(1, university.FindEnrolledByStudent(12027710).Count);
             Assert.AreEqual(2, university.FindEnrolledByStudent(13333333).Count);
         }
-
+        /// <summary>
+        /// AddStudentsByFile
+        /// </summary>
         [TestMethod]
         public void TestAddStudentsByFile()
         {
@@ -214,7 +256,9 @@ namespace UnitTest
             Assert.AreEqual(2, university.Students.Count);
             Assert.AreEqual("Moophy", university.FindStudent(12027710).Name);
         }
-
+        /// <summary>
+        /// AddPapersByFile
+        /// </summary>
         [TestMethod]
         public void TestAddPapersByFile()
         {
@@ -224,7 +268,9 @@ namespace UnitTest
             Assert.AreEqual(3, university.Papers.Count);
             Assert.AreEqual("someone else", university.FindPaper(159201).Coordinator);
         }
-
+        /// <summary>
+        /// EnrolByFile
+        /// </summary>
         [TestMethod]
         public void TestEnrolByFile()
         {
@@ -237,9 +283,8 @@ namespace UnitTest
             Assert.AreEqual(2, university.Enrollment[university.FindPaper(159201)].Count);
             Assert.AreEqual(1, university.Enrollment[university.FindPaper(159234)].Count);
         }
-
         /// <summary>
-        /// note this save files on root folder
+        /// Export
         /// </summary>
         [TestMethod]
         public void TestExport()
@@ -249,7 +294,7 @@ namespace UnitTest
             university.AddPapersByFile(_PapersDataFile);
             university.EnrolByFile(_EnrollmentDataFile);
 
-            var result = university.Export(@"");
+            var result = university.Export(Directory.GetCurrentDirectory());
             Assert.AreEqual(true, result);
         }
     }
