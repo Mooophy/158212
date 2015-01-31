@@ -274,5 +274,17 @@ namespace as5
         {
             this.Close();
         }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(_University.Export() ? "Successfully" : "Errors occur");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

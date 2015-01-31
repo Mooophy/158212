@@ -201,14 +201,15 @@ namespace Lib
             return Students.First(s => s.Id == studentId);
         }
 
-        public void Export()
+        public bool Export()
         {
-            Action<string> exportStudents = (time) =>
+            Func<string,bool> exportStudents = (time) =>
             {
                 try
                 {
-                    using (var sr = new StreamWriter(@"c:\StudentsExported" + time + ".csv"))
+                    using (var sr = new StreamWriter(@"d:\StudentsExported" + time + ".csv"))
                         foreach (var student in this.Students) sr.WriteLine(student.ToString());
+                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -216,12 +217,13 @@ namespace Lib
                 }
             };
 
-            Action<string> exportPapers = (time) =>
+            Func<string, bool> exportPapers = (time) =>
             {
                 try
                 {
-                    using (var sr = new StreamWriter(@"c:\PapersExported" + time + ".csv"))
+                    using (var sr = new StreamWriter(@"d:\PapersExported" + time + ".csv"))
                         foreach (var student in this.Papers) sr.WriteLine(student.ToString());
+                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -229,14 +231,15 @@ namespace Lib
                 }
             };
 
-            Action<string> exportEnrollment = (time) =>
+            Func<string, bool> exportEnrollment = (time) =>
             {
                 try
                 {
-                    using (var sr = new StreamWriter(@"c:\EnrollmentExported" + time + ".csv"))
+                    using (var sr = new StreamWriter(@"d:\EnrollmentExported" + time + ".csv"))
                         foreach (var pair in this.Enrollment)
                             foreach (var student in pair.Value)
-                                sr.WriteLine(pair.Key.ToString() + "," + student.Id);
+                                sr.WriteLine(pair.Key.Number + "," + student.Id);
+                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -245,9 +248,10 @@ namespace Lib
             };
 
             string now = DateTime.Now.ToFileTime().ToString();
-            exportStudents(now);
-            exportPapers(now);
-            exportEnrollment(now);
+            return exportStudents(now) && exportPapers(now) && exportEnrollment(now);
+            //exportStudents(now);
+            //exportPapers(now);
+            //exportEnrollment(now);
         }
     }
 }
