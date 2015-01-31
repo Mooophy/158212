@@ -200,5 +200,54 @@ namespace Lib
         {
             return Students.First(s => s.Id == studentId);
         }
+
+        public void Export()
+        {
+            Action<string> exportStudents = (time) =>
+            {
+                try
+                {
+                    using (var sr = new StreamWriter(@"c:\StudentsExported" + time + ".csv"))
+                        foreach (var student in this.Students) sr.WriteLine(student.ToString());
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            };
+
+            Action<string> exportPapers = (time) =>
+            {
+                try
+                {
+                    using (var sr = new StreamWriter(@"c:\PapersExported" + time + ".csv"))
+                        foreach (var student in this.Papers) sr.WriteLine(student.ToString());
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            };
+
+            Action<string> exportEnrollment = (time) =>
+            {
+                try
+                {
+                    using (var sr = new StreamWriter(@"c:\EnrollmentExported" + time + ".csv"))
+                        foreach (var pair in this.Enrollment)
+                            foreach (var student in pair.Value)
+                                sr.WriteLine(pair.Key.ToString() + "," + student.Id);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            };
+
+            string now = DateTime.Now.ToFileTime().ToString();
+            exportStudents(now);
+            exportPapers(now);
+            exportEnrollment(now);
+        }
     }
 }
