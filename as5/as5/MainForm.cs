@@ -148,7 +148,7 @@ namespace as5
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void gridPapersOnRowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        private void GridPapersOnRowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.RowIndex == this.gridPapers.RowCount - 1)
                 return;
@@ -185,7 +185,7 @@ namespace as5
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void gridStudentsOnRowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        private void GridStudentsOnRowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.RowIndex == this.gridStudents.RowCount - 1)
                 return;
@@ -234,7 +234,7 @@ namespace as5
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuImportStudents_Click(object sender, EventArgs e)
+        private void MenuImportStudentsClick(object sender, EventArgs e)
         {
             this.ImportStudents();
         }
@@ -243,7 +243,7 @@ namespace as5
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuImportPapers_Click(object sender, EventArgs e)
+        private void MenuImportPapersClick(object sender, EventArgs e)
         {
             this.ImportPapers();
         }
@@ -252,7 +252,7 @@ namespace as5
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuImportEnrollment_Click(object sender, EventArgs e)
+        private void MenuImportEnrollmentClick(object sender, EventArgs e)
         {
             this.ImportEnrollment();
         }
@@ -261,7 +261,7 @@ namespace as5
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void gridPapersOnControlWPressed(object sender, KeyEventArgs e)
+        private void GridPapersOnControlWPressed(object sender, KeyEventArgs e)
         {
              if(e.Control && e.KeyCode == Keys.W)
              {
@@ -280,7 +280,7 @@ namespace as5
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void gridStudentsOnControlWPressed(object sender, KeyEventArgs e)
+        private void GridStudentsOnControlWPressed(object sender, KeyEventArgs e)
         {
             if(e.Control && e.KeyCode == Keys.W)
             {
@@ -323,7 +323,7 @@ namespace as5
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuExit_Click(object sender, EventArgs e)
+        private void MenuExitClick(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -332,7 +332,7 @@ namespace as5
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuExport_Click(object sender, EventArgs e)
+        private void MenuExportClick(object sender, EventArgs e)
         {
             var fdb = new FolderBrowserDialog();
             if (fdb.ShowDialog() == DialogResult.OK)

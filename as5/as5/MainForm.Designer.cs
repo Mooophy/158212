@@ -75,7 +75,7 @@
             this.menuExit.Name = "menuExit";
             this.menuExit.Size = new System.Drawing.Size(152, 22);
             this.menuExit.Text = "Exit";
-            this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
+            this.menuExit.Click += new System.EventHandler(this.MenuExitClick);
             // 
             // importToolStripMenuItem
             // 
@@ -92,28 +92,28 @@
             this.menuImportStudents.Name = "menuImportStudents";
             this.menuImportStudents.Size = new System.Drawing.Size(165, 22);
             this.menuImportStudents.Text = "Students";
-            this.menuImportStudents.Click += new System.EventHandler(this.menuImportStudents_Click);
+            this.menuImportStudents.Click += new System.EventHandler(this.MenuImportStudentsClick);
             // 
             // menuImportPapers
             // 
             this.menuImportPapers.Name = "menuImportPapers";
             this.menuImportPapers.Size = new System.Drawing.Size(165, 22);
             this.menuImportPapers.Text = "Papers";
-            this.menuImportPapers.Click += new System.EventHandler(this.menuImportPapers_Click);
+            this.menuImportPapers.Click += new System.EventHandler(this.MenuImportPapersClick);
             // 
             // menuImportEnrollment
             // 
             this.menuImportEnrollment.Name = "menuImportEnrollment";
             this.menuImportEnrollment.Size = new System.Drawing.Size(165, 22);
             this.menuImportEnrollment.Text = "Enrollment Info";
-            this.menuImportEnrollment.Click += new System.EventHandler(this.menuImportEnrollment_Click);
+            this.menuImportEnrollment.Click += new System.EventHandler(this.MenuImportEnrollmentClick);
             // 
             // menuExport
             // 
             this.menuExport.Name = "menuExport";
             this.menuExport.Size = new System.Drawing.Size(58, 21);
             this.menuExport.Text = "Export";
-            this.menuExport.Click += new System.EventHandler(this.menuExport_Click);
+            this.menuExport.Click += new System.EventHandler(this.MenuExportClick);
             // 
             // tab
             // 
@@ -150,8 +150,8 @@
             this.gridStudents.RowTemplate.Height = 23;
             this.gridStudents.Size = new System.Drawing.Size(865, 276);
             this.gridStudents.TabIndex = 0;
-            this.gridStudents.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.gridStudentsOnRowValidating);
-            this.gridStudents.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridStudentsOnControlWPressed);
+            this.gridStudents.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.GridStudentsOnRowValidating);
+            this.gridStudents.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GridStudentsOnControlWPressed);
             // 
             // pagePapers
             // 
@@ -174,8 +174,8 @@
             this.gridPapers.RowTemplate.Height = 23;
             this.gridPapers.Size = new System.Drawing.Size(865, 276);
             this.gridPapers.TabIndex = 0;
-            this.gridPapers.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.gridPapersOnRowValidating);
-            this.gridPapers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridPapersOnControlWPressed);
+            this.gridPapers.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.GridPapersOnRowValidating);
+            this.gridPapers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GridPapersOnControlWPressed);
             // 
             // MainForm
             // 
