@@ -9,17 +9,21 @@ namespace Lib
 {
     public class University
     {
+        /// <summary>
+        /// Properties
+        /// </summary>
         public SortedSet<Student> Students { get; private set; }
         public SortedSet<Paper> Papers { get; private set; }
         public Dictionary<Paper, SortedSet<Student>> Enrollment { get; private set; }
-
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public University() 
         {
             Students = new SortedSet<Student>();
             Papers = new SortedSet<Paper>();
             Enrollment = new Dictionary<Paper, SortedSet<Student>>();
         }
-
         /// <summary>
         /// format : 
         ///     id,name,birthdate,address
@@ -47,7 +51,6 @@ namespace Lib
                 throw new Exception(ex.Message + " from Lib.University.cs");
             }
         }
-
         /// <summary>
         /// format:
         ///     name,number,coordinator
@@ -74,40 +77,65 @@ namespace Lib
                 throw new Exception(ex.Message + " from Lib.University.cs");
             }
         }
-
+        /// <summary>
+        /// add a student
+        /// </summary>
+        /// <param name="student"></param>
         public void Add(Student student)
         {
             Students.Add(student);
         }
-
+        /// <summary>
+        /// add a paper
+        /// </summary>
+        /// <param name="paper"></param>
         public void Add(Paper paper)
         {
             Papers.Add(paper);
         }
-
+        /// <summary>
+        /// add a range of students
+        /// </summary>
+        /// <param name="collection">require IEnumerable</param>
         public void AddRange(IEnumerable<Student> collection)
         {
             foreach(var elem in collection) Students.Add(elem);
         }
-
+        /// <summary>
+        /// add a range of papers
+        /// </summary>
+        /// <param name="collection">require IEnumerable</param>
         public void AddRange(IEnumerable<Paper> collection)
         {
             foreach (var elem in collection) Papers.Add(elem);
         }
-
+        /// <summary>
+        /// find enrolled students by paper code
+        /// </summary>
+        /// <param name="paperNumber"></param>
+        /// <returns></returns>
         public List<Student> FindEnrolledByPaper(int paperNumber)
         {
             var paper = FindPaper(paperNumber);
             return Enrollment.ContainsKey(paper) ? Enrollment[paper].ToList() : new List<Student>();
         }
-
+        /// <summary>
+        /// find enrolled papers by student id
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
         public List<Paper> FindEnrolledByStudent(int studentId)
         {
             var student = FindStudent(studentId);
             var ret = from entry in Enrollment where entry.Value.Contains(student) select entry.Key;
             return ret.ToList();
         }
-
+        /// <summary>
+        /// enrol 
+        /// </summary>
+        /// <param name="paperCode"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
         public bool Enrol(int paperCode, int studentId)
         {
             var paper = FindPaper(paperCode);
@@ -121,7 +149,6 @@ namespace Lib
                 Enrollment[paper] = new SortedSet<Student> { student };
             return true;
         }
-
         /// <summary>
         /// format : 
         ///     paper number, student id
@@ -139,7 +166,6 @@ namespace Lib
 
             return this.Enrol(paperNumber, studentId);
         }
-
         /// <summary>
         /// load enrollment information from a csv file, format :
         ///     paper number, student id
@@ -161,19 +187,31 @@ namespace Lib
             }
             return count;
         }
-
+        /// <summary>
+        /// map paper code to a paper
+        /// </summary>
+        /// <param name="paperCode"></param>
+        /// <returns></returns>
         public Paper FindPaper(int paperCode)
         {
             if (Papers.Count == 0)
                 throw new Exception("Papers are empty");
             return Papers.First(p => p.Number == paperCode);
         }
-
+        /// <summary>
+        /// map student id to a student
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
         public Student FindStudent(int studentId)
         {
             return Students.First(s => s.Id == studentId);
         }
-
+        /// <summary>
+        /// export students, papers and enrollment information as three files into a folder specified.
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <returns></returns>
         public bool Export(string folder)
         {
             string now = DateTime.Now.ToFileTime().ToString();
