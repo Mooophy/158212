@@ -250,20 +250,23 @@ namespace as5
                 if (this.gridStudents.CurrentRow.Cells["Id"].Value == null)
                     return;
 
-                Func<string[]> papers = () =>
+                var studentId = Convert.ToInt32(this.gridStudents.CurrentRow.Cells["Id"].Value);
+                Func<int, string[]> availablePapers = (id) =>
                 {
-                    var id = Convert.ToInt32(this.gridStudents.CurrentRow.Cells["Id"].Value);
-                    var availablePaperCodes = from p in _University.Papers
-                                              where _University.FindEnrolledByStudent(id).Contains(p) == false
-                                              select p.Number.ToString();
-                    return availablePaperCodes.ToArray();
+                    var PaperCodes = from p in _University.Papers
+                                     where _University.FindEnrolledByStudent(id).Contains(p) == false
+                                     select p.Number.ToString();
+                    return PaperCodes.ToArray();
                 };
 
-                //_PapersToChoose.Populate(new string[]{"159201", "159302"});
-                _PapersToChoose.Populate(papers());
+                _PapersToChoose.Populate(availablePapers(studentId));
                 _PapersToChoose.ShowDialog();
-                var result = _PapersToChoose.GetSelectedPaperCode();
-                MessageBox.Show(result != null ? result.ToString() : "no paper chosen");
+                var paperChosen = _PapersToChoose.GetSelectedPaperCode();
+
+                if (paperChosen != null && _University.Enrol(paperChosen.Value, studentId))
+                    MessageBox.Show("Student " + studentId + " enrolled paper" + paperChosen.Value);
+                else
+                    MessageBox.Show("Failed to enroll this paper");
             }
         }
 
