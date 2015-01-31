@@ -51,6 +51,10 @@ namespace UnitTest
     [TestClass]//for University
     public class UnitTestUniversity
     {
+        private readonly string _StudentsDataFile = @"Data\test_student.csv";
+        private readonly string _PapersDataFile = @"Data\test_paper.csv";
+        private readonly string _EnrollmentDataFile = @"Data\test_enrol.csv";
+
         [TestMethod]
         public void TestDefaultCtor()
         {
@@ -205,7 +209,7 @@ namespace UnitTest
         public void TestAddStudentsByFile()
         {
             var university = new University();
-            university.AddStudentsByFile(@"d:\test_student.csv");
+            university.AddStudentsByFile(_StudentsDataFile);
 
             Assert.AreEqual(2, university.Students.Count);
             Assert.AreEqual("Moophy", university.FindStudent(12027710).Name);
@@ -215,7 +219,7 @@ namespace UnitTest
         public void TestAddPapersByFile()
         {
             var university = new University();
-            university.AddPapersByFile(@"d:\test_paper.csv");
+            university.AddPapersByFile(_PapersDataFile);
 
             Assert.AreEqual(3, university.Papers.Count);
             Assert.AreEqual("someone else", university.FindPaper(159201).Coordinator);
@@ -225,9 +229,9 @@ namespace UnitTest
         public void TestEnrolByFile()
         {
             var university = new University();
-            university.AddStudentsByFile(@"d:\test_student.csv");
-            university.AddPapersByFile(@"d:\test_paper.csv");
-            university.EnrolByFile(@"d:\test_enrol.csv");
+            university.AddStudentsByFile(_StudentsDataFile);
+            university.AddPapersByFile(_PapersDataFile);
+            university.EnrolByFile(_EnrollmentDataFile);
 
             Assert.AreEqual(2, university.Enrollment.Count);
             Assert.AreEqual(2, university.Enrollment[university.FindPaper(159201)].Count);
@@ -238,7 +242,7 @@ namespace UnitTest
         public void TestExportStudentsToFile()
         {
             var university = new University();
-            university.AddStudentsByFile(@"d:\test_student.csv");
+            university.AddStudentsByFile(_StudentsDataFile);
             university.ExportStudentsToFile(@"d:\exported_students.csv");
 
             Assert.AreEqual(true, File.Exists(@"d:\exported_students.csv"));
