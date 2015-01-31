@@ -237,25 +237,5 @@ namespace UnitTest
             Assert.AreEqual(2, university.Enrollment[university.FindPaper(159201)].Count);
             Assert.AreEqual(1, university.Enrollment[university.FindPaper(159234)].Count);
         }
-
-        [TestMethod]
-        public void TestExportStudentsToFile()
-        {
-            var university = new University();
-            university.AddStudentsByFile(_StudentsDataFile);
-            university.ExportStudentsToFile(@"d:\exported_students.csv");
-
-            Assert.AreEqual(true, File.Exists(@"d:\exported_students.csv"));
-        }
-
-        [TestMethod]
-        public void TestExportPapersToFile()
-        {
-            var university = new University();
-            university.AddPapersByFile(@"d:\test_paper.csv");
-            university.ExportPapersToFile(@"d:\exported_papers.csv");
-
-            Assert.AreEqual(true, File.Exists(@"d:\exported_students.csv"));
-        }
     }
 }
