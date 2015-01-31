@@ -35,7 +35,7 @@
             this.menuImportStudents = new System.Windows.Forms.ToolStripMenuItem();
             this.menuImportPapers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuImportEnrollment = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExport = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tab = new System.Windows.Forms.TabControl();
             this.pageStudents = new System.Windows.Forms.TabPage();
@@ -55,7 +55,7 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.importToolStripMenuItem,
-            this.exportToolStripMenuItem});
+            this.menuExport});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(879, 25);
@@ -73,7 +73,7 @@
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(96, 22);
+            this.menuExit.Size = new System.Drawing.Size(152, 22);
             this.menuExit.Text = "Exit";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
@@ -108,12 +108,12 @@
             this.menuImportEnrollment.Text = "Enrollment Info";
             this.menuImportEnrollment.Click += new System.EventHandler(this.menuImportEnrollment_Click);
             // 
-            // exportToolStripMenuItem
+            // menuExport
             // 
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
-            this.exportToolStripMenuItem.Text = "Export";
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            this.menuExport.Name = "menuExport";
+            this.menuExport.Size = new System.Drawing.Size(58, 21);
+            this.menuExport.Text = "Export";
+            this.menuExport.Click += new System.EventHandler(this.menuExport_Click);
             // 
             // tab
             // 
@@ -208,7 +208,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuImportStudents;
         private System.Windows.Forms.ToolStripMenuItem menuImportPapers;
         private System.Windows.Forms.ToolStripMenuItem menuImportEnrollment;
-        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuExport;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.TabControl tab;
         private System.Windows.Forms.TabPage pageStudents;

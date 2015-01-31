@@ -11,13 +11,21 @@ using Lib;
 
 namespace as5
 {
+    /// <summary>
+    /// custom part of abstraction for MainForm
+    /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// fields
+        /// </summary>
         private Lib.University _University;
         private EnrolledPapersForm _EnrolledPapers;
         private EnrolledStudentsForm _EnrolledStudents;
         private PapersList _PapersToChoose;
-
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -32,6 +40,9 @@ namespace as5
         }
 
         #region functions
+        /// <summary>
+        /// init titles for grid students
+        /// </summary>
         private void SetupGridStudents()
         {
 
@@ -39,28 +50,36 @@ namespace as5
             foreach (var t in titles)
                 this.gridStudents.Columns.Add(t, t);
         }
-
+        /// <summary>
+        /// populate grid students
+        /// </summary>
         private void PopulateGridStudents()
         {
             this.gridStudents.Rows.Clear();
             foreach (var s in _University.Students)
                 this.gridStudents.Rows.Add(new string[] { s.Id.ToString(), s.Name, s.BirthDate.ToString(), s.Address });
         }
-
+        /// <summary>
+        /// init grid papers
+        /// </summary>
         private void SetupGridPapers()
         {
             var titles = new string[] { "Name", "Code", "Coordinator" };
             foreach (var t in titles)
                 this.gridPapers.Columns.Add(t, t);
         }
-
+        /// <summary>
+        /// populate grid papers
+        /// </summary>
         private void PopulateGridPapers()
         {
             this.gridPapers.Rows.Clear();
             foreach (var p in _University.Papers)
                 this.gridPapers.Rows.Add(new string[] { p.Name, p.Number.ToString(), p.Coordinator });
         }
-
+        /// <summary>
+        /// import students
+        /// </summary>
         private void ImportStudents()
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -76,7 +95,9 @@ namespace as5
                 }
             }
         }
-
+        /// <summary>
+        /// import papers
+        /// </summary>
         private void ImportPapers()
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -92,7 +113,9 @@ namespace as5
                 }
             }
         }
-
+        /// <summary>
+        /// import enrollment infomation
+        /// </summary>
         private void ImportEnrollment()
         {
             if (_University.Students.Count == 0)
@@ -120,8 +143,11 @@ namespace as5
             }
         }
         #endregion
-
-        #region branch new/edit
+        /// <summary>
+        /// validation checking for a row from grid papers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridPapersOnRowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.RowIndex == this.gridPapers.RowCount - 1)
@@ -154,7 +180,11 @@ namespace as5
             var paper = new Paper(name, code, coordinator);
             _University.Add(paper);
         }
-
+        /// <summary>
+        /// validation checking for a row from grid students
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridStudentsOnRowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.RowIndex == this.gridStudents.RowCount - 1)
@@ -199,23 +229,38 @@ namespace as5
             var student = new Student(id, name, birth, address);
             _University.Add(student);
         }
-        #endregion
-
+        /// <summary>
+        /// when menu import students item click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuImportStudents_Click(object sender, EventArgs e)
         {
             this.ImportStudents();
         }
-
+        /// <summary>
+        /// when menu import papers item click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuImportPapers_Click(object sender, EventArgs e)
         {
             this.ImportPapers();
         }
-
+        /// <summary>
+        /// when menu import enrollemnt information item click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuImportEnrollment_Click(object sender, EventArgs e)
         {
             this.ImportEnrollment();
         }
-
+        /// <summary>
+        /// CTRL + W for grid papers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridPapersOnControlWPressed(object sender, KeyEventArgs e)
         {
              if(e.Control && e.KeyCode == Keys.W)
@@ -230,7 +275,11 @@ namespace as5
                  }
              }
         }
-
+        /// <summary>
+        /// CTRL + W for grid students
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridStudentsOnControlWPressed(object sender, KeyEventArgs e)
         {
             if(e.Control && e.KeyCode == Keys.W)
@@ -269,13 +318,21 @@ namespace as5
                     MessageBox.Show("Failed to enroll this paper");
             }
         }
-
+        /// <summary>
+        /// when menu exit click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// when menu export click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuExport_Click(object sender, EventArgs e)
         {
             var fdb = new FolderBrowserDialog();
             if (fdb.ShowDialog() == DialogResult.OK)
