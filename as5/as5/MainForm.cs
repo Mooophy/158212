@@ -45,7 +45,6 @@ namespace as5
         /// </summary>
         private void SetupGridStudents()
         {
-
             var titles = new string[] { "Id", "Name", "Birth", "Address" };
             foreach (var t in titles)
                 this.gridStudents.Columns.Add(t, t);
