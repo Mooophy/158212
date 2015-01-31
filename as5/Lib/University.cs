@@ -7,6 +7,9 @@ using System.IO;
 
 namespace Lib
 {
+    /// <summary>
+    /// Abstraction for a University
+    /// </summary>
     public class University
     {
         /// <summary>

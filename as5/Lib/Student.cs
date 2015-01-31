@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Lib
 {
+    /// <summary>
+    /// Abstaction for a student
+    /// </summary>
     public class Student : IComparable
     {
         public readonly int Id;
         public readonly string Name;
         public readonly DateTime BirthDate;
         public readonly string Address;
-
         /// <summary>
         /// Implementation for interface IComparable
         /// </summary>
@@ -27,7 +29,6 @@ namespace Lib
             else
                 throw new ArgumentException("object is not a Student");
         }
-        
         /// <summary>
         /// Instance Ctor
         /// </summary>
@@ -42,7 +43,6 @@ namespace Lib
             BirthDate = date;
             Address = address;
         }
-
         /// <summary>
         /// Copy Ctor
         /// </summary>
@@ -50,12 +50,13 @@ namespace Lib
         public Student(Student student)
             :this(student.Id,student.Name,student.BirthDate,student.Address)
         {}
-
+        /// <summary>
+        /// overrided ToString
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Id + "," + Name + "," + BirthDate + "," + Address;
         }
-
-
     }
 }

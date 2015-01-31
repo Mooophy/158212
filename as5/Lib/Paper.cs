@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace Lib
 {
+    /// <summary>
+    /// Abstraction for a paper
+    /// </summary>
     public class Paper : IComparable
     {
+        /// <summary>
+        /// Properties
+        /// </summary>
         public readonly string Name;
         public readonly int Number;
         public readonly string Coordinator;
-
         /// <summary>
         /// Implementation for interface IComparable
         /// </summary>
@@ -26,7 +31,6 @@ namespace Lib
             else
                 throw new ArgumentException("object is not a Paper");
         }
-
         /// <summary>
         /// Instance Ctor
         /// </summary>
@@ -39,11 +43,18 @@ namespace Lib
             Number = number;
             Coordinator = coodinator;
         }
-
+        /// <summary>
+        /// Copy Ctor
+        /// note : this ctor was not used in this assignment
+        /// </summary>
+        /// <param name="other"></param>
         public Paper(Paper other)
             :this(other.Name,other.Number,other.Coordinator)
         { }
-
+        /// <summary>
+        /// Overrided ToString
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Name + "," + Number + "," + Coordinator;
