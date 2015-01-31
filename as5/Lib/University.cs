@@ -201,13 +201,15 @@ namespace Lib
             return Students.First(s => s.Id == studentId);
         }
 
-        public bool Export()
+        public bool Export(string folder)
         {
-            Func<string,bool> exportStudents = (time) =>
+            string now = DateTime.Now.ToFileTime().ToString();
+
+            Func<bool> exportStudents = () =>
             {
                 try
                 {
-                    using (var sr = new StreamWriter(@"d:\StudentsExported" + time + ".csv"))
+                    using (var sr = new StreamWriter(@folder + "\\Students"  + now + ".csv"))
                         foreach (var student in this.Students) sr.WriteLine(student.ToString());
                     return true;
                 }
@@ -217,11 +219,11 @@ namespace Lib
                 }
             };
 
-            Func<string, bool> exportPapers = (time) =>
+            Func<bool> exportPapers = () =>
             {
                 try
                 {
-                    using (var sr = new StreamWriter(@"d:\PapersExported" + time + ".csv"))
+                    using (var sr = new StreamWriter(@folder + "\\Papers" + now + ".csv"))
                         foreach (var student in this.Papers) sr.WriteLine(student.ToString());
                     return true;
                 }
@@ -231,11 +233,11 @@ namespace Lib
                 }
             };
 
-            Func<string, bool> exportEnrollment = (time) =>
+            Func<bool> exportEnrollment = () =>
             {
                 try
                 {
-                    using (var sr = new StreamWriter(@"d:\EnrollmentExported" + time + ".csv"))
+                    using (var sr = new StreamWriter(@folder + "\\Enrollment" + now + ".csv"))
                         foreach (var pair in this.Enrollment)
                             foreach (var student in pair.Value)
                                 sr.WriteLine(pair.Key.Number + "," + student.Id);
@@ -247,11 +249,7 @@ namespace Lib
                 }
             };
 
-            string now = DateTime.Now.ToFileTime().ToString();
-            return exportStudents(now) && exportPapers(now) && exportEnrollment(now);
-            //exportStudents(now);
-            //exportPapers(now);
-            //exportEnrollment(now);
+            return exportStudents() && exportPapers() && exportEnrollment();
         }
     }
 }

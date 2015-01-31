@@ -277,13 +277,17 @@ namespace as5
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            var fdb = new FolderBrowserDialog();
+            if (fdb.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(_University.Export() ? "Successfully" : "Errors occur");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    MessageBox.Show(_University.Export(fdb.SelectedPath) ? "Done" : "Failed");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
