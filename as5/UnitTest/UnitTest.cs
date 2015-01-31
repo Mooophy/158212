@@ -95,7 +95,6 @@ namespace UnitTest
             Assert.AreEqual(2, university.Students.Count);
             university.Add(new Student(0, "Moophy", new DateTime(), "somewhere"));
             Assert.AreEqual(2, university.Students.Count);
-
         }
         /// <summary>
         /// AddPaper
