@@ -134,6 +134,7 @@ namespace as5
                 try
                 {
                     _University.EnrolByFile(openFileDialog.FileName);
+                    MessageBox.Show("All data has been loaded without errors");
                 }
                 catch (Exception ex)
                 {
@@ -254,6 +255,7 @@ namespace as5
         private void MenuImportEnrollmentClick(object sender, EventArgs e)
         {
             this.ImportEnrollment();
+
         }
         /// <summary>
         /// CTRL + W for grid papers
