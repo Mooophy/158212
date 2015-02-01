@@ -16,7 +16,7 @@ namespace BackEnd
         public readonly string Name;
         public readonly DateTime BirthDate;
         public readonly string Address;
-        int IComparable.CompareTo(object obj)
+        public int CompareTo(object obj)
         {
             if (obj == null) return 1;
             var other = obj as Student;
@@ -39,13 +39,7 @@ namespace BackEnd
             BirthDate = date;
             Address = address;
         }
-        /// <summary>
-        /// Copy Ctor
-        /// </summary>
-        /// <param name="student"></param>
-        public Student(Student student)
-            : this(student.Id, student.Name, student.BirthDate, student.Address)
-        { }
+
         /// <summary>
         /// overrided ToString
         /// </summary>
