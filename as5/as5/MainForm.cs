@@ -290,7 +290,7 @@ namespace as5
                 int id = 0;
                 if (Int32.TryParse(this.gridStudents.CurrentRow.Cells["Id"].Value.ToString(), out id))
                 {
-                    _EnrolledPapers.populateGrid(id);
+                    _EnrolledPapers.PopulateGrid(id);
                     _EnrolledPapers.ShowDialog();
                 }
             }
