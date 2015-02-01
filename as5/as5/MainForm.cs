@@ -271,7 +271,7 @@ namespace as5
                  int code = 0;
                  if (Int32.TryParse(this.gridPapers.CurrentRow.Cells["Code"].Value.ToString(), out code))
                  {
-                     _EnrolledStudents.populateGrid(code);
+                     _EnrolledStudents.PopulateGrid(code);
                      _EnrolledStudents.ShowDialog();
                  }
              }
