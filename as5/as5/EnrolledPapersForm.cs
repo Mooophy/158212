@@ -49,7 +49,6 @@ namespace as5
             this.Name = "EnrolledPapersForm";
             ((System.ComponentModel.ISupportInitialize)(this._Grid)).EndInit();
             this.ResumeLayout(false);
-
         }
         /// <summary>
         /// Ctor
