@@ -16,6 +16,11 @@ namespace BackEnd
         public readonly string Name;
         public readonly DateTime BirthDate;
         public readonly string Address;
+        /// <summary>
+        /// implementation for interface IComparable
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             if (obj == null) return 1;
@@ -34,10 +39,10 @@ namespace BackEnd
         /// <param name="address"></param>
         public Student(int id, string name, DateTime date, string address)
         {
-            Id = id;
-            Name = name;
-            BirthDate = date;
-            Address = address;
+            this.Id = id;
+            this.Name = name;
+            this.BirthDate = date;
+            this.Address = address;
         }
 
         /// <summary>
@@ -46,7 +51,7 @@ namespace BackEnd
         /// <returns>string</returns>
         public override string ToString()
         {
-            return Id + "," + Name + "," + BirthDate + "," + Address;
+            return this.Id + "," + this.Name + "," + this.BirthDate + "," + this.Address;
         }
     }
 }
