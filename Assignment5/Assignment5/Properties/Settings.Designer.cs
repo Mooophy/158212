@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace as5.Properties
+namespace Assignment5.Properties
 {
 
 

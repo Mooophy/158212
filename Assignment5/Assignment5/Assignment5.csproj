@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F58C3E77-D16C-4FA1-A4C1-CAB5843DB136}</ProjectGuid>
+    <ProjectGuid>{E7162C09-FF6D-4008-8728-CA9C7C16DD76}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>as5</RootNamespace>
-    <AssemblyName>as5</AssemblyName>
+    <RootNamespace>Assignment5</RootNamespace>
+    <AssemblyName>Assignment5</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -50,29 +50,8 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EnrolledStudentsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PapersList.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EnrolledPapersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <EmbeddedResource Include="EnrolledPapersForm.resx">
-      <DependentUpon>EnrolledPapersForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EnrolledStudentsForm.resx">
-      <DependentUpon>EnrolledStudentsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PapersList.resx">
-      <DependentUpon>PapersList.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -94,12 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Lib\Lib.csproj">
-      <Project>{ce3725ee-951d-4eb1-9e3a-bfbe8270132c}</Project>
-      <Name>Lib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
