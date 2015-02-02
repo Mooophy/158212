@@ -103,18 +103,58 @@ namespace UnitTest
         public void TestMethodEnrol()
         {
             var uni = new BackEnd.University();
+            var num = 1000;
             var data = 
                 Enumerable
-                .Range(100100, 10000)
+                .Range(100100, num)
                 .Select(n => new Tuple<P, S>(new P(n), new S(n)))
                 .Select(t => uni.Add(t.Item1) && uni.Add(t.Item2) && uni.Enrol(t.Item1.Code, t.Item2.Id));
             
             long count = 0;
             foreach (var _ in data) ++count;
-            Assert.AreEqual(10000, count);
-            Assert.AreEqual(10000, uni.Papers.Count);
-            Assert.AreEqual(10000, uni.Students.Count);
-            Assert.AreEqual(10000, uni.Enrollments.Count);
+            Assert.AreEqual(num, count);
+            Assert.AreEqual(num, uni.Papers.Count);
+            Assert.AreEqual(num, uni.Students.Count);
+            Assert.AreEqual(num, uni.Enrollments.Count);
+        }
+
+        [TestMethod]
+        public void TestMethodEnrolWithLine()
+        {
+            var uni = new BackEnd.University();
+            var num = 500;
+            var data =
+                Enumerable
+                .Range(100100, num)
+                .Select(n => new Tuple<P, S>(new P(n), new S(n)))
+                .Select(t => uni.Add(t.Item1) && uni.Add(t.Item2) && uni.Enrol(t.Item1.Code.ToString() + "," + t.Item2.Id.ToString()));
+
+            bool isAllTrue = data.All(elem => elem == true);
+            Assert.AreEqual(true, isAllTrue);
+            Assert.AreEqual(num, uni.Papers.Count);
+            Assert.AreEqual(num, uni.Students.Count);
+            Assert.AreEqual(num, uni.Enrollments.Count);
+        }
+
+        [TestMethod]
+        public void TestMethodFindEnrolledByStudent()
+        {
+            var uni = new BackEnd.University();
+            var num = 500;
+            var data = Enumerable
+                .Range(100100, num)
+                .Select(n => new Tuple<P, S>(new P(n), new S(n)))
+                .Select(t => uni.Add(t.Item1) && uni.Add(t.Item2) && uni.Enrol(t.Item1.Code.ToString() + "," + t.Item2.Id.ToString()))
+                .ToList();
+            Assert.AreEqual(num, data.Count);
+            Assert.AreEqual(true, data.All(elem => true == elem));
+            
+            var isTrue =
+                uni.Students
+                .Select(s => s.Id)
+                .Select(id => uni.FindEnrolledByStudent(id))
+                .All(list => list.Count == 1);
+            Assert.AreEqual(true, isTrue);
         }
     }
 }
