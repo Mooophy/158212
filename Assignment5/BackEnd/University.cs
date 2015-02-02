@@ -20,14 +20,14 @@ namespace BackEnd
             this.Enrollments = new SortedSet<Enrollment<Int64>>();
         }
 
-        public void Add(Student<Int64> student)
+        public bool Add(Student<Int64> student)
         {
-            this.Students.Add(student);
+            return this.Students.Add(student);
         }
 
-        public void Add(Paper<Int64> paper)
+        public bool Add(Paper<Int64> paper)
         {
-            this.Papers.Add(paper);
+            return this.Papers.Add(paper);
         }
 
         public void AddRange(IEnumerable<Student<Int64>> collection)
@@ -178,7 +178,7 @@ namespace BackEnd
             }
         }
 
-        private void Export<T>(SortedSet<T> set, string folder, string filename, string fileExtention)
+        public void Export<T>(SortedSet<T> set, string folder, string filename, string fileExtention)
         {
             try
             {
