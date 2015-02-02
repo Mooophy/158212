@@ -22,24 +22,24 @@ namespace BackEnd
 
         public void Add(Student<Int64> student)
         {
-            Students.Add(student);
+            this.Students.Add(student);
         }
 
         public void Add(Paper<Int64> paper)
         {
-            Papers.Add(paper);
+            this.Papers.Add(paper);
         }
 
         public void AddRange(IEnumerable<Student<Int64>> collection)
         {
             foreach (var elem in collection) 
-                Students.Add(elem);
+                this.Students.Add(elem);
         }
 
         public void AddRange(IEnumerable<Paper<Int64>> collection)
         {
             foreach (var elem in collection) 
-                Papers.Add(elem);
+               this. Papers.Add(elem);
         }
 
         public long ImportStudents(string filename)
@@ -53,18 +53,18 @@ namespace BackEnd
                 return new Student<Int64>(id, name, birth, address);
             };
 
-            long count = 0;
             try
             {
                 using (var reader = new StreamReader(filename))
                 {
+                    long count = 0;
                     for (string[] line; reader.Peek() > 0; this.Add(makeStudent(line)))
                     { 
                         line = reader.ReadLine().Split(',');
                         ++count;
                     }
+                    return count;
                 }
-                return count;
             }
             catch (Exception ex)
             {
@@ -82,18 +82,18 @@ namespace BackEnd
                 return new Paper<Int64>(code, name, coordinator);
             };
 
-            long count = 0;
             try
             {
                 using (var sr = new StreamReader(filename))
                 {
+                    long count = 0;
                     for (string[] line; sr.Peek() > 0; this.Add(makePaper(line)))
                     {
                         line = sr.ReadLine().Split(',');
                         ++count;
                     }
+                    return count;
                 }
-                return count;
             }
             catch (Exception ex)
             {
@@ -152,27 +152,27 @@ namespace BackEnd
         {
             string[] buff = line.Split(',');
             long paperCode = 0, studentId = 0;
-            if (!long.TryParse(buff[0], out paperCode))
+            if (! long.TryParse(buff[0], out paperCode))
                 throw new Exception(buff[0] + " is not a valid paper code");
-            if (!long.TryParse(buff[1], out studentId))
+            if (! long.TryParse(buff[1], out studentId))
                 throw new Exception(buff[1] + " is not a valid student id");
             return this.Enrol(paperCode, studentId);
         }
 
         public long ImportEnrollments(string path)
         {
-            long count = 0;
             try
             {
                 using (var sr = new StreamReader(path))
                 {
-                    for (string line; sr.Peek() > 0; count += Enrol(line) ? 1 : 0)
+                    long count = 0;
+                    for (string line; sr.Peek() > 0; count += this.Enrol(line) ? 1 : 0)
                     {
                         line = sr.ReadLine();
                         ++count;
                     }
+                    return count;
                 }
-                return count;
             }
             catch (Exception ex)
             {
