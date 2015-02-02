@@ -9,12 +9,13 @@ namespace BackEnd
     /// <summary>
     /// Paper
     /// </summary>
-    public class Paper : IComparable
+    public class Paper<T> : IComparable<Paper<T>>
+        where T : System.IComparable<T>
     {
         /// <summary>
         /// Properties
         /// </summary>
-        public readonly int Code;
+        public readonly T Code;
         public readonly string Name;
         public readonly string Coordinator;
         /// <summary>
@@ -22,14 +23,9 @@ namespace BackEnd
         /// </summary>
         /// <param name="obj">other</param>
         /// <returns></returns>
-        public int CompareTo(object obj)
+        public int CompareTo(Paper<T> other)
         {
-            if (obj == null) return 1;
-            var other = obj as Paper;
-            if (other != null)
-                return this.Code.CompareTo(other.Code);
-            else
-                throw new ArgumentException("object is not a Paper");
+            return other == null ? 1 : this.Code.CompareTo(other.Code);
         }
         /// <summary>
         /// Instance Ctor
@@ -37,7 +33,7 @@ namespace BackEnd
         /// <param name="name"></param>
         /// <param name="code"></param>
         /// <param name="coodinator"></param>
-        public Paper(int code, string name, string coodinator)
+        public Paper(T code, string name, string coodinator)
         {
             this.Code = code;
             this.Name = name;

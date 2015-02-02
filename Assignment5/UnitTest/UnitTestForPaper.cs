@@ -13,7 +13,7 @@ namespace UnitTest
         [TestMethod]
         public void TestCtor()
         {
-            var paper = new BackEnd.Paper( 0, "OO","Boo Boo");
+            var paper = new BackEnd.Paper<Int64>( 0, "OO","Boo Boo");
 
             Assert.AreEqual("OO", paper.Name);
             Assert.AreEqual(0, paper.Code);
@@ -26,7 +26,7 @@ namespace UnitTest
         [TestMethod]
         public void TestToString()
         {
-            var paper = new BackEnd.Paper(0, "OO", "Boo Boo");
+            var paper = new BackEnd.Paper<Int64>(0, "OO", "Boo Boo");
             Assert.AreEqual("0,OO,Boo Boo", paper.ToString());
         }
     }

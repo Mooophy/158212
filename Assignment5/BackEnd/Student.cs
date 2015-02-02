@@ -21,13 +21,10 @@ namespace BackEnd
         /// implementation for interface IComparable
         /// </summary>
         /// <param name="other"></param>
-        /// <returns></returns>
+        /// <returns>int</returns>
         public int CompareTo(Student<T> other)
         {
-            if (other == null) 
-                return 1;
-            else
-                return this.Id.CompareTo(other.Id);
+            return other == null ? 1 : this.Id.CompareTo(other.Id);
         }
         /// <summary>
         /// Ctor
