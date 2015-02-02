@@ -42,7 +42,7 @@ namespace BackEnd
                 Papers.Add(elem);
         }
 
-        public void ImportStudents(string filename)
+        public long ImportStudents(string filename)
         {
             Func<string[], Student<Int64>> makeStudent = (line) =>
             {
@@ -53,11 +53,18 @@ namespace BackEnd
                 return new Student<Int64>(id, name, birth, address);
             };
 
+            long count = 0;
             try
             {
                 using (var reader = new StreamReader(filename))
+                {
                     for (string[] line; reader.Peek() > 0; this.Add(makeStudent(line)))
+                    { 
                         line = reader.ReadLine().Split(',');
+                        ++count;
+                    }
+                }
+                return count;
             }
             catch (Exception ex)
             {
@@ -65,7 +72,7 @@ namespace BackEnd
             }
         }
 
-        public void ImportPapers(string filename)
+        public long ImportPapers(string filename)
         {
             Func<string[], Paper<Int64>> makePaper = (line) =>
             {
@@ -75,11 +82,18 @@ namespace BackEnd
                 return new Paper<Int64>(code, name, coordinator);
             };
 
+            long count = 0;
             try
             {
                 using (var sr = new StreamReader(filename))
+                {
                     for (string[] line; sr.Peek() > 0; this.Add(makePaper(line)))
+                    {
                         line = sr.ReadLine().Split(',');
+                        ++count;
+                    }
+                }
+                return count;
             }
             catch (Exception ex)
             {
@@ -143,6 +157,49 @@ namespace BackEnd
             if (!long.TryParse(buff[1], out studentId))
                 throw new Exception(buff[1] + " is not a valid student id");
             return this.Enrol(paperCode, studentId);
+        }
+
+        public long ImportEnrollments(string path)
+        {
+            long count = 0;
+            try
+            {
+                using (var sr = new StreamReader(path))
+                {
+                    for (string line; sr.Peek() > 0; count += Enrol(line) ? 1 : 0)
+                    {
+                        line = sr.ReadLine();
+                        ++count;
+                    }
+                }
+                return count;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void Export<T>(SortedSet<T> set, string folder, string filename, string fileExtention)
+        {
+            try
+            {
+                string path = @folder + "\\" + filename + "." + fileExtention;
+                using (var sw = new StreamWriter(path))
+                    foreach (var element in set) sw.WriteLine(element.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void ExportAllData(string folder)
+        {
+            string now = DateTime.Now.ToFileTime().ToString();
+            this.Export<Student<long>>(this.Students, folder, "Students" + now, "csv");
+            this.Export<Paper<long>>(this.Papers, folder, "Papers" + now, "csv");
+            this.Export<Enrollment<long>>(this.Enrollments, folder, "Enrollments" + now, "csv");
         }
     }
 }
