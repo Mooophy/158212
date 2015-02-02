@@ -7,28 +7,27 @@ using BackEnd;
 
 namespace BackEnd
 {
-    public class Student : IComparable
+    public class Student<T> : IComparable<Student<T>>
+        where T : System.IComparable<T>
     {
         /// <summary>
         /// fields
         /// </summary>
-        public readonly int Id;
+        public readonly T Id;
         public readonly string Name;
         public readonly DateTime BirthDate;
         public readonly string Address;
         /// <summary>
         /// implementation for interface IComparable
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="other"></param>
         /// <returns></returns>
-        public int CompareTo(object obj)
+        public int CompareTo(Student<T> other)
         {
-            if (obj == null) return 1;
-            var other = obj as Student;
-            if (other != null)
-                return this.Id.CompareTo(other.Id);
+            if (other == null) 
+                return 1;
             else
-                throw new ArgumentException("object is not a Student");
+                return this.Id.CompareTo(other.Id);
         }
         /// <summary>
         /// Ctor
@@ -37,7 +36,7 @@ namespace BackEnd
         /// <param name="name"></param>
         /// <param name="date"></param>
         /// <param name="address"></param>
-        public Student(int id, string name, DateTime date, string address)
+        public Student(T id, string name, DateTime date, string address)
         {
             this.Id = id;
             this.Name = name;
