@@ -40,7 +40,6 @@ namespace BackEnd
             this.BirthDate = date;
             this.Address = address;
         }
-
         /// <summary>
         /// overrided ToString
         /// </summary>
