@@ -32,9 +32,33 @@ namespace UnitTest
                 uni.Add(new BackEnd.Student<long>(num, "Ann", new DateTime(), "China"));
             Assert.AreEqual(26, uni.Students.Count);
 
-            foreach (var num in Enumerable.Range(0, 10))
+            foreach (var _ in Enumerable.Range(0, 10))
                 uni.Add(ann);
             Assert.AreEqual(26, uni.Students.Count);
+        }
+
+        [TestMethod]
+        public void TestMethodAddPaper()
+        {
+            var uni = new BackEnd.University();
+            var app = new BackEnd.Paper<long>(158212, "App Dev", "Mr. Cool");
+            uni.Add(app);
+            Assert.AreEqual(1, uni.Papers.Count);
+
+            foreach(var _ in Enumerable.Range(0,10))
+                uni.Add(app);
+            Assert.AreEqual(1, uni.Papers.Count);
+        }
+
+        [TestMethod]
+        public void TestMethodAddRangeStudents()
+        {
+            var uni = new BackEnd.University();
+            var students = from id in Enumerable.Range(1300000, 100).Select(i => i * i)
+                           select (new BackEnd.Student<long>(id, "some guy" + id.ToString(), DateTime.Now, "some where"));
+            uni.AddRange(students);
+
+            Assert.AreEqual(100, uni.Students.Count);
         }
     }
 }
