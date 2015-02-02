@@ -95,5 +95,14 @@ namespace UnitTest
             Assert.AreEqual(120000, uni.FindStudent(120000).Id);
             Assert.AreEqual("some guy 120050", uni.FindStudent(120050).Name);
         }
+
+        //[TestMethod]
+        //public void TestMethodEnrol()
+        //{
+        //    var uni = new BackEnd.University();
+        //    var students = from id in Enumerable.Range(0, 10000)
+        //                   select (new BackEnd.Student<long>(id, "_", DateTime.Now, "_"));
+        //    uni
+        //}
     }
 }

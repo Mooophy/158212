@@ -18,6 +18,15 @@ namespace UnitTest
         }
 
         [TestMethod]
+        public void TestCtorWithOneArgument()
+        {
+            var student = new BackEnd.Student<long>(123456);
+            Assert.AreEqual(123456, student.Id);
+            Assert.AreEqual("_", student.Name);
+            Assert.AreEqual("_", student.Address);
+        }
+
+        [TestMethod]
         public void TestToString()
         {
             var student = new Student<Int64>(0, "moophy", new DateTime(), "some street");

@@ -138,7 +138,6 @@ namespace BackEnd
                        select this.FindPaper(e.PaperCode);
             return data.ToList();
         }
-
         public bool Enrol(Int64 paperCode, Int64 studentId)
         {
             if(this.Papers.Contains(this.FindPaper(paperCode)) 
@@ -147,7 +146,6 @@ namespace BackEnd
             else
                 return false;
         }
-
         public bool Enrol(string line)
         {
             string[] buff = line.Split(',');

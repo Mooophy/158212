@@ -41,6 +41,13 @@ namespace BackEnd
             this.Address = address;
         }
         /// <summary>
+        /// simplified Ctor
+        /// </summary>
+        /// <param name="id"></param>
+        public Student(T id) 
+            : this(id,"_", DateTime.Now, "_")
+        { }
+        /// <summary>
         /// overrided ToString
         /// </summary>
         /// <returns>string</returns>

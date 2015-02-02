@@ -40,6 +40,13 @@ namespace BackEnd
             this.Coordinator = coodinator;
         }
         /// <summary>
+        /// simpilified Ctor
+        /// </summary>
+        /// <param name="code"></param>
+        public Paper(T code)
+            :this(code,"_","_")
+        { }
+        /// <summary>
         /// Overrided ToString
         /// </summary>
         /// <returns>string</returns>
