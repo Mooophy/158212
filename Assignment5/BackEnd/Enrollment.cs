@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    class Enrollment<T> : IComparable<Enrollment<T>> 
+    public class Enrollment<T> : IComparable<Enrollment<T>> 
         where T : IComparable<T>
     {
         /// <summary>
