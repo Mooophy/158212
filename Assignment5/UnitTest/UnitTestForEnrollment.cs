@@ -31,8 +31,6 @@ namespace UnitTest
         {
             var e = new BackEnd.Enrollment<Int64>(158212, 1234567890);
             Assert.AreEqual("158212,1234567890", e.ToString());
-            
         }
-
     }
 }
