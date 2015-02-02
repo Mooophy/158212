@@ -46,7 +46,7 @@ namespace BackEnd
         {
             Func<string[], Student<Int64>> makeStudent = (line) =>
             {
-                int id = Convert.ToInt32(line[0]);
+                var id = Convert.ToInt64(line[0]);
                 string name = line[1];
                 DateTime birth = DateTime.Parse(line[2]);
                 string address = line[3];
@@ -123,9 +123,26 @@ namespace BackEnd
                        where e.StudentId == studentId
                        select this.FindPaper(e.PaperCode);
             return data.ToList();
-            //var student = FindStudent(studentId);
-            //var ret = from entry in Enrollment where entry.Value.Contains(student) select entry.Key;
-            //return ret.ToList();
+        }
+
+        public bool Enrol(Int64 paperCode, Int64 studentId)
+        {
+            if(this.Papers.Contains(this.FindPaper(paperCode)) 
+                && this.Students.Contains(this.FindStudent(studentId)))
+                return this.Enrollments.Add(new Enrollment<long>(paperCode, studentId));
+            else
+                return false;
+        }
+
+        public bool Enrol(string line)
+        {
+            string[] buff = line.Split(',');
+            long paperCode = 0, studentId = 0;
+            if (!long.TryParse(buff[0], out paperCode))
+                throw new Exception(buff[0] + " is not a valid paper code");
+            if (!long.TryParse(buff[1], out studentId))
+                throw new Exception(buff[1] + " is not a valid student id");
+            return this.Enrol(paperCode, studentId);
         }
     }
 }
