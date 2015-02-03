@@ -55,20 +55,14 @@ namespace BackEnd
 
             try
             {
-                using (var reader = new StreamReader(filename))
-                {
-                    long count = 0;
-                    for (string[] line; reader.Peek() > 0; this.Add(makeStudent(line)))
-                    { 
-                        line = reader.ReadLine().Split(',');
-                        ++count;
-                    }
-                    return count;
-                }
+                long count = 0;
+                foreach (var line in Utilities.ReadFrom(filename))
+                    count += this.Add(makeStudent(line.Split(','))) ? 1 : 0; 
+                return count;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message + " from Lib.University.cs");
+                throw ex;
             }
         }
 
@@ -84,20 +78,14 @@ namespace BackEnd
 
             try
             {
-                using (var sr = new StreamReader(filename))
-                {
-                    long count = 0;
-                    for (string[] line; sr.Peek() > 0; this.Add(makePaper(line)))
-                    {
-                        line = sr.ReadLine().Split(',');
-                        ++count;
-                    }
-                    return count;
-                }
+                long count = 0;
+                foreach(var line in Utilities.ReadFrom(filename))
+                    count += this.Add(makePaper(line.Split(','))) ? 1 : 0;
+                return count;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message + " from Lib.University.cs");
+                throw ex;
             }
         }
 
@@ -105,16 +93,10 @@ namespace BackEnd
         {
             try
             {
-                using (var sr = new StreamReader(path))
-                {
-                    long count = 0;
-                    for (string line; sr.Peek() > 0; count += this.Enrol(line) ? 1 : 0)
-                    {
-                        line = sr.ReadLine();
-                        ++count;
-                    }
-                    return count;
-                }
+                long count = 0;
+                foreach(var line in Utilities.ReadFrom(path))
+                    count += this.Enrol(line) ? 1 : 0;
+                return count;
             }
             catch (Exception ex)
             {
