@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using BackEnd;
 
 namespace UnitTest
@@ -155,6 +157,19 @@ namespace UnitTest
                 .Select(id => uni.FindEnrolledByStudent(id))
                 .All(list => list.Count == 1);
             Assert.AreEqual(true, isTrue);
+        }
+
+        [TestMethod]
+        public void TestMethodExport()
+        {
+            var data = Enumerable.Range(0, 1000).Select(i => i.ToString());
+            var set = new SortedSet<string>(data);
+            var uni = new BackEnd.University();
+            string folder = Directory.GetCurrentDirectory().ToString();
+            uni.Export<string>(set, folder, "forTest", "txt");
+
+            Assert.AreEqual(@"G:\ForStudy\forCS\158212\Assignment5\UnitTest\bin\Debug", folder);
+            Assert.IsTrue(File.Exists(folder + @"\forTest.txt"));
         }
     }
 }

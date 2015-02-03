@@ -124,13 +124,16 @@ namespace BackEnd
                 throw ex;
             }
         }
+
         public List<Student<Int64>> FindEnrolledByPaper(Int64 paperCode)
         {
-            var data = from e in this.Enrollments 
-                       where e.PaperCode == paperCode 
-                       select this.FindStudent(e.StudentId);
-            return data.ToList();
+            return 
+                this.Enrollments
+                .Where(e => e.PaperCode == paperCode)
+                .Select(e => this.FindStudent(e.StudentId))
+                .ToList();
         }
+
         public List<Paper<Int64>> FindEnrolledByStudent(Int64 studentId)
         {
             var data = from e in this.Enrollments
@@ -138,6 +141,7 @@ namespace BackEnd
                        select this.FindPaper(e.PaperCode);
             return data.ToList();
         }
+
         public bool Enrol(Int64 paperCode, Int64 studentId)
         {
             if(this.Papers.Contains(this.FindPaper(paperCode)) 
@@ -146,6 +150,7 @@ namespace BackEnd
             else
                 return false;
         }
+
         public bool Enrol(string line)
         {
             string[] buff = line.Split(',');
@@ -184,7 +189,8 @@ namespace BackEnd
             {
                 string path = @folder + "\\" + filename + "." + fileExtention;
                 using (var sw = new StreamWriter(path))
-                    foreach (var element in set) sw.WriteLine(element.ToString());
+                    foreach (var element in set) 
+                        sw.WriteLine(element.ToString());
             }
             catch (Exception ex)
             {
