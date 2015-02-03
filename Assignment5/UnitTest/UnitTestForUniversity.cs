@@ -166,10 +166,21 @@ namespace UnitTest
             var set = new SortedSet<string>(data);
             var uni = new BackEnd.University();
             string folder = Directory.GetCurrentDirectory().ToString();
-            uni.Export<string>(set, folder, "forTest", "txt");
+            uni.Export<string>(set, folder, "TestingExport", "txt");
 
             Assert.AreEqual(@"G:\ForStudy\forCS\158212\Assignment5\UnitTest\bin\Debug", folder);
-            Assert.IsTrue(File.Exists(folder + @"\forTest.txt"));
+            Assert.IsTrue(File.Exists(folder + @"\TestingExport.txt"));
+        }
+        [TestMethod]
+        public void TestMethodExportAllData()
+        {
+            var uni = new BackEnd.University();
+            uni.AddRange(Enumerable.Range(0, 50).Select(i => new S(i)));
+            uni.AddRange(Enumerable.Range(0, 50).Select(i => new P(i)));
+            foreach (var p in uni.Papers)
+                foreach (var s in uni.Students)
+                    uni.Enrol(p.Code, s.Id);
+            uni.ExportAllData(Directory.GetCurrentDirectory().ToString());
         }
     }
 }

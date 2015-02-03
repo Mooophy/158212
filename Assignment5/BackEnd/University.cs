@@ -38,8 +38,14 @@ namespace BackEnd
 
         public void AddRange(IEnumerable<Paper<Int64>> collection)
         {
-            foreach (var elem in collection) 
-               this. Papers.Add(elem);
+            foreach (var elem in collection)
+                this.Papers.Add(elem);
+        }
+
+        public void AddRange(IEnumerable<Enrollment<long>> collection)
+        {
+            foreach (var elem in collection)
+                this.Enrollments.Add(elem);
         }
 
         public long ImportStudents(string filename)
