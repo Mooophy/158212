@@ -9,7 +9,7 @@ namespace BackEnd
 {
     public class Utilities
     {
-        static IEnumerable<string> ReadFrom(string file)
+        public static IEnumerable<string> ReadFrom(string file)
         {
             using (var reader = File.OpenText(file))
                 for (string line; (line = reader.ReadLine()) != null;/* */)
