@@ -14,7 +14,6 @@ namespace UnitTest
     [TestClass]
     public class UnitTestForUniversity
     {
-        #region Passed
         [TestMethod]
         public void TestMethodCtor()
         {
@@ -218,7 +217,6 @@ namespace UnitTest
             Assert.AreEqual(50, count);
             Assert.AreEqual(50, uni.Students.Count);
         }
-        #endregion
 
         [TestMethod]
         public void TestMethodImportPapers()
@@ -235,6 +233,31 @@ namespace UnitTest
             var count = uni.ImportPapers(Directory.GetCurrentDirectory().ToString() + @"\Papers.csv");
             Assert.AreEqual(10, count);
             Assert.AreEqual(10, uni.Papers.Count);
+        }
+
+        [TestMethod]
+        public void TestMethodImportEnrollments()
+        {
+            string folder = Directory.GetCurrentDirectory().ToString();
+            Action createEnrollmentsFile = () =>
+            {
+                var u = new BackEnd.University();
+                u.AddRange(Enumerable.Range(0, 50).Select(i => new S(i)));
+                u.AddRange(Enumerable.Range(0, 10).Select(i => new P(i)));
+                foreach (var code in u.Papers.Where(p => p.Code < 10).Select(p => p.Code))
+                    u.Enrol(code, code);//<-the second 'code' standing for student id.
+
+                u.Export<S>(u.Students, folder, "Students", "csv");
+                u.Export<P>(u.Papers, folder, "Pappers", "csv");
+                u.Export<E>(u.Enrollments, folder, "Enrollments", "csv");
+            };
+
+            createEnrollmentsFile();
+            var uni = new BackEnd.University();
+            uni.AddRange(Enumerable.Range(0, 50).Select(i => new S(i)));
+            uni.AddRange(Enumerable.Range(0, 10).Select(i => new P(i)));
+            var count = uni.ImportEnrollments(folder + @"\Enrollments.csv");
+            Assert.AreEqual(10, count);
         }
     }
 }
