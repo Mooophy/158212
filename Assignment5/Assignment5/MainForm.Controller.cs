@@ -1,4 +1,6 @@
-﻿using System;
+﻿// for lower abstraction level
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +24,7 @@ namespace Assignment5
                 _GridStudents.Columns.Add(title, title);
         }
 
-        private void ReadAndFillGrids()
+        private void UpdateGrids()
         {
             _GridPapers.Rows.Clear();
             foreach (var p in _Uni.Papers)

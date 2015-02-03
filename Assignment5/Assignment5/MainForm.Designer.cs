@@ -40,6 +40,7 @@
             this._TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this._GridPapers = new System.Windows.Forms.DataGridView();
             this._GridStudents = new System.Windows.Forms.DataGridView();
+            this._OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this._ContextMenuStrip.SuspendLayout();
             this._TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._GridPapers)).BeginInit();
@@ -69,14 +70,16 @@
             // _StudentsToolStripMenuItem
             // 
             this._StudentsToolStripMenuItem.Name = "_StudentsToolStripMenuItem";
-            this._StudentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._StudentsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this._StudentsToolStripMenuItem.Text = "Students";
+            this._StudentsToolStripMenuItem.Click += new System.EventHandler(this._StudentsToolStripMenuItemClick);
             // 
             // _PapersToolStripMenuItem
             // 
             this._PapersToolStripMenuItem.Name = "_PapersToolStripMenuItem";
-            this._PapersToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this._PapersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this._PapersToolStripMenuItem.Text = "Papers";
+            this._PapersToolStripMenuItem.Click += new System.EventHandler(this._PapersToolStripMenuItemClick);
             // 
             // _EnrollmentsToolStripMenuItem
             // 
@@ -128,6 +131,7 @@
             this._GridPapers.RowTemplate.Height = 23;
             this._GridPapers.Size = new System.Drawing.Size(463, 282);
             this._GridPapers.TabIndex = 0;
+            this._GridPapers.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RightClickOnGrid);
             // 
             // _GridStudents
             // 
@@ -139,6 +143,7 @@
             this._GridStudents.RowTemplate.Height = 23;
             this._GridStudents.Size = new System.Drawing.Size(464, 282);
             this._GridStudents.TabIndex = 1;
+            this._GridStudents.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RightClickOnGrid);
             // 
             // MainForm
             // 
@@ -169,6 +174,7 @@
         private System.Windows.Forms.TableLayoutPanel _TableLayoutPanel;
         private System.Windows.Forms.DataGridView _GridPapers;
         private System.Windows.Forms.DataGridView _GridStudents;
+        private System.Windows.Forms.OpenFileDialog _OpenFileDialog;
     }
 }
 
