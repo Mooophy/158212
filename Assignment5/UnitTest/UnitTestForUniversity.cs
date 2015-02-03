@@ -139,6 +139,23 @@ namespace UnitTest
         }
 
         [TestMethod]
+        public void TestMethodFindEnrolledByPaper()
+        {
+            var uni = new BackEnd.University();
+            uni
+                .AddRange(Enumerable.Range(0, 50).Select(i => new S(i)));
+            uni
+                .AddRange(Enumerable.Range(0, 50).Select(i => new P(i)));
+            foreach (var p in uni.Papers)
+                foreach (var s in uni.Students)
+                    uni.Enrol(p.Code, s.Id);
+
+            var isAllTrue = (from p in uni.Papers select uni.FindEnrolledByPaper(p.Code))
+                            .All(li => li.Count == 50);
+            Assert.IsTrue(isAllTrue);
+        }
+
+        [TestMethod]
         public void TestMethodFindEnrolledByStudent()
         {
             var uni = new BackEnd.University();
