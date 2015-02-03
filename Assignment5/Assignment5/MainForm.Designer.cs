@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             this._ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this._DetailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this._EnrollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._ImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._StudentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._PapersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._EnrollmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._DetailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._EnrollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this._GridLeft = new System.Windows.Forms.DataGridView();
-            this._GridRight = new System.Windows.Forms.DataGridView();
+            this._GridPapers = new System.Windows.Forms.DataGridView();
+            this._GridStudents = new System.Windows.Forms.DataGridView();
             this._ContextMenuStrip.SuspendLayout();
             this._TableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._GridLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GridRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GridPapers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GridStudents)).BeginInit();
             this.SuspendLayout();
             // 
             // _ContextMenuStrip
@@ -54,7 +54,41 @@
             this._DetailToolStripMenuItem,
             this._EnrollToolStripMenuItem});
             this._ContextMenuStrip.Name = "_ContextMenuStrip";
-            this._ContextMenuStrip.Size = new System.Drawing.Size(117, 92);
+            this._ContextMenuStrip.Size = new System.Drawing.Size(153, 114);
+            // 
+            // _ImportToolStripMenuItem
+            // 
+            this._ImportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._StudentsToolStripMenuItem,
+            this._PapersToolStripMenuItem,
+            this._EnrollmentsToolStripMenuItem});
+            this._ImportToolStripMenuItem.Name = "_ImportToolStripMenuItem";
+            this._ImportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._ImportToolStripMenuItem.Text = "Import";
+            // 
+            // _StudentsToolStripMenuItem
+            // 
+            this._StudentsToolStripMenuItem.Name = "_StudentsToolStripMenuItem";
+            this._StudentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._StudentsToolStripMenuItem.Text = "Students";
+            // 
+            // _PapersToolStripMenuItem
+            // 
+            this._PapersToolStripMenuItem.Name = "_PapersToolStripMenuItem";
+            this._PapersToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this._PapersToolStripMenuItem.Text = "Papers";
+            // 
+            // _EnrollmentsToolStripMenuItem
+            // 
+            this._EnrollmentsToolStripMenuItem.Name = "_EnrollmentsToolStripMenuItem";
+            this._EnrollmentsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this._EnrollmentsToolStripMenuItem.Text = "Enrollments";
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.exportToolStripMenuItem.Text = "Export";
             // 
             // _DetailToolStripMenuItem
             // 
@@ -68,47 +102,13 @@
             this._EnrollToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this._EnrollToolStripMenuItem.Text = "Enroll";
             // 
-            // _ImportToolStripMenuItem
-            // 
-            this._ImportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._StudentsToolStripMenuItem,
-            this._PapersToolStripMenuItem,
-            this._EnrollmentsToolStripMenuItem});
-            this._ImportToolStripMenuItem.Name = "_ImportToolStripMenuItem";
-            this._ImportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this._ImportToolStripMenuItem.Text = "Import";
-            // 
-            // _StudentsToolStripMenuItem
-            // 
-            this._StudentsToolStripMenuItem.Name = "_StudentsToolStripMenuItem";
-            this._StudentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this._StudentsToolStripMenuItem.Text = "Students";
-            // 
-            // _PapersToolStripMenuItem
-            // 
-            this._PapersToolStripMenuItem.Name = "_PapersToolStripMenuItem";
-            this._PapersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this._PapersToolStripMenuItem.Text = "Papers";
-            // 
-            // _EnrollmentsToolStripMenuItem
-            // 
-            this._EnrollmentsToolStripMenuItem.Name = "_EnrollmentsToolStripMenuItem";
-            this._EnrollmentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this._EnrollmentsToolStripMenuItem.Text = "Enrollments";
-            // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.exportToolStripMenuItem.Text = "Export";
-            // 
             // _TableLayoutPanel
             // 
             this._TableLayoutPanel.ColumnCount = 2;
             this._TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this._TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this._TableLayoutPanel.Controls.Add(this._GridLeft, 0, 0);
-            this._TableLayoutPanel.Controls.Add(this._GridRight, 1, 0);
+            this._TableLayoutPanel.Controls.Add(this._GridPapers, 0, 0);
+            this._TableLayoutPanel.Controls.Add(this._GridStudents, 1, 0);
             this._TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this._TableLayoutPanel.Name = "_TableLayoutPanel";
@@ -118,25 +118,27 @@
             this._TableLayoutPanel.Size = new System.Drawing.Size(939, 288);
             this._TableLayoutPanel.TabIndex = 1;
             // 
-            // _GridLeft
+            // _GridPapers
             // 
-            this._GridLeft.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._GridLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._GridLeft.Location = new System.Drawing.Point(3, 3);
-            this._GridLeft.Name = "_GridLeft";
-            this._GridLeft.RowTemplate.Height = 23;
-            this._GridLeft.Size = new System.Drawing.Size(463, 282);
-            this._GridLeft.TabIndex = 0;
+            this._GridPapers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this._GridPapers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._GridPapers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._GridPapers.Location = new System.Drawing.Point(3, 3);
+            this._GridPapers.Name = "_GridPapers";
+            this._GridPapers.RowTemplate.Height = 23;
+            this._GridPapers.Size = new System.Drawing.Size(463, 282);
+            this._GridPapers.TabIndex = 0;
             // 
-            // _GridRight
+            // _GridStudents
             // 
-            this._GridRight.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._GridRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._GridRight.Location = new System.Drawing.Point(472, 3);
-            this._GridRight.Name = "_GridRight";
-            this._GridRight.RowTemplate.Height = 23;
-            this._GridRight.Size = new System.Drawing.Size(464, 282);
-            this._GridRight.TabIndex = 1;
+            this._GridStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this._GridStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._GridStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._GridStudents.Location = new System.Drawing.Point(472, 3);
+            this._GridStudents.Name = "_GridStudents";
+            this._GridStudents.RowTemplate.Height = 23;
+            this._GridStudents.Size = new System.Drawing.Size(464, 282);
+            this._GridStudents.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -148,8 +150,8 @@
             this.Text = "Welcome";
             this._ContextMenuStrip.ResumeLayout(false);
             this._TableLayoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._GridLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GridRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GridPapers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GridStudents)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -165,8 +167,8 @@
         private System.Windows.Forms.ToolStripMenuItem _EnrollmentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel _TableLayoutPanel;
-        private System.Windows.Forms.DataGridView _GridLeft;
-        private System.Windows.Forms.DataGridView _GridRight;
+        private System.Windows.Forms.DataGridView _GridPapers;
+        private System.Windows.Forms.DataGridView _GridStudents;
     }
 }
 

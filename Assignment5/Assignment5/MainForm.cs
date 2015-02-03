@@ -20,13 +20,12 @@ namespace Assignment5
 
         public MainForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             _Uni = new BackEnd.University();
+            this.SetupGrids();
         }
 
-        #region functions
-
-        #endregion
+        
     }
 }
