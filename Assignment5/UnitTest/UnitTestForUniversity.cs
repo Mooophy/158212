@@ -14,6 +14,7 @@ namespace UnitTest
     [TestClass]
     public class UnitTestForUniversity
     {
+        #region Passed
         [TestMethod]
         public void TestMethodCtor()
         {
@@ -199,6 +200,24 @@ namespace UnitTest
                 foreach (var s in uni.Students)
                     uni.Enrol(p.Code, s.Id);
             uni.ExportAllData(Directory.GetCurrentDirectory().ToString());
+        }
+        #endregion
+
+        [TestMethod]
+        public void TestMethodImportStudents()
+        {
+            Action creatStudensFile = () =>
+            {
+                var u = new BackEnd.University();
+                u.AddRange(Enumerable.Range(0, 50).Select(i => new S(i)));
+                u.Export<Student<long>>(u.Students, Directory.GetCurrentDirectory().ToString(), "Students", "csv");
+            };
+
+            creatStudensFile();
+            var uni = new BackEnd.University();
+            var count = uni.ImportStudents(Directory.GetCurrentDirectory().ToString() + @"\Students.csv");
+            Assert.AreEqual(50, count);
+            Assert.AreEqual(50, uni.Students.Count);
         }
     }
 }
