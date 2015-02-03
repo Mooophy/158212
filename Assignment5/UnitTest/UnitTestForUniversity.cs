@@ -160,7 +160,8 @@ namespace UnitTest
         {
             var uni = new BackEnd.University();
             var num = 500;
-            var data = Enumerable
+            var data = 
+                Enumerable
                 .Range(100100, num)
                 .Select(n => new Tuple<P, S>(new P(n), new S(n)))
                 .Select(t => uni.Add(t.Item1) && uni.Add(t.Item2) && uni.Enrol(t.Item1.Code.ToString() + "," + t.Item2.Id.ToString()))

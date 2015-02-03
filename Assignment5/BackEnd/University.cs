@@ -42,12 +42,6 @@ namespace BackEnd
                 this.Papers.Add(elem);
         }
 
-        public void AddRange(IEnumerable<Enrollment<long>> collection)
-        {
-            foreach (var elem in collection)
-                this.Enrollments.Add(elem);
-        }
-
         public long ImportStudents(string filename)
         {
             Func<string[], Student<Int64>> makeStudent = (line) =>
@@ -104,6 +98,27 @@ namespace BackEnd
             catch (Exception ex)
             {
                 throw new Exception(ex.Message + " from Lib.University.cs");
+            }
+        }
+
+        public long ImportEnrollments(string path)
+        {
+            try
+            {
+                using (var sr = new StreamReader(path))
+                {
+                    long count = 0;
+                    for (string line; sr.Peek() > 0; count += this.Enrol(line) ? 1 : 0)
+                    {
+                        line = sr.ReadLine();
+                        ++count;
+                    }
+                    return count;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -166,27 +181,6 @@ namespace BackEnd
             if (! long.TryParse(buff[1], out studentId))
                 throw new Exception(buff[1] + " is not a valid student id");
             return this.Enrol(paperCode, studentId);
-        }
-
-        public long ImportEnrollments(string path)
-        {
-            try
-            {
-                using (var sr = new StreamReader(path))
-                {
-                    long count = 0;
-                    for (string line; sr.Peek() > 0; count += this.Enrol(line) ? 1 : 0)
-                    {
-                        line = sr.ReadLine();
-                        ++count;
-                    }
-                    return count;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
         }
 
         public void Export<T>(SortedSet<T> set, string folder, string filename, string fileExtention)
