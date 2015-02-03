@@ -165,7 +165,7 @@ namespace BackEnd
             return this.Enrol(paperCode, studentId);
         }
 
-        public void Export<T>(SortedSet<T> set, string folder, string filename, string fileExtention)
+        public bool Export<T>(SortedSet<T> set, string folder, string filename, string fileExtention)
         {
             try
             {
@@ -173,6 +173,7 @@ namespace BackEnd
                 using (var sw = new StreamWriter(path))
                     foreach (var element in set) 
                         sw.WriteLine(element.ToString());
+                return true;
             }
             catch (Exception ex)
             {
@@ -180,12 +181,14 @@ namespace BackEnd
             }
         }
 
-        public void ExportAllData(string folder)
+        public bool ExportAllData(string folder)
         {
             string now = DateTime.Now.ToFileTime().ToString();
-            this.Export<Student<long>>(this.Students, folder, "Students" + now, "csv");
-            this.Export<Paper<long>>(this.Papers, folder, "Papers" + now, "csv");
-            this.Export<Enrollment<long>>(this.Enrollments, folder, "Enrollments" + now, "csv");
+            var ret = true;
+            ret = ret && this.Export<Student<long>>(this.Students, folder, "Students" + now, "csv");
+            ret = ret && this.Export<Paper<long>>(this.Papers, folder, "Papers" + now, "csv");
+            ret = ret && this.Export<Enrollment<long>>(this.Enrollments, folder, "Enrollments" + now, "csv");
+            return ret;
         }
     }
 }

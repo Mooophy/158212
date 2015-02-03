@@ -95,5 +95,21 @@ namespace Assignment5
                 }
             }
         }
+
+        private void exportToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            var fdb = new FolderBrowserDialog();
+            if (fdb.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    MessageBox.Show(_Uni.ExportAllData(fdb.SelectedPath) ? "Done" : "Failed");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
     }
 }
