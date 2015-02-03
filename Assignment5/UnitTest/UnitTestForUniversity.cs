@@ -201,23 +201,40 @@ namespace UnitTest
                     uni.Enrol(p.Code, s.Id);
             uni.ExportAllData(Directory.GetCurrentDirectory().ToString());
         }
-        #endregion
 
         [TestMethod]
         public void TestMethodImportStudents()
         {
-            Action creatStudensFile = () =>
+            Action createStudensFile = () =>
             {
                 var u = new BackEnd.University();
                 u.AddRange(Enumerable.Range(0, 50).Select(i => new S(i)));
-                u.Export<Student<long>>(u.Students, Directory.GetCurrentDirectory().ToString(), "Students", "csv");
+                u.Export<S>(u.Students, Directory.GetCurrentDirectory().ToString(), "Students", "csv");
             };
 
-            creatStudensFile();
+            createStudensFile();
             var uni = new BackEnd.University();
             var count = uni.ImportStudents(Directory.GetCurrentDirectory().ToString() + @"\Students.csv");
             Assert.AreEqual(50, count);
             Assert.AreEqual(50, uni.Students.Count);
+        }
+        #endregion
+
+        [TestMethod]
+        public void TestMethodImportPapers()
+        {
+            Action createPapersFile = () =>
+            {
+                var u = new BackEnd.University();
+                u.AddRange(Enumerable.Range(0, 10).Select(i => new P(i)));
+                u.Export<P>(u.Papers, Directory.GetCurrentDirectory().ToString(), "Papers", "csv");
+            };
+
+            createPapersFile();
+            var uni = new BackEnd.University();
+            var count = uni.ImportPapers(Directory.GetCurrentDirectory().ToString() + @"\Papers.csv");
+            Assert.AreEqual(10, count);
+            Assert.AreEqual(10, uni.Papers.Count);
         }
     }
 }
