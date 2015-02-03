@@ -46,8 +46,9 @@ namespace Assignment5
             {
                 try
                 {
-                    _Uni.ImportStudents(_OpenFileDialog.FileName);
+                    var count = _Uni.ImportStudents(_OpenFileDialog.FileName);
                     this.UpdateGrids();
+                    MessageBox.Show(count + " students loaded.");
                 }
                 catch (Exception ex)
                 {
@@ -62,8 +63,31 @@ namespace Assignment5
             {
                 try
                 {
-                    _Uni.ImportPapers(_OpenFileDialog.FileName);
+                    var count = _Uni.ImportPapers(_OpenFileDialog.FileName);
                     this.UpdateGrids();
+                    MessageBox.Show(count + " papers loaded.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void _EnrollmentsToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            if (_Uni.Papers.Count == 0 || _Uni.Students.Count == 0)
+            {
+                MessageBox.Show("Please import students and papers first.");
+                return;
+            }
+
+            if (_OpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var count = _Uni.ImportEnrollments(_OpenFileDialog.FileName);
+                    MessageBox.Show(count + " pieces of enrollments info loaed.");
                 }
                 catch (Exception ex)
                 {

@@ -50,27 +50,27 @@
             // _ContextMenuStrip
             // 
             this._ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._ImportToolStripMenuItem,
-            this.exportToolStripMenuItem,
             this._DetailToolStripMenuItem,
-            this._EnrollToolStripMenuItem});
+            this._EnrollToolStripMenuItem,
+            this.exportToolStripMenuItem,
+            this._ImportToolStripMenuItem});
             this._ContextMenuStrip.Name = "_ContextMenuStrip";
             this._ContextMenuStrip.Size = new System.Drawing.Size(153, 114);
             // 
             // _ImportToolStripMenuItem
             // 
             this._ImportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._StudentsToolStripMenuItem,
             this._PapersToolStripMenuItem,
+            this._StudentsToolStripMenuItem,
             this._EnrollmentsToolStripMenuItem});
             this._ImportToolStripMenuItem.Name = "_ImportToolStripMenuItem";
-            this._ImportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._ImportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this._ImportToolStripMenuItem.Text = "Import";
             // 
             // _StudentsToolStripMenuItem
             // 
             this._StudentsToolStripMenuItem.Name = "_StudentsToolStripMenuItem";
-            this._StudentsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this._StudentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this._StudentsToolStripMenuItem.Text = "Students";
             this._StudentsToolStripMenuItem.Click += new System.EventHandler(this._StudentsToolStripMenuItemClick);
             // 
@@ -84,8 +84,9 @@
             // _EnrollmentsToolStripMenuItem
             // 
             this._EnrollmentsToolStripMenuItem.Name = "_EnrollmentsToolStripMenuItem";
-            this._EnrollmentsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this._EnrollmentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this._EnrollmentsToolStripMenuItem.Text = "Enrollments";
+            this._EnrollmentsToolStripMenuItem.Click += new System.EventHandler(this._EnrollmentsToolStripMenuItemClick);
             // 
             // exportToolStripMenuItem
             // 
