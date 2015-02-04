@@ -24,9 +24,11 @@ namespace Assignment5
             this.InitializeComponent();
 
             _Uni = new BackEnd.University();
-            this.SetupGrids();
-            this.SetAlternatingRowStyles(Color.White, Color.Azure);
             _Detail = new DetailForm();
+
+            this.SetupColumnsFittingPapers(_GridPapers);
+            this.SetupColumnsFittingStudents(_GridStudents);
+            this.SetAlternatingRowStyles(Color.White, Color.Azure);
         }
 
         private void RightClickOnGrid(object sender, DataGridViewCellMouseEventArgs e)
@@ -168,8 +170,8 @@ namespace Assignment5
             }
 
             //check paper code or student id
-            int codeOrId = 0;
-            if (!Int32.TryParse(cells[0].Value.ToString(), out codeOrId))
+            long codeOrId = 0;
+            if (!Int64.TryParse(cells[0].Value.ToString(), out codeOrId))
             {
                 e.Cancel = true;
                 MessageBox.Show("Invalid input for number");
@@ -204,6 +206,49 @@ namespace Assignment5
                 string address = cells["Address"].Value.ToString();
 
                 _Uni.Add(new S(id, name, birth, address));
+            }
+        }
+
+        private void _EnrollToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            var grid = _GridPapers.Focused ? _GridPapers : _GridStudents;
+
+            if (grid.CurrentRow == null
+                || grid.CurrentRow.Cells[0].Value == null)
+            {
+                MessageBox.Show("Incompleted row");
+                return;
+            }
+
+            var cells = grid.CurrentRow.Cells;
+            long codeOrId = 0;
+            if (!Int64.TryParse(cells[0].Value.ToString(), out codeOrId))
+            {
+                MessageBox.Show("Bad number");
+                return;
+            }
+
+            if(grid == _GridPapers)
+            {
+                long code = codeOrId;
+
+                if (0 == this.PopulateAvailableStudents(_Detail._Grid, code))
+                {
+                    MessageBox.Show("No availabe Students");
+                    return;
+                }
+                
+                if(_Detail.ShowDialog(this) == DialogResult.Cancel)
+                {
+                    long id = Convert.ToInt64(_Detail._Grid.CurrentRow.Cells["Id"].Value.ToString());
+                    bool result = _Uni.Enrol(code, id);
+                    MessageBox.Show(result ? "Done" : "Failed");
+                }
+            }
+
+            if(grid == _GridStudents)
+            {
+                MessageBox.Show("not implemented yet");
             }
         }
     }

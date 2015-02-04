@@ -55,20 +55,21 @@
             this._ImportToolStripMenuItem,
             this.exportToolStripMenuItem});
             this._ContextMenuStrip.Name = "_ContextMenuStrip";
-            this._ContextMenuStrip.Size = new System.Drawing.Size(117, 92);
+            this._ContextMenuStrip.Size = new System.Drawing.Size(153, 114);
             // 
             // _DetailToolStripMenuItem
             // 
             this._DetailToolStripMenuItem.Name = "_DetailToolStripMenuItem";
-            this._DetailToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this._DetailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this._DetailToolStripMenuItem.Text = "Detail";
             this._DetailToolStripMenuItem.Click += new System.EventHandler(this._DetailToolStripMenuItemClick);
             // 
             // _EnrollToolStripMenuItem
             // 
             this._EnrollToolStripMenuItem.Name = "_EnrollToolStripMenuItem";
-            this._EnrollToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this._EnrollToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this._EnrollToolStripMenuItem.Text = "Enroll";
+            this._EnrollToolStripMenuItem.Click += new System.EventHandler(this._EnrollToolStripMenuItemClick);
             // 
             // _ImportToolStripMenuItem
             // 
@@ -77,7 +78,7 @@
             this._StudentsToolStripMenuItem,
             this._EnrollmentsToolStripMenuItem});
             this._ImportToolStripMenuItem.Name = "_ImportToolStripMenuItem";
-            this._ImportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this._ImportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this._ImportToolStripMenuItem.Text = "Import";
             // 
             // _PapersToolStripMenuItem
@@ -104,7 +105,7 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItemClick);
             // 

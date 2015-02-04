@@ -19,16 +19,7 @@ namespace Assignment5
 
     public partial class MainForm
     {
-        private void SetupGrids()
-        {
-            foreach (var title in new string[] { "Code", "Name", "Coordinator" })
-                _GridPapers.Columns.Add(title, title);
-
-            foreach (var title in new string[] { "Id", "Name", "Birth", "Address" })
-                _GridStudents.Columns.Add(title, title);
-        }
-
-        private void UpdateGrids()
+        void UpdateGrids()
         {
             _GridPapers.Rows.Clear();
             foreach (var p in _Uni.Papers)
@@ -39,7 +30,7 @@ namespace Assignment5
                 _GridStudents.Rows.Add(s.ToString().Split(','));
         }
 
-        private void SetAlternatingRowStyles(Color first, Color second)
+        void SetAlternatingRowStyles(Color first, Color second)
         {
             _GridPapers.RowsDefaultCellStyle.BackColor = first;
             _GridStudents.RowsDefaultCellStyle.BackColor = first;
@@ -48,27 +39,48 @@ namespace Assignment5
             _GridStudents.AlternatingRowsDefaultCellStyle.BackColor = second;
         }
 
-        private long PopulateEnrolledStudents(DataGridView grid, long code)
+        void SetupColumnsFittingStudents(DataGridView grid)
         {
             grid.Columns.Clear();
             foreach (var title in new string[] { "Id", "Name", "Birth", "Address" })
                 grid.Columns.Add(title, title);
+        }
 
+        void SetupColumnsFittingPapers(DataGridView grid)
+        {
+            grid.Columns.Clear();
+            foreach (var title in new string[] { "Code", "Name", "Coordinator" })
+                grid.Columns.Add(title, title);
+        }
+
+        long PopulateEnrolledStudents(DataGridView grid, long code)
+        {
+            this.SetupColumnsFittingStudents(grid);
             int idx = 0;
             foreach (var s in _Uni.FindEnrolledByPaper(code))
                 idx = grid.Rows.Add(s.ToString().Split(','));
             return idx;
         }
 
-        private long PopulateEnrolledPapers(DataGridView grid, long id)
+        long PopulateEnrolledPapers(DataGridView grid, long id)
         {
-            grid.Columns.Clear();
-            foreach (var title in new string[] { "Code", "Name", "Coordinator" })
-                grid.Columns.Add(title, title);
-
+            this.SetupColumnsFittingPapers(grid);
             int idx = 0;
             foreach (var p in _Uni.FindEnrolledByStudent(id))
                 idx = grid.Rows.Add(p.ToString().Split(','));
+            return idx;
+        }
+
+        long PopulateAvailableStudents(DataGridView grid, long code)
+        {
+            this.SetupColumnsFittingStudents(grid);
+            grid.Rows.Clear();
+            var availableStudents =
+                _Uni.Students
+                .Where(s => !_Uni.FindEnrolledByPaper(code).Contains(s));
+            long idx = 0;
+            foreach (var s in availableStudents)
+                idx = grid.Rows.Add(s.ToString().Split(','));
             return idx;
         }
     }
