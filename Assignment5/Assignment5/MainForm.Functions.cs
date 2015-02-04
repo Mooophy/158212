@@ -75,12 +75,27 @@ namespace Assignment5
         {
             this.SetupColumnsFittingStudents(grid);
             grid.Rows.Clear();
+
             var availableStudents =
                 _Uni.Students
                 .Where(s => !_Uni.FindEnrolledByPaper(code).Contains(s));
             long idx = 0;
             foreach (var s in availableStudents)
                 idx = grid.Rows.Add(s.ToString().Split(','));
+            return idx;
+        }
+
+        long PopulateAvailablePapers(DataGridView grid, long id)
+        {
+            this.SetupColumnsFittingPapers(grid);
+            grid.Rows.Clear();
+
+            var availablePapers =
+                _Uni.Papers
+                .Where(p => !_Uni.FindEnrolledByStudent(id).Contains(p));
+            long idx = 0;
+            foreach (var p in availablePapers)
+                idx = grid.Rows.Add(p.ToString().Split(','));
             return idx;
         }
     }

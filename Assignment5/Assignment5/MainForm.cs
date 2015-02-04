@@ -232,9 +232,10 @@ namespace Assignment5
             {
                 long code = codeOrId;
 
+                _Detail.Text = "Students to choose";
                 if (0 == this.PopulateAvailableStudents(_Detail._Grid, code))
                 {
-                    MessageBox.Show("No availabe Students");
+                    MessageBox.Show("No availabe students");
                     return;
                 }
                 
@@ -242,13 +243,28 @@ namespace Assignment5
                 {
                     long id = Convert.ToInt64(_Detail._Grid.CurrentRow.Cells["Id"].Value.ToString());
                     bool result = _Uni.Enrol(code, id);
-                    MessageBox.Show(result ? "Done" : "Failed");
+                    MessageBox.Show(result ? "Enrolled" : "Failed");
                 }
             }
 
             if(grid == _GridStudents)
             {
-                MessageBox.Show("not implemented yet");
+                long id = codeOrId;
+
+                _Detail.Text = "Papers to choose";
+
+                if (0 == this.PopulateAvailablePapers(_Detail._Grid, id))
+                {
+                    MessageBox.Show("No availabe papers");
+                    return;
+                }
+
+                if (_Detail.ShowDialog(this) == DialogResult.Cancel)
+                {
+                    long code = Convert.ToInt64(_Detail._Grid.CurrentRow.Cells["Code"].Value.ToString());
+                    bool result = _Uni.Enrol(code, id);
+                    MessageBox.Show(result ? "Enrolled" : "Failed");
+                }
             }
         }
     }
