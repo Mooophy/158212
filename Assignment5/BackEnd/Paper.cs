@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BackEnd
 {
     /// <summary>
-    /// Paper
+    /// Gneric Paper
     /// </summary>
     public class Paper<T> : IComparable<Paper<T>>
         where T : System.IComparable<T>

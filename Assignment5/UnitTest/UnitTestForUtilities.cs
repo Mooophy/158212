@@ -6,9 +6,15 @@ using BackEnd;
 
 namespace UnitTest
 {
+    /// <summary>
+    /// for Class Utilities
+    /// </summary>
     [TestClass]
     public class UnitTestForUtilities
     {
+        /// <summary>
+        /// for ReadFrom
+        /// </summary>
         [TestMethod]
         public void TestMethodReadFrom()
         {

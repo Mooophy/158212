@@ -11,14 +11,21 @@ using BackEnd;
 
 namespace Assignment5
 {
+    //types aliasing
     using S = BackEnd.Student<long>;
     using P = BackEnd.Paper<long>;
     using E = BackEnd.Enrollment<long>;
+
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// fields
+        /// </summary>
         private BackEnd.University _Uni;
         private DetailForm _Detail;
-
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public MainForm()
         {
             this.InitializeComponent();
@@ -30,7 +37,11 @@ namespace Assignment5
             this.SetupColumnsFittingStudents(_GridStudents);
             this.SetAlternatingRowStyles(Color.White, Color.Azure);
         }
-
+        /// <summary>
+        /// event handler for right click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RightClickOnGrid(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -39,7 +50,6 @@ namespace Assignment5
                 (_GridPapers.Focused ? _GridStudents : _GridPapers).ClearSelection();
             }
         }
-
         /// <summary>
         /// import students event handler
         /// </summary>
@@ -61,7 +71,11 @@ namespace Assignment5
                 }
             }
         }
-
+        /// <summary>
+        /// event handler for papers item 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _PapersToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (_OpenFileDialog.ShowDialog() == DialogResult.OK)
@@ -78,7 +92,11 @@ namespace Assignment5
                 }
             }
         }
-
+        /// <summary>
+        /// event handler for enroll item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _EnrollmentsToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (_Uni.Papers.Count == 0 || _Uni.Students.Count == 0)
@@ -100,7 +118,11 @@ namespace Assignment5
                 }
             }
         }
-
+        /// <summary>
+        /// event handler for export item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void exportToolStripMenuItemClick(object sender, EventArgs e)
         {
             var fdb = new FolderBrowserDialog();
@@ -116,7 +138,11 @@ namespace Assignment5
                 }
             }
         }
-
+        /// <summary>
+        /// event handler for detail item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _DetailToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (_GridPapers.Focused)
@@ -152,7 +178,11 @@ namespace Assignment5
                 _Detail.ShowDialog();
             }
         }
-
+        /// <summary>
+        /// event handler for OnRowValidating
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckAndSaveOnRowValidating(object sender, DataGridViewCellCancelEventArgs  e)
         {
             var grid = sender as DataGridView;
@@ -208,7 +238,11 @@ namespace Assignment5
                 _Uni.Add(new S(id, name, birth, address));
             }
         }
-
+        /// <summary>
+        /// event handler for enrol item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _EnrollToolStripMenuItemClick(object sender, EventArgs e)
         {
             var grid = _GridPapers.Focused ? _GridPapers : _GridStudents;

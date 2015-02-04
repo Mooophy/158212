@@ -7,6 +7,10 @@ using BackEnd;
 
 namespace BackEnd
 {
+    /// <summary>
+    /// Generic Student
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Student<T> : IComparable<Student<T>>
         where T : System.IComparable<T>
     {

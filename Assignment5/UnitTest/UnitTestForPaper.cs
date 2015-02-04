@@ -4,6 +4,9 @@ using BackEnd;
 
 namespace UnitTest
 {
+    /// <summary>
+    /// For Class Paper
+    /// </summary>
     [TestClass]
     public class UnitTestForPaper
     {
@@ -18,7 +21,9 @@ namespace UnitTest
             Assert.AreEqual(0, paper.Code);
             Assert.AreEqual("Boo Boo", paper.Coordinator);
         }
-
+        /// <summary>
+        /// simplified ctor
+        /// </summary>
         [TestMethod]
         public void TestSimplifiedCtor()
         {
@@ -27,7 +32,9 @@ namespace UnitTest
             Assert.AreEqual("_", p.Name);
             Assert.AreEqual("_", p.Coordinator);
         }
-
+        /// <summary>
+        /// for CompareTo
+        /// </summary>
         [TestMethod]
         public void TestCompareTo()
         {
@@ -36,7 +43,6 @@ namespace UnitTest
             Assert.AreEqual(9999, paper9999.Code);
             Assert.IsTrue(0 < paper9999.CompareTo(paper8888));
         }
-
         /// <summary>
         /// ToString Overloaded
         /// </summary>

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
+    /// <summary>
+    /// Generic Enrollment relationship
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Enrollment<T> : IComparable<Enrollment<T>> 
         where T : IComparable<T>
     {

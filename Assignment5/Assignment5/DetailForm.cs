@@ -11,6 +11,9 @@ using BackEnd;
 
 namespace Assignment5
 {
+    /// <summary>
+    /// used as detail form
+    /// </summary>
     public partial class DetailForm : Form
     {
         public DetailForm()

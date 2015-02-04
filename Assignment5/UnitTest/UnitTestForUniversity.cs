@@ -7,13 +7,19 @@ using BackEnd;
 
 namespace UnitTest
 {
+    //type aliasing
     using P = BackEnd.Paper<long>;
     using S = BackEnd.Student<long>;
     using E = BackEnd.Enrollment<long>;
-
+    /// <summary>
+    /// For Class University
+    /// </summary>
     [TestClass]
     public class UnitTestForUniversity
     {
+        /// <summary>
+        /// for Ctor
+        /// </summary>
         [TestMethod]
         public void TestMethodCtor()
         {
@@ -22,7 +28,9 @@ namespace UnitTest
             Assert.AreEqual(0, uni.Papers.Count, "Oops..");
             Assert.AreEqual(0, uni.Enrollments.Count, "Oops..");
         }
-
+        /// <summary>
+        /// for Add
+        /// </summary>
         [TestMethod]
         public void TestMethodAddStudent()
         {
@@ -41,7 +49,9 @@ namespace UnitTest
                 uni.Add(ann);
             Assert.AreEqual(26, uni.Students.Count);
         }
-
+        /// <summary>
+        /// for Add
+        /// </summary>
         [TestMethod]
         public void TestMethodAddPaper()
         {
@@ -54,7 +64,9 @@ namespace UnitTest
                 uni.Add(app);
             Assert.AreEqual(1, uni.Papers.Count);
         }
-
+        /// <summary>
+        /// for AddRange
+        /// </summary>
         [TestMethod]
         public void TestMethodAddRangeStudents()
         {
@@ -65,7 +77,9 @@ namespace UnitTest
 
             Assert.AreEqual(100, uni.Students.Count);
         }
-
+        /// <summary>
+        /// for AddRange
+        /// </summary>
         [TestMethod]
         public void TestMethodAddRangePappers()
         {
@@ -76,7 +90,9 @@ namespace UnitTest
 
             Assert.AreEqual(1000, uni.Papers.Count);
         }
-
+        /// <summary>
+        /// for FindPaper
+        /// </summary>
         [TestMethod]
         public void TestMethodFindPaper()
         {
@@ -88,7 +104,9 @@ namespace UnitTest
             Assert.AreEqual("Lee", uni.FindPaper(159050).Coordinator);
             Assert.AreEqual("paper 159050", uni.FindPaper(159050).Name);
         }
-
+        /// <summary>
+        /// for FindStudent
+        /// </summary>
         [TestMethod]
         public void TestMethodFindStudent()
         {
@@ -100,7 +118,9 @@ namespace UnitTest
             Assert.AreEqual(120000, uni.FindStudent(120000).Id);
             Assert.AreEqual("some guy 120050", uni.FindStudent(120050).Name);
         }
-
+        /// <summary>
+        /// for Enroll
+        /// </summary>
         [TestMethod]
         public void TestMethodEnrol()
         {
@@ -119,7 +139,9 @@ namespace UnitTest
             Assert.AreEqual(num, uni.Students.Count);
             Assert.AreEqual(num, uni.Enrollments.Count);
         }
-
+        /// <summary>
+        /// for Enroll
+        /// </summary>
         [TestMethod]
         public void TestMethodEnrolWithLine()
         {
@@ -137,7 +159,9 @@ namespace UnitTest
             Assert.AreEqual(num, uni.Students.Count);
             Assert.AreEqual(num, uni.Enrollments.Count);
         }
-
+        /// <summary>
+        /// for FindEnrolled
+        /// </summary>
         [TestMethod]
         public void TestMethodFindEnrolledByPaper()
         {
@@ -154,7 +178,9 @@ namespace UnitTest
                             .All(li => li.Count == 50);
             Assert.IsTrue(isAllTrue);
         }
-
+        /// <summary>
+        /// for FindEnrolled
+        /// </summary>
         [TestMethod]
         public void TestMethodFindEnrolledByStudent()
         {
@@ -176,7 +202,9 @@ namespace UnitTest
                 .All(list => list.Count == 1);
             Assert.AreEqual(true, isTrue);
         }
-
+        /// <summary>
+        /// for generic Export
+        /// </summary>
         [TestMethod]
         public void TestMethodExport()
         {
@@ -189,6 +217,9 @@ namespace UnitTest
             Assert.AreEqual(@"G:\ForStudy\forCS\158212\Assignment5\UnitTest\bin\Debug", folder);
             Assert.IsTrue(File.Exists(folder + @"\TestingExport.txt"));
         }
+        /// <summary>
+        /// for ExportAllData
+        /// </summary>
         [TestMethod]
         public void TestMethodExportAllData()
         {
@@ -200,7 +231,9 @@ namespace UnitTest
                     uni.Enrol(p.Code, s.Id);
             uni.ExportAllData(Directory.GetCurrentDirectory().ToString());
         }
-
+        /// <summary>
+        /// for ImportStudents
+        /// </summary>
         [TestMethod]
         public void TestMethodImportStudents()
         {
@@ -217,7 +250,9 @@ namespace UnitTest
             Assert.AreEqual(50, count);
             Assert.AreEqual(50, uni.Students.Count);
         }
-
+        /// <summary>
+        /// for ImportPapers
+        /// </summary>
         [TestMethod]
         public void TestMethodImportPapers()
         {
@@ -234,7 +269,9 @@ namespace UnitTest
             Assert.AreEqual(10, count);
             Assert.AreEqual(10, uni.Papers.Count);
         }
-
+        /// <summary>
+        /// for ImportEnrollments
+        /// </summary>
         [TestMethod]
         public void TestMethodImportEnrollments()
         {

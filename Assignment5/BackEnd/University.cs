@@ -7,41 +7,67 @@ using System.IO;
 
 namespace BackEnd
 {
+    /// <summary>
+    /// University
+    /// </summary>
     public class University
     {
+        /// <summary>
+        /// Fields
+        /// </summary>
         public SortedSet<Student<Int64>> Students { get; private set; }
         public SortedSet<Paper<Int64>> Papers { get; private set; }
         public SortedSet<Enrollment<Int64>> Enrollments { get; private set; }
-
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public University()
         {
             this.Students = new SortedSet<Student<Int64>>();
             this.Papers = new SortedSet<Paper<Int64>>();
             this.Enrollments = new SortedSet<Enrollment<Int64>>();
         }
-
+        /// <summary>
+        /// Add
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
         public bool Add(Student<Int64> student)
         {
             return this.Students.Add(student);
         }
-
+        /// <summary>
+        /// Add
+        /// </summary>
+        /// <param name="paper"></param>
+        /// <returns></returns>
         public bool Add(Paper<Int64> paper)
         {
             return this.Papers.Add(paper);
         }
-
+        /// <summary>
+        /// AddRange
+        /// </summary>
+        /// <param name="collection"></param>
         public void AddRange(IEnumerable<Student<Int64>> collection)
         {
             foreach (var elem in collection) 
                 this.Students.Add(elem);
         }
-
+        /// <summary>
+        /// AddRange
+        /// </summary>
+        /// <param name="collection"></param>
         public void AddRange(IEnumerable<Paper<Int64>> collection)
         {
             foreach (var elem in collection)
                 this.Papers.Add(elem);
         }
-
+        /// <summary>
+        /// Import students
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public long ImportStudents(string filename)
         {
             Func<string[], Student<Int64>> makeStudent = (line) =>
@@ -65,7 +91,11 @@ namespace BackEnd
                 throw ex;
             }
         }
-
+        /// <summary>
+        /// import papers
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public long ImportPapers(string filename)
         {
             Func<string[], Paper<Int64>> makePaper = (line) =>
@@ -88,7 +118,11 @@ namespace BackEnd
                 throw ex;
             }
         }
-
+        /// <summary>
+        /// import enrollments info
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public long ImportEnrollments(string path)
         {
             try
@@ -103,7 +137,11 @@ namespace BackEnd
                 throw ex;
             }
         }
-
+        /// <summary>
+        /// map student id to student
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
         public Student<Int64> FindStudent(Int64 studentId)
         {
             try
@@ -115,7 +153,11 @@ namespace BackEnd
                 throw ex;
             }
         }
-
+        /// <summary>
+        /// map paper code to paper
+        /// </summary>
+        /// <param name="paperCode"></param>
+        /// <returns></returns>
         public Paper<Int64> FindPaper(Int64 paperCode)
         {
             try
@@ -127,7 +169,11 @@ namespace BackEnd
                 throw ex;
             }
         }
-
+        /// <summary>
+        /// find enrolled with paper code
+        /// </summary>
+        /// <param name="paperCode"></param>
+        /// <returns></returns>
         public List<Student<Int64>> FindEnrolledByPaper(Int64 paperCode)
         {
             return 
@@ -136,7 +182,11 @@ namespace BackEnd
                 .Select(e => this.FindStudent(e.StudentId))
                 .ToList();
         }
-
+        /// <summary>
+        /// find enrolled with a student id
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
         public List<Paper<Int64>> FindEnrolledByStudent(Int64 studentId)
         {
             var data = from e in this.Enrollments
@@ -144,7 +194,12 @@ namespace BackEnd
                        select this.FindPaper(e.PaperCode);
             return data.ToList();
         }
-
+        /// <summary>
+        /// enrol
+        /// </summary>
+        /// <param name="paperCode"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
         public bool Enrol(Int64 paperCode, Int64 studentId)
         {
             if(this.Papers.Contains(this.FindPaper(paperCode)) 
@@ -153,7 +208,11 @@ namespace BackEnd
             else
                 return false;
         }
-
+        /// <summary>
+        /// enrol
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
         public bool Enrol(string line)
         {
             string[] buff = line.Split(',');
@@ -164,7 +223,15 @@ namespace BackEnd
                 throw new Exception(buff[1] + " is not a valid student id");
             return this.Enrol(paperCode, studentId);
         }
-
+        /// <summary>
+        /// generic export function
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="set"></param>
+        /// <param name="folder"></param>
+        /// <param name="filename"></param>
+        /// <param name="fileExtention"></param>
+        /// <returns></returns>
         public bool Export<T>(SortedSet<T> set, string folder, string filename, string fileExtention)
         {
             try
@@ -180,7 +247,11 @@ namespace BackEnd
                 throw ex;
             }
         }
-
+        /// <summary>
+        /// export all data to a specified folder
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <returns></returns>
         public bool ExportAllData(string folder)
         {
             string now = DateTime.Now.ToFileTime().ToString();

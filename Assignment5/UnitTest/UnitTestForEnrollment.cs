@@ -4,9 +4,15 @@ using BackEnd;
 
 namespace UnitTest
 {
+    /// <summary>
+    /// for class  Enrollments
+    /// </summary>
     [TestClass]
     public class UnitTestForEnrollment
     {
+        /// <summary>
+        /// Ctor with id
+        /// </summary>
         [TestMethod]
         public void TestCtorById()
         {
@@ -14,7 +20,9 @@ namespace UnitTest
             Assert.AreEqual(158212, e.PaperCode);
             Assert.AreEqual(1234567890, e.StudentId);
         }
-
+        /// <summary>
+        /// instance ctor
+        /// </summary>
         [TestMethod]
         public void TestCtorByInstance()
         {
@@ -25,7 +33,9 @@ namespace UnitTest
             Assert.AreEqual(158212, e.PaperCode);
             Assert.AreEqual(1234567890, e.StudentId);
         }
-
+        /// <summary>
+        /// overriding for ToString
+        /// </summary>
         [TestMethod]
         public void TestToString()
         {

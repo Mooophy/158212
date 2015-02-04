@@ -68,7 +68,7 @@
             // 
             this._EnrollToolStripMenuItem.Name = "_EnrollToolStripMenuItem";
             this._EnrollToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this._EnrollToolStripMenuItem.Text = "Enroll";
+            this._EnrollToolStripMenuItem.Text = "Enrol";
             this._EnrollToolStripMenuItem.Click += new System.EventHandler(this._EnrollToolStripMenuItemClick);
             // 
             // _ImportToolStripMenuItem
