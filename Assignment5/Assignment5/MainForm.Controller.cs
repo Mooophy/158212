@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using BackEnd;
 
 namespace Assignment5
@@ -33,6 +34,15 @@ namespace Assignment5
             _GridStudents.Rows.Clear();
             foreach (var s in _Uni.Students)
                 _GridStudents.Rows.Add(s.ToString().Split(','));
+        }
+
+        private void SetAlternatingRowStyles(Color first, Color second)
+        {
+            _GridPapers.RowsDefaultCellStyle.BackColor = first;
+            _GridStudents.RowsDefaultCellStyle.BackColor = first;
+
+            _GridPapers.AlternatingRowsDefaultCellStyle.BackColor = second;
+            _GridStudents.AlternatingRowsDefaultCellStyle.BackColor = second;
         }
     }
 }

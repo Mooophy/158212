@@ -24,6 +24,7 @@ namespace Assignment5
 
             _Uni = new BackEnd.University();
             this.SetupGrids();
+            this.SetAlternatingRowStyles(Color.White, Color.Azure);
         }
 
         private void RightClickOnGrid(object sender, DataGridViewCellMouseEventArgs e)
