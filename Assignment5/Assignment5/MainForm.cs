@@ -126,10 +126,27 @@ namespace Assignment5
                     return;
                 }
 
+                long code;
+                if (Int64.TryParse(_GridPapers.CurrentRow.Cells["Code"].Value.ToString(), out code))
+                    this.PopulateEnrolledStudents(_Detail._Grid, code);
+                _Detail.Text = "Students enrolled for Paper " + code; 
+                _Detail.ShowDialog();
+            }
+
+
+            if(_GridStudents.Focused)
+            {
+                if (_GridStudents.CurrentRow == null
+                    || _GridStudents.CurrentRow.Cells["Id"].Value == null)
+                {
+                    MessageBox.Show("No valid cell specified");
+                    return;
+                }
+
                 long id;
-                if (Int64.TryParse(_GridPapers.CurrentRow.Cells["Code"].Value.ToString(), out id))
-                    this.PopulateEnrolledStudents(_Detail._Grid, id);
-                _Detail.Text = "Students enrolled for Paper " + id; 
+                if (Int64.TryParse(_GridStudents.CurrentRow.Cells["Id"].Value.ToString(), out id))
+                    this.PopulateEnrolledPapers(_Detail._Grid, id);
+                _Detail.Text = "Student " + id + " have enrolled in ";
                 _Detail.ShowDialog();
             }
         }

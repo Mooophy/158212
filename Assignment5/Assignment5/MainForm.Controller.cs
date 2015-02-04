@@ -59,5 +59,17 @@ namespace Assignment5
                 idx = grid.Rows.Add(s.ToString().Split(','));
             return idx;
         }
+
+        private long PopulateEnrolledPapers(DataGridView grid, long id)
+        {
+            grid.Columns.Clear();
+            foreach (var title in new string[] { "Code", "Name", "Coordinator" })
+                grid.Columns.Add(title, title);
+
+            int idx = 0;
+            foreach (var p in _Uni.FindEnrolledByStudent(id))
+                idx = grid.Rows.Add(p.ToString().Split(','));
+            return idx;
+        }
     }
 }
