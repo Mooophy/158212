@@ -17,6 +17,7 @@ namespace Assignment5
     public partial class MainForm : Form
     {
         private BackEnd.University _Uni;
+        private DetailForm _Detail;
 
         public MainForm()
         {
@@ -25,6 +26,7 @@ namespace Assignment5
             _Uni = new BackEnd.University();
             this.SetupGrids();
             this.SetAlternatingRowStyles(Color.White, Color.Azure);
+            _Detail = new DetailForm();
         }
 
         private void RightClickOnGrid(object sender, DataGridViewCellMouseEventArgs e)
@@ -110,6 +112,25 @@ namespace Assignment5
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void _DetailToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            if (_GridPapers.Focused)
+            {
+                if (_GridPapers.CurrentRow == null
+                    || _GridPapers.CurrentRow.Cells["Code"].Value == null)
+                {
+                    MessageBox.Show("No valid cell specified");
+                    return;
+                }
+
+                long id;
+                if (Int64.TryParse(_GridPapers.CurrentRow.Cells["Code"].Value.ToString(), out id))
+                    this.PopulateEnrolledStudents(_Detail._Grid, id);
+                _Detail.Text = "Students enrolled for Paper " + id; 
+                _Detail.ShowDialog();
             }
         }
     }

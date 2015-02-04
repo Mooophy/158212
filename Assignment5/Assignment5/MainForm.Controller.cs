@@ -2,10 +2,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
+using System.Windows.Forms;
 using BackEnd;
 
 namespace Assignment5
@@ -43,6 +46,18 @@ namespace Assignment5
 
             _GridPapers.AlternatingRowsDefaultCellStyle.BackColor = second;
             _GridStudents.AlternatingRowsDefaultCellStyle.BackColor = second;
+        }
+
+        private long PopulateEnrolledStudents(DataGridView grid, long code)
+        {
+            grid.Columns.Clear();
+            foreach (var title in new string[] { "Id", "Name", "Birth", "Address" })
+                grid.Columns.Add(title, title);
+
+            int idx = 0;
+            foreach (var s in _Uni.FindEnrolledByPaper(code))
+                idx = grid.Rows.Add(s.ToString().Split(','));
+            return idx;
         }
     }
 }
