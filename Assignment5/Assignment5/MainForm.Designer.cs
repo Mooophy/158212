@@ -55,19 +55,19 @@
             this._ImportToolStripMenuItem,
             this.exportToolStripMenuItem});
             this._ContextMenuStrip.Name = "_ContextMenuStrip";
-            this._ContextMenuStrip.Size = new System.Drawing.Size(153, 114);
+            this._ContextMenuStrip.Size = new System.Drawing.Size(117, 92);
             // 
             // _DetailToolStripMenuItem
             // 
             this._DetailToolStripMenuItem.Name = "_DetailToolStripMenuItem";
-            this._DetailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._DetailToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this._DetailToolStripMenuItem.Text = "Detail";
             this._DetailToolStripMenuItem.Click += new System.EventHandler(this._DetailToolStripMenuItemClick);
             // 
             // _EnrollToolStripMenuItem
             // 
             this._EnrollToolStripMenuItem.Name = "_EnrollToolStripMenuItem";
-            this._EnrollToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._EnrollToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this._EnrollToolStripMenuItem.Text = "Enroll";
             // 
             // _ImportToolStripMenuItem
@@ -77,7 +77,7 @@
             this._StudentsToolStripMenuItem,
             this._EnrollmentsToolStripMenuItem});
             this._ImportToolStripMenuItem.Name = "_ImportToolStripMenuItem";
-            this._ImportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._ImportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this._ImportToolStripMenuItem.Text = "Import";
             // 
             // _PapersToolStripMenuItem
@@ -104,7 +104,7 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItemClick);
             // 
@@ -135,6 +135,7 @@
             this._GridPapers.Size = new System.Drawing.Size(463, 282);
             this._GridPapers.TabIndex = 0;
             this._GridPapers.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RightClickOnGrid);
+            this._GridPapers.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.CheckAndSaveOnRowValidating);
             // 
             // _GridStudents
             // 
@@ -147,6 +148,7 @@
             this._GridStudents.Size = new System.Drawing.Size(464, 282);
             this._GridStudents.TabIndex = 1;
             this._GridStudents.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RightClickOnGrid);
+            this._GridStudents.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.CheckAndSaveOnRowValidating);
             // 
             // MainForm
             // 

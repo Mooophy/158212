@@ -150,5 +150,61 @@ namespace Assignment5
                 _Detail.ShowDialog();
             }
         }
+
+        private void CheckAndSaveOnRowValidating(object sender, DataGridViewCellCancelEventArgs  e)
+        {
+            var grid = sender as DataGridView;
+            if (e.RowIndex == grid.RowCount - 1)
+                return;
+
+            var cells = grid.Rows[e.RowIndex].Cells;
+
+            //check if any cell is empty
+            if (cells.Cast<DataGridViewCell>().Any(c => c.Value == null))
+            {
+                e.Cancel = true;
+                MessageBox.Show("Empty cell");
+                return;
+            }
+
+            //check paper code or student id
+            int codeOrId = 0;
+            if (!Int32.TryParse(cells[0].Value.ToString(), out codeOrId))
+            {
+                e.Cancel = true;
+                MessageBox.Show("Invalid input for number");
+                grid.ClearSelection();
+                cells[0].Selected = true;
+                return;
+            }
+
+            if(grid == _GridPapers)
+            {
+                long code = codeOrId;
+                string name = cells["Name"].Value.ToString();
+                string coordinator = cells["Coordinator"].Value.ToString();
+
+                _Uni.Add(new P(code, name, coordinator));
+            }
+
+            if(grid == _GridStudents)
+            {
+                DateTime birth;
+                if (!DateTime.TryParse(cells["Birth"].Value.ToString(), out birth))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Invalid Date");
+
+                    grid.ClearSelection();
+                    cells["Birth"].Selected = true;
+                    return;
+                }
+                long id = codeOrId;
+                string name = cells["Name"].Value.ToString();
+                string address = cells["Address"].Value.ToString();
+
+                _Uni.Add(new S(id, name, birth, address));
+            }
+        }
     }
 }
