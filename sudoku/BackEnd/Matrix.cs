@@ -8,7 +8,7 @@ namespace BackEnd
 {
     public abstract class Matrix
     {
-        int[,] _Data;
+        protected int[,] _Data;
 
         public Matrix(int size)
         {
@@ -39,7 +39,7 @@ namespace BackEnd
         protected abstract bool CheckRgn(int row, int col);
         protected abstract bool CheckAll();
 
-        Tuple<bool, bool, bool, bool> SetValue(int row, int col, int val)
+        public Tuple<bool, bool, bool, bool> SetValue(int row, int col, int val)
         {
             _Data[row, col] = val;
             var isValidRow = this.CheckRow(row);
