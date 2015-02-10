@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace sudoku
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         Button[,] _Matrix = new Button[9, 9];
         void InitMatrix()
@@ -30,7 +30,7 @@ namespace sudoku
             }
         }
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             this.InitMatrix();
