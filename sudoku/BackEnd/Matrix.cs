@@ -28,17 +28,17 @@ namespace BackEnd
         protected bool CheckRow(int row)
         {
             var set = new HashSet<int>();
-            for (int col = 0; col != _Data.Length; ++col)
+            for (int col = 0; col != _Data.GetLength(0); ++col)
                 if (_Data[row, col] != 0) set.Add(_Data[row, col]);
-            return set.Count == _Data.Length;
+            return set.Count == _Data.GetLength(0);
         }
 
         protected bool CheckCol(int col)
         {
             var set = new HashSet<int>();
-            for (int row = 0; row != _Data.Length; ++row)
+            for (int row = 0; row != _Data.GetLength(0); ++row)
                 if (_Data[row, col] != 0) set.Add(_Data[row, col]);
-            return set.Count == _Data.Length;
+            return set.Count == _Data.GetLength(0);
         }
 
         protected abstract bool CheckRgn(int row, int col);

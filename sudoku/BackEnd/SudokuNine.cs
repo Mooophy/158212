@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    
     public class SudokuNine : Matrix
     {
-        List<Range> _Ranges;
+        public readonly List<Range> Ranges;
 
         public SudokuNine()
             : base(9)
         {
-            _Ranges = new List<Range> { new Range(0, 3), new Range(3, 6), new Range(6, 9) };
+            this.Ranges = new List<Range> { new Range(0, 3), new Range(3, 6), new Range(6, 9) };
         }
 
         protected override bool CheckAll()
@@ -29,13 +28,12 @@ namespace BackEnd
                     goto Done;
 
             //check all regions
-            foreach (var rowRange in _Ranges)
-                foreach (var colRange in _Ranges)
+            foreach (var rowRange in this.Ranges)
+                foreach (var colRange in this.Ranges)
                     if (ret)
                         ret = ret && this.CheckBox(rowRange, colRange);
                     else
                         goto Done;
-
             Done:
             return ret;
         }
@@ -52,7 +50,7 @@ namespace BackEnd
         protected override bool CheckRgn(int row, int col)
         {
             Func<int, Range> findRange = (i) =>
-                _Ranges
+                Ranges
                 .Find(range => Enumerable.Range(range.Begin, range.End).Any(num => num == row));
             return this.CheckBox(findRange(row), findRange(col));
         }
