@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    public abstract class Matrix
+    internal abstract class Matrix
     {
         protected int[,] _Data;
 
@@ -15,16 +15,11 @@ namespace BackEnd
             _Data = new int[size, size];
         }
 
-        public Matrix(string path)
-        {
-            throw new NotImplementedException();
-        }
-
         protected bool CheckRow(int row)
         {
             var set = new HashSet<int>();
             for (int col = 0; col != _Data.Length; ++col)
-                set.Add(_Data[row, col]);
+                if (_Data[row, col] != 0) set.Add(_Data[row, col]);
             return set.Count == _Data.Length;
         }
 
@@ -32,7 +27,7 @@ namespace BackEnd
         {
             var set = new HashSet<int>();
             for (int row = 0; row != _Data.Length; ++row)
-                set.Add(_Data[row, col]);
+                if (_Data[row, col] != 0) set.Add(_Data[row, col]);
             return set.Count == _Data.Length;
         }
 
@@ -48,6 +43,5 @@ namespace BackEnd
             var isValidAll = isValidRow && isValidCol && isValidRgn ? this.CheckAll() : false;
             return Tuple.Create(isValidRow, isValidCol, isValidRgn, isValidAll);
         }
-
     }
 }
