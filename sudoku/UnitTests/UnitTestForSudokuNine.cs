@@ -87,6 +87,9 @@ namespace UnitTests
             var mat = new BackEnd.SudokuNine(solved);
             var result = mat.SetValue(0, 0, 5);
 
+            Assert.AreEqual(true, result.Item1);
+            Assert.AreEqual(true, result.Item2);
+            Assert.AreEqual(true, result.Item3);
             Assert.AreEqual(true, result.Item4);
         }
     }

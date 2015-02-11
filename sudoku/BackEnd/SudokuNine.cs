@@ -8,8 +8,6 @@ namespace BackEnd
 {
     public class SudokuNine : Matrix
     {
-        //public readonly List<Range> Ranges;
-
         public SudokuNine()
             : base(9, new List<Range> { new Range(0, 3), new Range(3, 3), new Range(6, 3) })
         {   }

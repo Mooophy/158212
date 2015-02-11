@@ -9,10 +9,10 @@ namespace BackEnd
     public class Range
     {
         public readonly int Begin, Count;
-        public Range(int b, int e)
+        public Range(int b, int c)
         {
             Begin = b;
-            Count = e;
+            Count = c;
         }
     }
 
