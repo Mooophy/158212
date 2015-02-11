@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    internal abstract class Matrix
+    public abstract class Matrix
     {
         protected int[,] _Data;
 
