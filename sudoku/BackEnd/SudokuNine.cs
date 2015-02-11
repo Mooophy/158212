@@ -13,7 +13,13 @@ namespace BackEnd
         public SudokuNine()
             : base(9)
         {
-            this.Ranges = new List<Range> { new Range(0, 3), new Range(3, 6), new Range(6, 9) };
+            this.Ranges = new List<Range> { new Range(0, 3), new Range(3, 3), new Range(6, 3) };
+        }
+
+        public SudokuNine(int [,] data)
+            : base(9)
+        {
+            _Data = data;
         }
 
         protected override bool CheckAll()
@@ -41,18 +47,29 @@ namespace BackEnd
         private bool CheckBox(Range rowRange, Range colRange)
         {
             var set = new HashSet<int>();
-            foreach (var row in Enumerable.Range(rowRange.Begin, rowRange.End))
-                foreach (var col in Enumerable.Range(colRange.Begin, colRange.End))
+            foreach (var row in Enumerable.Range(rowRange.Begin, rowRange.Count))
+                foreach (var col in Enumerable.Range(colRange.Begin, colRange.Count))
                     if (_Data[row, col] != 0) set.Add(_Data[row, col]);
             return set.Count == _Data.GetLength(0);
         }
 
-        protected override bool CheckRgn(int row, int col)
+        protected override bool CheckRgn(int row, int col)//bug found still working on
         {
             Func<int, Range> findRange = (i) =>
-                Ranges
-                .Find(range => Enumerable.Range(range.Begin, range.End).Any(num => num == row));
-            return this.CheckBox(findRange(row), findRange(col));
+                this.Ranges.First();
+                //.First(range => Enumerable.Range(range.Begin, range.Count).Any(n => n == i));
+                //.Find(range => Enumerable.Range(range.Begin, range.Count).Any(num => num == i));
+
+            var rowRange = findRange(row);
+            var colRange = findRange(col);
+
+            if (rowRange == null)
+                throw new Exception("not found");
+
+            if (colRange == null)
+                throw new Exception("not found");
+
+            return this.CheckBox(rowRange, colRange);
         }
     }
 }

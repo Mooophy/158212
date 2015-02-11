@@ -8,11 +8,11 @@ namespace BackEnd
 {
     public class Range
     {
-        public readonly int Begin, End;
+        public readonly int Begin, Count;
         public Range(int b, int e)
         {
             Begin = b;
-            End = e;
+            Count = e;
         }
     }
 
@@ -50,7 +50,7 @@ namespace BackEnd
             var isValidRow = this.CheckRow(row);
             var isValidCol = this.CheckCol(col);
             var isValidRgn = this.CheckRgn(row, col);
-            var isValidAll = isValidRow && isValidCol && isValidRgn ? this.CheckAll() : false;
+            var isValidAll = isValidRow && isValidCol && isValidRgn && this.CheckAll(); 
             return Tuple.Create(isValidRow, isValidCol, isValidRgn, isValidAll);
         }
     }
