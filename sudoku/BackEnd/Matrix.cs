@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
+    public class Range
+    {
+        public readonly int Begin, End;
+        public Range(int b, int e)
+        {
+            Begin = b;
+            End = e;
+        }
+    }
+
     public abstract class Matrix
     {
         protected int[,] _Data;

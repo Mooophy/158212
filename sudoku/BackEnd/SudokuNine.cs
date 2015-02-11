@@ -6,48 +6,55 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
+    
     public class SudokuNine : Matrix
     {
+        List<Range> _Ranges;
+
         public SudokuNine()
             : base(9)
-        {}
+        {
+            _Ranges = new List<Range> { new Range(0, 3), new Range(3, 6), new Range(6, 9) };
+        }
 
         protected override bool CheckAll()
         {
             bool ret = true;
             
+            //check all rows and cols
             for (int i = 0; i != _Data.Length; ++i)
                 if (ret)
                     ret = ret && this.CheckRow(i) && this.CheckCol(i);
                 else
                     goto Done;
 
-
-            var ranges = new List<Tuple<int, int>> { Tuple.Create(0, 3), Tuple.Create(3, 6), Tuple.Create(6, 9) };
-            foreach (var rowRange in ranges)
-            {
-                foreach (var colRange in ranges)
-                {
+            //check all regions
+            foreach (var rowRange in _Ranges)
+                foreach (var colRange in _Ranges)
                     if (ret)
-                    {
-                        var set = new HashSet<int>();
-                        for (int row = rowRange.Item1; row != rowRange.Item2; ++row)
-                            for (int col = colRange.Item1; col != colRange.Item2; ++col)
-                                if (_Data[row, col] != 0) set.Add(_Data[row, col]);
-                        ret = ret && (set.Count == _Data.Length);
-                    }
+                        ret = ret && this.CheckBox(rowRange, colRange);
                     else
                         goto Done;
-                }
-            }       
 
             Done:
             return ret;
         }
 
+        private bool CheckBox(Range rowRange, Range colRange)
+        {
+            var set = new HashSet<int>();
+            foreach (var row in Enumerable.Range(rowRange.Begin, rowRange.End))
+                foreach (var col in Enumerable.Range(colRange.Begin, colRange.End))
+                    if (_Data[row, col] != 0) set.Add(_Data[row, col]);
+            return set.Count == _Data.Length;
+        }
+
         protected override bool CheckRgn(int row, int col)
         {
-            throw new NotImplementedException();
+            Func<int, Range> findRange = (i) =>
+                _Ranges
+                .Find(range => Enumerable.Range(range.Begin, range.End).Any(num => num == row));
+            return this.CheckBox(findRange(row), findRange(col));
         }
     }
 }
