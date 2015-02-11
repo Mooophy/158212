@@ -19,10 +19,12 @@ namespace BackEnd
     public abstract class Matrix
     {
         protected int[,] _Data;
+        public readonly List<Range> _Ranges;
 
-        public Matrix(int size)
+        public Matrix(int size, List<Range> ranges)
         {
             _Data = new int[size, size];
+            _Ranges = ranges;
         }
 
         protected bool CheckRow(int row)
