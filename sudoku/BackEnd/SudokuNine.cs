@@ -21,7 +21,7 @@ namespace BackEnd
             bool ret = true;
             
             //check all rows and cols
-            for (int i = 0; i != _Data.Length; ++i)
+            for (int i = 0; i != _Data.GetLength(0); ++i)
                 if (ret)
                     ret = ret && this.CheckRow(i) && this.CheckCol(i);
                 else
@@ -44,7 +44,7 @@ namespace BackEnd
             foreach (var row in Enumerable.Range(rowRange.Begin, rowRange.End))
                 foreach (var col in Enumerable.Range(colRange.Begin, colRange.End))
                     if (_Data[row, col] != 0) set.Add(_Data[row, col]);
-            return set.Count == _Data.Length;
+            return set.Count == _Data.GetLength(0);
         }
 
         protected override bool CheckRgn(int row, int col)
