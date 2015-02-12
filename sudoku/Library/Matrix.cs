@@ -28,6 +28,22 @@ namespace Library
             this.Data = data;
         }
 
+        public Range FindRowRange(int row)
+        {
+            return
+                this
+                .RowRangeSet
+                .First(r => Enumerable.Range(r.Begin, r.Count).Any(i => i == row));
+        }
+
+        public Range FindColRange(int col)
+        {
+            return
+                this
+                .ColRangeSet
+                .First(r => Enumerable.Range(r.Begin, r.Count).Any(i => i == col));
+        }
+
         public class Range
         {
             public int Begin, Count;

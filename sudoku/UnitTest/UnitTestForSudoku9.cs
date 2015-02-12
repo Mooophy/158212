@@ -59,5 +59,27 @@ namespace UnitTest
             Assert.AreEqual(8, s9.Data[5, 6]);
             Assert.AreEqual(81, s9.Data.Length);
         }
+
+        [TestMethod]
+        public void TestFindRowRange()
+        {
+            var s9 = new Library.Sudoku9(_Solved);
+
+            var expected = new Library.Matrix.Range(3, 3);
+            var actual = s9.FindRowRange(3);
+            Assert.AreEqual(expected.Begin, actual.Begin);
+            Assert.AreEqual(expected.Count, actual.Count);
+        }
+
+        [TestMethod]
+        public void TestFindColRange()
+        {
+            var s9 = new Library.Sudoku9(_Solved);
+
+            var expected = new Library.Matrix.Range(6, 3);
+            var actual = s9.FindColRange(8);
+            Assert.AreEqual(expected.Begin, actual.Begin);
+            Assert.AreEqual(expected.Count, actual.Count);
+        }
     }
 }
