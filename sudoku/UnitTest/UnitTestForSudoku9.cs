@@ -64,9 +64,9 @@ namespace UnitTest
         public void TestFindRowRange()
         {
             var s9 = new Library.Sudoku9(_Solved);
-
             var expected = new Library.Matrix.Range(3, 3);
             var actual = s9.FindRowRange(3);
+            
             Assert.AreEqual(expected.Begin, actual.Begin);
             Assert.AreEqual(expected.Count, actual.Count);
         }
@@ -75,11 +75,46 @@ namespace UnitTest
         public void TestFindColRange()
         {
             var s9 = new Library.Sudoku9(_Solved);
-
             var expected = new Library.Matrix.Range(6, 3);
             var actual = s9.FindColRange(8);
+            
             Assert.AreEqual(expected.Begin, actual.Begin);
             Assert.AreEqual(expected.Count, actual.Count);
+        }
+
+        [TestMethod]
+        public void TestCheck()
+        {
+            var good = new int[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var bad = new int[9] { 1, 1, 3, 4, 5, 6, 7, 8, 9 };
+            var s9 = new Library.Sudoku9(_Solved);
+
+            Assert.AreEqual(true, s9.Check(good));
+            Assert.AreEqual(false, s9.Check(bad));
+        }
+
+        [TestMethod]
+        public void TestCheckRow()
+        {
+            var s9Good = new Library.Sudoku9(_Solved);
+            foreach (var row in Enumerable.Range(0, 9))
+                Assert.AreEqual(true, s9Good.CheckRow(row));
+
+            var s9Bad = new Library.Sudoku9();
+            foreach (var row in Enumerable.Range(0, 9))
+                Assert.AreEqual(false, s9Bad.CheckRow(row));
+        }
+
+        [TestMethod]
+        public void TestCheckCol()
+        {
+            var s9Good = new Library.Sudoku9(_Solved);
+            foreach (var col in Enumerable.Range(0, 9))
+                Assert.AreEqual(true, s9Good.CheckCol(col));
+
+            var s9Bad = new Library.Sudoku9();
+            foreach (var col in Enumerable.Range(0, 9))
+                Assert.AreEqual(false, s9Bad.CheckCol(col));
         }
     }
 }

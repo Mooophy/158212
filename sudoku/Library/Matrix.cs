@@ -44,6 +44,32 @@ namespace Library
                 .First(r => Enumerable.Range(r.Begin, r.Count).Any(i => i == col));
         }
 
+        public bool Check(int[] unit)
+        {
+            var set = new HashSet<int>(unit);
+            return set.Count == this.Size;
+        }
+
+        public bool CheckRow(int row)
+        {
+            var unit = 
+                Enumerable
+                .Range(0, this.Size)
+                .Select(col => this.Data[row, col])
+                .ToArray();
+            return this.Check(unit);
+        }
+
+        public bool CheckCol(int col)
+        {
+            var unit =
+                Enumerable
+                .Range(0, this.Size)
+                .Select(row => this.Data[row, col])
+                .ToArray();
+            return this.Check(unit);
+        }
+
         public class Range
         {
             public int Begin, Count;
