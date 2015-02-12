@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Sudoku9
+    public class Sudoku9 : Matrix
     {
+        public Sudoku9()
+            : base(9, new RangSet9(), new RangSet9())
+        { }
+
+        public Sudoku9(int[,] data)
+            : base(9, new RangSet9(), new RangSet9(), data)
+        { }
+
         public class RangSet9 : HashSet<Matrix.Range>
         {
             public RangSet9()
