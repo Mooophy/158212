@@ -6,7 +6,36 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Matrix
+    public abstract class Matrix
     {
+        public readonly int Size;
+        public int[,] Data { get; private set; }
+        public HashSet<Range> RowRangeSet, ColRangeSet;
+
+        protected Matrix(int size, HashSet<Range> rSet, HashSet<Range> cSet)
+        {
+            this.Size = size;
+            this.RowRangeSet = rSet;
+            this.ColRangeSet = cSet;
+            this.Data = new int[size, size];
+        }
+
+        protected Matrix(int size, HashSet<Range> rSet, HashSet<Range> cSet, int[,] data)
+        {
+            this.Size = size;
+            this.RowRangeSet = rSet;
+            this.ColRangeSet = cSet;
+            this.Data = data;
+        }
+
+        public class Range
+        {
+            public int Begin, Count;
+            public Range(int begin, int count)
+            {
+                this.Begin = begin;
+                this.Count = count;
+            }
+        }
     }
 }
