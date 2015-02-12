@@ -9,7 +9,7 @@ namespace BackEnd
     public class SudokuNine : Matrix
     {
         public SudokuNine()
-            : base(9, new List<Range> { new Range(0, 3), new Range(3, 3), new Range(6, 3) })
+            : base( 9, new List<Range> { new Range(0, 3), new Range(3, 3), new Range(6, 3) }, new List<Range> { new Range(0, 3), new Range(3, 3), new Range(6, 3) })
         {   }
 
         public SudokuNine(int [,] data)
@@ -30,8 +30,8 @@ namespace BackEnd
                     goto Done;
 
             //check all regions
-            foreach (var rowRange in this._Ranges)
-                foreach (var colRange in this._Ranges)
+            foreach (var rowRange in this.RowRanges)
+                foreach (var colRange in this.ColRanges)
                     if (ret)
                         ret = ret && this.CheckBox(rowRange, colRange);
                     else
@@ -51,10 +51,9 @@ namespace BackEnd
 
         protected override bool CheckRgn(int row, int col)
         {
-            Func<int, Range> findRange = (i) =>
-                this._Ranges
-                .Find(range => Enumerable.Range(range.Begin, range.Count).Any(num => num == i));
-            return this.CheckBox(findRange(row), findRange(col));
+            Func<int, List<Range>,Range> findRange = (i, list) =>
+                list.Find(range => Enumerable.Range(range.Begin, range.Count).Any(num => num == i));
+            return this.CheckBox(findRange(row,this.RowRanges), findRange(col, this.ColRanges));
         }
     }
 }

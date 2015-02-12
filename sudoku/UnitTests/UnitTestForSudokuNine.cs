@@ -12,7 +12,8 @@ namespace UnitTests
         public void TestCtor()
         {
             var game = new BackEnd.SudokuNine();
-            Assert.AreEqual(3, game._Ranges.Count);
+            Assert.AreEqual(3, game.RowRanges.Count);
+            Assert.AreEqual(3, game.ColRanges.Count);
         }
 
         [TestMethod]
