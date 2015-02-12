@@ -70,6 +70,17 @@ namespace Library
             return this.Check(unit);
         }
 
+        public bool CheckBox(int row, int col)
+        {
+            var rowRange = this.FindRowRange(row);
+            var colRange = this.FindColRange(col);
+            var unit = 
+                from r in Enumerable.Range(rowRange.Begin, rowRange.Count)
+                from c in Enumerable.Range(colRange.Begin, colRange.Count)
+                select this.Data[r, c];
+            return this.Check(unit.ToArray());
+        }
+
         public class Range
         {
             public int Begin, Count;

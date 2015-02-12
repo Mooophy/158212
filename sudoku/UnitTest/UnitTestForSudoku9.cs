@@ -116,5 +116,30 @@ namespace UnitTest
             foreach (var col in Enumerable.Range(0, 9))
                 Assert.AreEqual(false, s9Bad.CheckCol(col));
         }
+
+        [TestMethod]
+        public void TestCheckBox()
+        {
+            var allPoints =
+                from r in Enumerable.Range(0, 9)
+                from c in Enumerable.Range(0, 9)
+                select Tuple.Create(r, c);
+
+            var s9Good = new Library.Sudoku9(_Solved);
+            Assert.AreEqual(true, s9Good.CheckBox(0, 0));
+            Assert.AreEqual(true, s9Good.CheckBox(8, 0));
+            var expectedAllTrue =
+                allPoints
+                .All(point => s9Good.CheckBox(point.Item1, point.Item2));
+            Assert.AreEqual(true, expectedAllTrue);
+
+            var s9Bad = new Library.Sudoku9();
+            Assert.AreEqual(false, s9Bad.CheckBox(0, 0));
+            Assert.AreEqual(false, s9Bad.CheckBox(8, 0));
+            var expectedAllFalse =
+                allPoints
+                .All(point => s9Bad.CheckBox(point.Item1, point.Item2));
+            Assert.AreEqual(false, expectedAllFalse);
+        }
     }
 }
