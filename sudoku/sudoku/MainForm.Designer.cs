@@ -1,4 +1,4 @@
-﻿namespace sudoku
+﻿namespace Sudoku
 {
     partial class MainForm
     {
@@ -30,20 +30,18 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(479, 307);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "MainForm";
+            this.Text = "Sudoku";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
     }
 }
 

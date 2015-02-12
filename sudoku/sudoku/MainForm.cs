@@ -8,32 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace sudoku
+namespace Sudoku
 {
     public partial class MainForm : Form
     {
-        Button[,] _Matrix = new Button[9, 9];
-        void InitMatrix()
-        {
-            foreach (var row in Enumerable.Range(0, 9))
-            {
-                foreach (var col in Enumerable.Range(0, 9))
-                {
-                    var b = new Button();
-                    b.Text = (row + col).ToString();
-                    b.ForeColor = Color.Red;
-                    b.Size = new Size(50, 50);
-                    b.Location = new Point(row * 55, col * 55);
-                    _Matrix[row, col] = b;
-                    this.Controls.Add(b);
-                }
-            }
-        }
-
         public MainForm()
         {
             InitializeComponent();
-            this.InitMatrix();
         }
     }
 }
