@@ -11,7 +11,7 @@ namespace Library
         public readonly int Size;
         public int[,] Data { get; private set; }
         public HashSet<Range> RowRangeSet, ColRangeSet;
-
+        
         protected Matrix(int size, HashSet<Range> rSet, HashSet<Range> cSet)
         {
             this.Size = size;
@@ -19,7 +19,7 @@ namespace Library
             this.ColRangeSet = cSet;
             this.Data = new int[size, size];
         }
-
+        
         protected Matrix(int size, HashSet<Range> rSet, HashSet<Range> cSet, int[,] data)
         {
             this.Size = size;
@@ -27,7 +27,7 @@ namespace Library
             this.ColRangeSet = cSet;
             this.Data = data;
         }
-
+        
         public Range FindRowRange(int row)
         {
             return
@@ -35,7 +35,7 @@ namespace Library
                 .RowRangeSet
                 .First(r => Enumerable.Range(r.Begin, r.Count).Any(i => i == row));
         }
-
+        
         public Range FindColRange(int col)
         {
             return
@@ -43,13 +43,13 @@ namespace Library
                 .ColRangeSet
                 .First(c => Enumerable.Range(c.Begin, c.Count).Any(i => i == col));
         }
-
+        
         public bool Check(int[] unit)
         {
             var set = new HashSet<int>(unit);
-            return set.Count == this.Size;
+            return set.Count == this.Size && set.All(i => i != 0);
         }
-
+        
         public bool CheckRow(int row)
         {
             var unit = 
@@ -59,7 +59,7 @@ namespace Library
                 .ToArray();
             return this.Check(unit);
         }
-
+        
         public bool CheckCol(int col)
         {
             var unit =
@@ -69,7 +69,7 @@ namespace Library
                 .ToArray();
             return this.Check(unit);
         }
-
+        
         public bool CheckBox(int row, int col)
         {
             var rowRange = this.FindRowRange(row);
@@ -80,7 +80,7 @@ namespace Library
                 select this.Data[r, c];
             return this.Check(unit.ToArray());
         }
-
+        
         public bool IsSolved()
         {
             bool isSolved =
@@ -98,6 +98,7 @@ namespace Library
                                 break;
             return isSolved;
         }
+        
         public Result SetValue(int val, int row, int col)
         {
             this.Data.SetValue(val, row, col);
@@ -110,7 +111,7 @@ namespace Library
                 isSolved = this.IsSolved();
             return new Result(isValidRow, isValidCol, isValidBox, isSolved);
         }
-
+        
         public class Range
         {
             public int Begin, Count;
@@ -120,6 +121,7 @@ namespace Library
                 this.Count = count;
             }
         }
+        
         public class Result
         {
             public readonly bool VaildRow, ValidCol, ValidBox, IsSolved;
