@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Sudoku6
+    public class Sudoku6 : Library.Matrix
     {
-        public class RowRangeSet : HashSet<Matrix.Range>
+        public Sudoku6()
+            : base(6, new RRangeSet(), new CRangeSet())
+        { }
+
+        public Sudoku6(int[,] data)
+            : base(6, new RRangeSet(), new CRangeSet(), data)
+        { }
+
+        public class RRangeSet : HashSet<Library.Matrix.Range>
         {
-            public RowRangeSet()
+            public RRangeSet()
             {
                 this.Add(new Matrix.Range(0, 2));
                 this.Add(new Matrix.Range(2, 2));
@@ -18,9 +26,9 @@ namespace Library
             }
         }
 
-        public class ColRangeSet : HashSet<Matrix.Range>
+        public class CRangeSet : HashSet<Library.Matrix.Range>
         {
-            public ColRangeSet()
+            public CRangeSet()
             {
                 this.Add(new Matrix.Range(0, 3));
                 this.Add(new Matrix.Range(3, 3));
