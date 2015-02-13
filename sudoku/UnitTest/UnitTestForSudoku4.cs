@@ -149,5 +149,34 @@ namespace UnitTest
             var s4Bad = new Library.Sudoku4(unsolved);
             Assert.AreEqual(false, s4Bad.IsSolved());
         }
+
+        [TestMethod]
+        public void TestResult()
+        {
+            var result = new Library.Matrix.Result(true, true, false, false);
+
+            Assert.AreEqual(true, result.VaildRow);
+            Assert.AreEqual(true, result.ValidCol);
+            Assert.AreEqual(false, result.ValidBox);
+            Assert.AreEqual(false, result.IsSolved);
+        }
+
+        [TestMethod]
+        public void TestSetValue()
+        {
+            var s4Good = new Library.Sudoku4(_Solved);
+            var resGood = s4Good.SetValue(3, 0, 0);
+            Assert.AreEqual(true, resGood.VaildRow);
+            Assert.AreEqual(true, resGood.ValidCol);
+            Assert.AreEqual(true, resGood.ValidBox);
+            Assert.AreEqual(true, resGood.IsSolved);
+
+            var s9Bad = new Library.Sudoku9();
+            var resBad = s9Bad.SetValue(4, 0, 0);
+            Assert.AreEqual(false, resBad.VaildRow);
+            Assert.AreEqual(false, resBad.ValidCol);
+            Assert.AreEqual(false, resBad.ValidBox);
+            Assert.AreEqual(false, resBad.IsSolved);
+        }
     }
 }
