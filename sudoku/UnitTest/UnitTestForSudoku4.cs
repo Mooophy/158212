@@ -88,5 +88,54 @@ namespace UnitTest
             Assert.AreEqual(true, s4.Check(good));
             Assert.AreEqual(false, s4.Check(bad));
         }
+
+        [TestMethod]
+        public void TestCheckRow()
+        {
+            var s4Good = new Library.Sudoku4(_Solved);
+            foreach (var row in Enumerable.Range(0, 4))
+                Assert.AreEqual(true, s4Good.CheckRow(row));
+
+            var s4Bad = new Library.Sudoku9();
+            foreach (var row in Enumerable.Range(0, 4))
+                Assert.AreEqual(false, s4Bad.CheckRow(row));
+        }
+
+        [TestMethod]
+        public void TestCheckCol()
+        {
+            var s4Good = new Library.Sudoku4(_Solved);
+            foreach (var col in Enumerable.Range(0, 4))
+                Assert.AreEqual(true, s4Good.CheckCol(col));
+
+            var s4Bad = new Library.Sudoku4();
+            foreach (var col in Enumerable.Range(0, 4))
+                Assert.AreEqual(false, s4Bad.CheckCol(col));
+        }
+
+        [TestMethod]
+        public void TestCheckBox()
+        {
+            var allPoints =
+                from r in Enumerable.Range(0, 4)
+                from c in Enumerable.Range(0, 4)
+                select Tuple.Create(r, c);
+
+            var s4Good = new Library.Sudoku4(_Solved);
+            Assert.AreEqual(true, s4Good.CheckBox(0, 0));
+            Assert.AreEqual(true, s4Good.CheckBox(3, 0));
+            var expectedAllTrue =
+                    allPoints
+                    .All(point => s4Good.CheckBox(point.Item1, point.Item2));
+            Assert.AreEqual(true, expectedAllTrue);
+
+            var s4Bad = new Library.Sudoku4();
+            Assert.AreEqual(false, s4Bad.CheckBox(0, 0));
+            Assert.AreEqual(false, s4Bad.CheckBox(3, 0));
+            var expectedAllFalse =
+                allPoints
+                .All(point => s4Bad.CheckBox(point.Item1, point.Item2));
+            Assert.AreEqual(false, expectedAllFalse);
+        }
     }
 }
