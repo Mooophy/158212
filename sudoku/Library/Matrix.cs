@@ -98,6 +98,18 @@ namespace Library
                                 break;
             return isSolved;
         }
+        public Result SetValue(int val, int row, int col)
+        {
+            this.Data.SetValue(val, row, col);
+
+            var isValidRow = this.CheckRow(row);
+            var isValidCol = this.CheckCol(col);
+            var isValidBox = this.CheckBox(row, col);
+            var isSolved = isValidRow && isValidCol && isValidBox;
+            if (isSolved)
+                isSolved = this.IsSolved();
+            return new Result(isValidRow, isValidCol, isValidBox, isSolved);
+        }
 
         public class Range
         {
@@ -106,6 +118,17 @@ namespace Library
             {
                 this.Begin = begin;
                 this.Count = count;
+            }
+        }
+        public class Result
+        {
+            public readonly bool VaildRow, ValidCol, ValidBox, IsSolved;
+            public Result(bool vr, bool vc, bool vb, bool isSv)
+            {
+                this.VaildRow = vr;
+                this.ValidCol = vc;
+                this.ValidBox = vb;
+                this.IsSolved = isSv;
             }
         }
     }

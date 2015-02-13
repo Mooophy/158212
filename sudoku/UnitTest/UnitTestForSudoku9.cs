@@ -153,5 +153,16 @@ namespace UnitTest
             var s9Bad = new Library.Sudoku9(unsolved);
             Assert.AreEqual(false, s9Bad.IsSolved());
         }
+
+        [TestMethod]
+        public void TestResult()
+        {
+            var result = new Library.Matrix.Result(true, true, false, false);
+
+            Assert.AreEqual(true, result.VaildRow);
+            Assert.AreEqual(true, result.ValidCol);
+            Assert.AreEqual(false, result.ValidBox);
+            Assert.AreEqual(false, result.IsSolved);
+        }
     }
 }
