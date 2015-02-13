@@ -85,7 +85,7 @@ namespace Library
         {
             bool isSolved =
                 Enumerable
-                .Range(0, 9)
+                .Range(0, this.Size)
                 .All(index => this.CheckRow(index) && this.CheckCol(index));
 
             foreach (var rowRange in this.RowRangeSet)

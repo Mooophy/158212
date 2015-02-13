@@ -137,5 +137,17 @@ namespace UnitTest
                 .All(point => s4Bad.CheckBox(point.Item1, point.Item2));
             Assert.AreEqual(false, expectedAllFalse);
         }
+
+        [TestMethod]
+        public void TestIsSolved()
+        {
+            var s4Good = new Library.Sudoku4(_Solved);
+            Assert.AreEqual(true, s4Good.IsSolved());
+
+            var unsolved = _Solved.Clone() as int[,];
+            unsolved.SetValue(4, 3, 3);
+            var s4Bad = new Library.Sudoku4(unsolved);
+            Assert.AreEqual(false, s4Bad.IsSolved());
+        }
     }
 }
