@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Matrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sudoku4.cs" />
     <Compile Include="Sudoku9.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
