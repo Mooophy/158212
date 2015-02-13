@@ -41,7 +41,7 @@ namespace Library
             return
                 this
                 .ColRangeSet
-                .First(r => Enumerable.Range(r.Begin, r.Count).Any(i => i == col));
+                .First(c => Enumerable.Range(c.Begin, c.Count).Any(i => i == col));
         }
 
         public bool Check(int[] unit)
@@ -79,6 +79,24 @@ namespace Library
                 from c in Enumerable.Range(colRange.Begin, colRange.Count)
                 select this.Data[r, c];
             return this.Check(unit.ToArray());
+        }
+
+        public bool IsSolved()
+        {
+            bool isSolved =
+                Enumerable
+                .Range(0, 9)
+                .All(index => this.CheckRow(index) && this.CheckCol(index));
+
+            foreach (var rowRange in this.RowRangeSet)
+                foreach (var colRange in this.ColRangeSet)
+                    foreach (var row in Enumerable.Range(rowRange.Begin, rowRange.Count))
+                        foreach (var col in Enumerable.Range(colRange.Begin, colRange.Count))
+                            if (isSolved)
+                                isSolved = isSolved && this.CheckBox(row, col);
+                            else
+                                break;
+            return isSolved;
         }
 
         public class Range
