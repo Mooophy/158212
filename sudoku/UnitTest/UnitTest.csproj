@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="UnitTestForSudoku4.cs" />
     <Compile Include="UnitTestForSudoku9.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
