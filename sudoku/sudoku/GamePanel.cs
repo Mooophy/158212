@@ -47,9 +47,15 @@ namespace Sudoku
         {
             var sButton = sender as SButton;
             var result = this.BackEnd.Matrix.SetValue(sButton.Value, sButton.Row, sButton.Col);
-            string msg = sButton.Row + " " + sButton.Col + " " + sButton.Value + " "
-                        + result.VaildRow + " " + result.ValidCol + " " + result.ValidBox + " " + result.IsSolved;
-            MessageBox.Show(msg);
+
+            if (result.VaildRow)
+                foreach (var col in Enumerable.Range(0, this.BackEnd.Matrix.Count))
+                    this.Board[sButton.Row, col].MarkWithColor();
+            if(result.ValidCol)
+                foreach (var row in Enumerable.Range(0, this.BackEnd.Matrix.Count))
+                    this.Board[row, sButton.Col].MarkWithColor();
+            if (result.IsSolved)
+                MessageBox.Show("SOLVED!!");
         }
 
     }

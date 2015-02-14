@@ -39,5 +39,10 @@ namespace Sudoku
             this.Value += (e.Delta > 0) ? 1 : -1;
             this.Text = this.Value.ToString();
         }
+
+        internal void MarkWithColor()
+        {
+            this.BackColor = Color.Green;
+        }
     }
 }
