@@ -33,6 +33,7 @@ namespace UnitTest
         {
             var bg4 = new Library.BackEnd(@"s4.txt");
             Assert.AreEqual(2, bg4.Matrix.Data[0, 0]);
+            Assert.AreEqual(3, bg4.Matrix.Data[1, 1]);
             Assert.AreEqual(4, bg4.Matrix.Count);
 
             var bg6 = new Library.BackEnd(@"s6.txt");

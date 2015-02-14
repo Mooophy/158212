@@ -20,29 +20,28 @@ namespace Sudoku
         {
             InitializeComponent();
             this.BackEnd = new BackEnd(path);
+            this.Board = new SButton[this.BackEnd.Matrix.Count, this.BackEnd.Matrix.Count];
             this.Init();
         }
 
         private void Init()
         {
             int buttonSize = 80;
-            this.Size = new Size((buttonSize + 4) * this.BackEnd.Matrix.Count, 
-                                 (buttonSize + 8) * this.BackEnd.Matrix.Count);
-            this.Board = new SButton[this.BackEnd.Matrix.Count, this.BackEnd.Matrix.Count];
-
             foreach (var row in Enumerable.Range(0, this.BackEnd.Matrix.Count))
             {
                 foreach (var col in Enumerable.Range(0, this.BackEnd.Matrix.Count))
                 {
                     var sbutton = new SButton(buttonSize, this.BackEnd.Matrix.Count, row, col);
-
                     sbutton.Location = new Point(col * buttonSize, row * buttonSize);
-                    sbutton.MouseWheel += this.SetValue;
                     sbutton.Text = this.BackEnd.Matrix.Data[row, col].ToString();
-                    Board[row, col] = sbutton;
-                    this.Controls.Add(Board[row, col]);
+                    sbutton.MouseWheel += this.SetValue;
+                    
+                    this.Board[row, col] = sbutton;
+                    this.Controls.Add(sbutton);
                 }
             }
+
+            this.Size = new Size((buttonSize + 4) * this.BackEnd.Matrix.Count, (buttonSize + 8) * this.BackEnd.Matrix.Count);
         }
 
         private void SetValue(object sender, MouseEventArgs e)
@@ -56,6 +55,7 @@ namespace Sudoku
             if (result.ValidCol)
                 foreach (var row in Enumerable.Range(0, this.BackEnd.Matrix.Count))
                     this.Board[row, sButton.Col].MarkWithColor();
+
             if (result.IsSolved)
             { 
                 MessageBox.Show("SOLVED!!");
