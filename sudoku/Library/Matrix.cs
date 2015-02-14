@@ -8,13 +8,13 @@ namespace Library
 {
     public abstract class Matrix
     {
-        public readonly int Size;
+        public readonly int Count;
         public int[,] Data { get; private set; }
         public HashSet<Range> RowRangeSet, ColRangeSet;
         
         protected Matrix(int size, HashSet<Range> rSet, HashSet<Range> cSet)
         {
-            this.Size = size;
+            this.Count = size;
             this.RowRangeSet = rSet;
             this.ColRangeSet = cSet;
             this.Data = new int[size, size];
@@ -22,7 +22,7 @@ namespace Library
         
         protected Matrix(int size, HashSet<Range> rSet, HashSet<Range> cSet, int[,] data)
         {
-            this.Size = size;
+            this.Count = size;
             this.RowRangeSet = rSet;
             this.ColRangeSet = cSet;
             this.Data = data;
@@ -47,14 +47,14 @@ namespace Library
         public bool Check(int[] unit)
         {
             var set = new HashSet<int>(unit);
-            return set.Count == this.Size && set.All(i => i != 0);
+            return set.Count == this.Count && set.All(i => i != 0);
         }
         
         public bool CheckRow(int row)
         {
             var unit = 
                 Enumerable
-                .Range(0, this.Size)
+                .Range(0, this.Count)
                 .Select(col => this.Data[row, col])
                 .ToArray();
             return this.Check(unit);
@@ -64,7 +64,7 @@ namespace Library
         {
             var unit =
                 Enumerable
-                .Range(0, this.Size)
+                .Range(0, this.Count)
                 .Select(row => this.Data[row, col])
                 .ToArray();
             return this.Check(unit);
@@ -85,7 +85,7 @@ namespace Library
         {
             bool isSolved =
                 Enumerable
-                .Range(0, this.Size)
+                .Range(0, this.Count)
                 .All(index => this.CheckRow(index) && this.CheckCol(index));
 
             foreach (var rowRange in this.RowRangeSet)

@@ -37,7 +37,7 @@ namespace UnitTest
         {
             var s9 = new Library.Sudoku9();
 
-            Assert.AreEqual(9, s9.Size);
+            Assert.AreEqual(9, s9.Count);
             Assert.AreEqual(3, s9.ColRangeSet.Count);
             Assert.AreEqual(3, s9.RowRangeSet.Count);
 
@@ -51,7 +51,7 @@ namespace UnitTest
         {
             var s9 = new Library.Sudoku9(_Solved);
 
-            Assert.AreEqual(9, s9.Size);
+            Assert.AreEqual(9, s9.Count);
             Assert.AreEqual(3, s9.ColRangeSet.Count);
             Assert.AreEqual(3, s9.RowRangeSet.Count);
 

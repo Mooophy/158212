@@ -33,7 +33,7 @@ namespace UnitTest
         {
             var s4 = new Library.Sudoku4();
 
-            Assert.AreEqual(4, s4.Size);
+            Assert.AreEqual(4, s4.Count);
             Assert.AreEqual(2, s4.RowRangeSet.Count);
             Assert.AreEqual(2, s4.ColRangeSet.Count);
 
@@ -47,7 +47,7 @@ namespace UnitTest
         {
             var s4 = new Library.Sudoku4(_Solved);
 
-            Assert.AreEqual(4, s4.Size);
+            Assert.AreEqual(4, s4.Count);
             Assert.AreEqual(2, s4.RowRangeSet.Count);
             Assert.AreEqual(2, s4.ColRangeSet.Count);
 

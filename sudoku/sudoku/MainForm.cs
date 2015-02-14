@@ -18,10 +18,14 @@ namespace Sudoku
         {
             InitializeComponent();
 
-            this.GamePanel = new GamePanel(@"s4.txt");
-            this.GamePanel.ShowDialog();
+            this.GamePanel = new GamePanel(@"s9.txt");
             //this.Button = new SButton(50, 9, -9);
             //this.Controls.Add(this.Button);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.GamePanel.ShowDialog();
         }
     }
 }

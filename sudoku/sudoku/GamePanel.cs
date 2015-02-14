@@ -14,12 +14,30 @@ namespace Sudoku
     public partial class GamePanel : Form
     {
         internal BackEnd BackEnd;
+        internal SButton[,] Board;
 
         public GamePanel(string path)
         {
             InitializeComponent();
+            this.Init(path);
+        }
+
+        private void Init(string path)
+        {
             this.BackEnd = new BackEnd(path);
-            this.Size = new Size(50 * this.BackEnd.Matrix.Size, 50 * this.BackEnd.Matrix.Size);
+
+            int sz = 100 * this.BackEnd.Matrix.Count;
+            this.Size = new Size(sz, sz);
+            this.Board = new SButton[sz, sz];
+
+            foreach (var row in Enumerable.Range(0, this.BackEnd.Matrix.Count))
+            {
+                foreach (var col in Enumerable.Range(0, this.BackEnd.Matrix.Count))
+                {
+                    Board[row, col] = new SButton(100, this.BackEnd.Matrix.Count, this.BackEnd.Matrix.Count * (-1));
+                    this.Controls.Add(Board[row, col]);
+                }
+            }
         }
     }
 }
