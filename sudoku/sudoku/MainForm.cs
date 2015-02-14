@@ -12,13 +12,16 @@ namespace Sudoku
 {
     public partial class MainForm : Form
     {
-        public SButton Button;
+        //public SButton Button; // for testing
+        private GamePanel GamePanel;
         public MainForm()
         {
             InitializeComponent();
 
-            this.Button = new SButton(50, 9, -9);
-            this.Controls.Add(this.Button);
+            this.GamePanel = new GamePanel(@"s4.txt");
+            this.GamePanel.ShowDialog();
+            //this.Button = new SButton(50, 9, -9);
+            //this.Controls.Add(this.Button);
         }
     }
 }
