@@ -12,15 +12,12 @@ namespace Sudoku
 {
     public partial class MainForm : Form
     {
-        //public SButton Button; // for testing
         private GamePanel GamePanel;
         public MainForm()
         {
             InitializeComponent();
 
-            this.GamePanel = new GamePanel(@"s9.txt");
-            //this.Button = new SButton(50, 9, -9);
-            //this.Controls.Add(this.Button);
+            this.GamePanel = new GamePanel(@"s4.txt");
         }
 
         private void button1_Click(object sender, EventArgs e)

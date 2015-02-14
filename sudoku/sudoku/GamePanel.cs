@@ -34,7 +34,7 @@ namespace Sudoku
             {
                 foreach (var col in Enumerable.Range(0, this.BackEnd.Matrix.Count))
                 {
-                    var sbutton = new SButton(buttonSize, this.BackEnd.Matrix.Count, this.BackEnd.Matrix.Count * (-1), row, col);
+                    var sbutton = new SButton(buttonSize, this.BackEnd.Matrix.Count, row, col);
                     sbutton.Location = new Point(col * buttonSize, row * buttonSize);
                     sbutton.MouseWheel += this.SetValue;
                     Board[row, col] = sbutton;
@@ -46,6 +46,7 @@ namespace Sudoku
         private void SetValue(object sender, MouseEventArgs e)
         {
             var sButton = sender as SButton;
+            var result = this.BackEnd.Matrix.SetValue(sButton.Value, sButton.Row, sButton.Col);
             MessageBox.Show(sButton.Row + " " + sButton.Col);
         }
     }
