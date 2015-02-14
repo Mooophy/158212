@@ -44,7 +44,5 @@ namespace UnitTest
             Assert.AreEqual(9, bg9.Matrix.Data[7, 8]);
             Assert.AreEqual(9, bg9.Matrix.Count);
         }
-
-
     }
 }
