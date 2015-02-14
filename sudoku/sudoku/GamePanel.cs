@@ -19,13 +19,12 @@ namespace Sudoku
         public GamePanel(string path)
         {
             InitializeComponent();
-            this.Init(path);
+            this.BackEnd = new BackEnd(path);
+            this.Init();
         }
 
-        private void Init(string path)
+        private void Init()
         {
-            this.BackEnd = new BackEnd(path);
-
             int buttonSize = 80;
             this.Size = new Size((buttonSize + 4) * this.BackEnd.Matrix.Count, 
                                  (buttonSize + 8) * this.BackEnd.Matrix.Count);
@@ -36,8 +35,10 @@ namespace Sudoku
                 foreach (var col in Enumerable.Range(0, this.BackEnd.Matrix.Count))
                 {
                     var sbutton = new SButton(buttonSize, this.BackEnd.Matrix.Count, row, col);
+
                     sbutton.Location = new Point(col * buttonSize, row * buttonSize);
                     sbutton.MouseWheel += this.SetValue;
+                    sbutton.Text = this.BackEnd.Matrix.Data[row, col].ToString();
                     Board[row, col] = sbutton;
                     this.Controls.Add(Board[row, col]);
                 }
