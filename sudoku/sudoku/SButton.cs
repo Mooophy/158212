@@ -14,14 +14,17 @@ namespace Sudoku
     public class SButton : Button 
     {
         public int Value { get; private set; }
-        public int UpperLimit, LowerLimit;
-        public SButton(int buttonSize, int upperLimit, int lowerLimit)
+        public readonly int UpperLimit, LowerLimit;
+        public readonly int Row, Col;
+        public SButton(int buttonSize, int upperLimit, int lowerLimit, int row, int col)
             : base()
         {
             this.Size = new System.Drawing.Size(buttonSize, buttonSize);
             this.Value = 0;
             this.UpperLimit = upperLimit;
             this.LowerLimit = lowerLimit;
+            this.Row = row;
+            this.Col = col;
             this.Text = this.Value.ToString();
             this.MouseWheel += this.OnMouseWheelMoving;
         }

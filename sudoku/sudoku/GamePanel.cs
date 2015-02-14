@@ -26,18 +26,27 @@ namespace Sudoku
         {
             this.BackEnd = new BackEnd(path);
 
-            int sz = 100 * this.BackEnd.Matrix.Count;
-            this.Size = new Size(sz, sz);
-            this.Board = new SButton[sz, sz];
+            int buttonSize = 80;
+            this.Size = new Size((buttonSize + 4) * this.BackEnd.Matrix.Count, (buttonSize + 8) * this.BackEnd.Matrix.Count);
+            this.Board = new SButton[this.BackEnd.Matrix.Count, this.BackEnd.Matrix.Count];
 
             foreach (var row in Enumerable.Range(0, this.BackEnd.Matrix.Count))
             {
                 foreach (var col in Enumerable.Range(0, this.BackEnd.Matrix.Count))
                 {
-                    Board[row, col] = new SButton(100, this.BackEnd.Matrix.Count, this.BackEnd.Matrix.Count * (-1));
+                    var sbutton = new SButton(buttonSize, this.BackEnd.Matrix.Count, this.BackEnd.Matrix.Count * (-1), row, col);
+                    sbutton.Location = new Point(col * buttonSize, row * buttonSize);
+                    sbutton.MouseWheel += this.SetValue;
+                    Board[row, col] = sbutton;
                     this.Controls.Add(Board[row, col]);
                 }
             }
+        }
+
+        private void SetValue(object sender, MouseEventArgs e)
+        {
+            var sButton = sender as SButton;
+            MessageBox.Show(sButton.Row + " " + sButton.Col);
         }
     }
 }
