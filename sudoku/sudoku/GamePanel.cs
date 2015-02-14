@@ -27,7 +27,8 @@ namespace Sudoku
             this.BackEnd = new BackEnd(path);
 
             int buttonSize = 80;
-            this.Size = new Size((buttonSize + 4) * this.BackEnd.Matrix.Count, (buttonSize + 8) * this.BackEnd.Matrix.Count);
+            this.Size = new Size((buttonSize + 4) * this.BackEnd.Matrix.Count, 
+                                 (buttonSize + 8) * this.BackEnd.Matrix.Count);
             this.Board = new SButton[this.BackEnd.Matrix.Count, this.BackEnd.Matrix.Count];
 
             foreach (var row in Enumerable.Range(0, this.BackEnd.Matrix.Count))
@@ -51,12 +52,14 @@ namespace Sudoku
             if (result.VaildRow)
                 foreach (var col in Enumerable.Range(0, this.BackEnd.Matrix.Count))
                     this.Board[sButton.Row, col].MarkWithColor();
-            if(result.ValidCol)
+            if (result.ValidCol)
                 foreach (var row in Enumerable.Range(0, this.BackEnd.Matrix.Count))
                     this.Board[row, sButton.Col].MarkWithColor();
             if (result.IsSolved)
+            { 
                 MessageBox.Show("SOLVED!!");
+                this.Close();
+            }
         }
-
     }
 }

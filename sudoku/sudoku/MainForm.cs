@@ -12,17 +12,19 @@ namespace Sudoku
 {
     public partial class MainForm : Form
     {
-        private GamePanel GamePanel;
+        private GamePanel _GamePanel;
         public MainForm()
         {
             InitializeComponent();
-
-            this.GamePanel = new GamePanel(@"s4.txt");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void startToolStripMenuItemClick(object sender, EventArgs e)
         {
-            this.GamePanel.ShowDialog();
+            if(_OpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                _GamePanel = new GamePanel(_OpenFileDialog.FileName);
+                _GamePanel.ShowDialog();
+            }
         }
     }
 }

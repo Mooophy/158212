@@ -42,7 +42,7 @@ namespace Sudoku
 
         internal void MarkWithColor()
         {
-            this.BackColor = Color.Green;
+            this.BackColor = Color.RoyalBlue;
         }
     }
 }
