@@ -88,9 +88,9 @@ namespace Library
                 .Range(0, this.Count)
                 .All(index => this.CheckRow(index) && this.CheckCol(index));
 
-            foreach (var rowRange in this.RowRangeSet)
+            foreach (var rowRange in this.RowRangeSet) 
                 foreach (var colRange in this.ColRangeSet)
-                    foreach (var row in Enumerable.Range(rowRange.Begin, rowRange.Count))
+                    foreach (var row in Enumerable.Range(rowRange.Begin, rowRange.Count)) 
                         foreach (var col in Enumerable.Range(colRange.Begin, colRange.Count))
                             if (isSolved)
                                 isSolved = isSolved && this.CheckBox(row, col);
