@@ -133,5 +133,19 @@ namespace Library
                 this.IsSolved = isSv;
             }
         }
+
+        public class FeedBack
+        {
+            public HashSet<int> ValidRowSet { get; private set; }
+            public HashSet<int> ValidColSet { get; private set; }
+            public bool IsSolved { get; private set; }
+
+            public FeedBack(HashSet<int> vrs, HashSet<int> vcs, bool isSolved)
+            {
+                this.ValidRowSet = vrs;
+                this.ValidColSet = vcs;
+                this.IsSolved = isSolved;
+            }
+        }
     }
 }
