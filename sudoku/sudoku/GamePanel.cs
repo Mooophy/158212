@@ -47,7 +47,10 @@ namespace Sudoku
         {
             var sButton = sender as SButton;
             var result = this.BackEnd.Matrix.SetValue(sButton.Value, sButton.Row, sButton.Col);
-            MessageBox.Show(sButton.Row + " " + sButton.Col);
+            string msg = sButton.Row + " " + sButton.Col + " " + sButton.Value + " "
+                        + result.VaildRow + " " + result.ValidCol + " " + result.ValidBox + " " + result.IsSolved;
+            MessageBox.Show(msg);
         }
+
     }
 }
