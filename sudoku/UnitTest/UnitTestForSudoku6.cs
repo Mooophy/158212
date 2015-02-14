@@ -172,18 +172,10 @@ namespace UnitTest
         public void TestSetValue()
         {
             var s6Good = new Library.Sudoku6(_Solved);
-            var resGood = s6Good.SetValue(2, 0, 0);
-            Assert.AreEqual(true, resGood.VaildRow);
-            Assert.AreEqual(true, resGood.ValidCol);
-            Assert.AreEqual(true, resGood.ValidBox);
-            Assert.AreEqual(true, resGood.IsSolved);
-
-            var s6Bad = new Library.Sudoku6();
-            var resBad = s6Bad.SetValue(5, 0, 0);
-            Assert.AreEqual(false, resBad.VaildRow);
-            Assert.AreEqual(false, resBad.ValidCol);
-            Assert.AreEqual(false, resBad.ValidBox);
-            Assert.AreEqual(false, resBad.IsSolved);
+            var feedbackGood = s6Good.SetValue(2, 0, 0);
+            Assert.AreEqual(true, feedbackGood.IsSolved);
+            Assert.AreEqual(6, feedbackGood.ValidRowSet.Count);
+            Assert.AreEqual(6, feedbackGood.ValidColSet.Count);
         }
     }
 }

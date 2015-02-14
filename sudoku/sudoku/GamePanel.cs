@@ -47,24 +47,23 @@ namespace Sudoku
             this.Size = new Size((buttonSize + 4) * this.BackEnd.Matrix.Count, (buttonSize + 8) * this.BackEnd.Matrix.Count);
         }
 
-        private void SetValue(object sender, MouseEventArgs e)
+        private void SetValue(object sender, MouseEventArgs e)//modified
         {
             var sButton = sender as SButton;
-            var result = this.BackEnd.Matrix.SetValue(sButton.Value, sButton.Row, sButton.Col);
-            this.HandleResult(result, sButton);
+            var feedback = this.BackEnd.Matrix.SetValue(sButton.Value, sButton.Row, sButton.Col);
+            this.HandleResult(feedback, sButton);
         }
 
-        private void HandleResult(Matrix.Result result, SButton sButton)
+        private void HandleResult(Matrix.FeedBack feedback, SButton sButton)
         {
-            if (result.VaildRow)
+            foreach (var row in Enumerable.Range(0, this.BackEnd.Matrix.Count))
                 foreach (var col in Enumerable.Range(0, this.BackEnd.Matrix.Count))
-                    this.Board[sButton.Row, col].MarkWithColor();
+                    if (feedback.ValidRowSet.Contains(row) || feedback.ValidColSet.Contains(col))
+                        this.Board[row, col].MarkWithColor();
+                    else
+                        this.Board[row, col].UnmarkWithColor();
 
-            if (result.ValidCol)
-                foreach (var row in Enumerable.Range(0, this.BackEnd.Matrix.Count))
-                    this.Board[row, sButton.Col].MarkWithColor();
-
-            if (result.IsSolved)
+            if (feedback.IsSolved)
             {
                 MessageBox.Show("SOLVED!!");
                 this.Close();

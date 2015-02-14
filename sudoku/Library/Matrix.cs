@@ -99,17 +99,18 @@ namespace Library
             return isSolved;
         }
         
-        public Result SetValue(int val, int row, int col)
+        public FeedBack SetValue(int val, int row, int col)// modified
         {
             this.Data.SetValue(val, row, col);
+            return this.ReadStates();
 
-            var isValidRow = this.CheckRow(row);
-            var isValidCol = this.CheckCol(col);
-            var isValidBox = this.CheckBox(row, col);
-            var isSolved = isValidRow && isValidCol && isValidBox;
-            if (isSolved)
-                isSolved = this.IsSolved();
-            return new Result(isValidRow, isValidCol, isValidBox, isSolved);
+            //var isValidRow = this.CheckRow(row);
+            //var isValidCol = this.CheckCol(col);
+            //var isValidBox = this.CheckBox(row, col);
+            //var isSolved = isValidRow && isValidCol && isValidBox;
+            //if (isSolved)
+            //    isSolved = this.IsSolved();
+            //return new Result(isValidRow, isValidCol, isValidBox, isSolved);
         }
         
         public class Range
@@ -122,7 +123,20 @@ namespace Library
             }
         }
         
-        public class Result
+        private FeedBack ReadStates()
+        {
+            FeedBack reply = new FeedBack();
+
+            foreach (var row in Enumerable.Range(0, this.Count).Where(row => this.CheckRow(row)))
+                reply.ValidRowSet.Add(row);
+            foreach (var col in Enumerable.Range(0, this.Count).Where(col => this.CheckCol(col)))
+                reply.ValidColSet.Add(col);
+            reply.IsSolved = this.IsSolved();
+
+            return reply;
+        }
+
+        public class Result //to delete
         {
             public readonly bool VaildRow, ValidCol, ValidBox, IsSolved;
             public Result(bool vr, bool vc, bool vb, bool isSv)
@@ -134,11 +148,19 @@ namespace Library
             }
         }
 
+
         public class FeedBack
         {
             public HashSet<int> ValidRowSet { get; private set; }
             public HashSet<int> ValidColSet { get; private set; }
-            public bool IsSolved { get; private set; }
+            public bool IsSolved { get; set; }
+
+            public FeedBack()
+            {
+                this.ValidRowSet = new HashSet<int>();
+                this.ValidColSet = new HashSet<int>();
+                this.IsSolved = false;
+            }
 
             public FeedBack(HashSet<int> vrs, HashSet<int> vcs, bool isSolved)
             {

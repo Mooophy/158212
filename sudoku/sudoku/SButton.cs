@@ -44,5 +44,10 @@ namespace Sudoku
         {
             this.BackColor = Color.RoyalBlue;
         }
+
+        internal void UnmarkWithColor()
+        {
+            this.BackColor = default(Color);
+        }
     }
 }
