@@ -61,9 +61,9 @@ namespace Library
                     return data;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
     }
