@@ -17,7 +17,7 @@ namespace Sudoku
         {
             InitializeComponent();
 
-            this.Button = new SButton(50);
+            this.Button = new SButton(50, 9, -9);
             this.Controls.Add(this.Button);
         }
     }
