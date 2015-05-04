@@ -23,8 +23,15 @@ namespace Library
 
     public class FrqDic : Dictionary<string, int>
     {
+        private static Dictionary<string, int> makeDicFromList(List<string> list)
+        {
+            return list
+                .GroupBy(s => s)
+                .ToDictionary(g => g.ElementAt(0), g => g.Count());
+        }
+
         public FrqDic(List<string> list)
-            : base(list.GroupBy(s => s).ToDictionary(g => g.ElementAt(0), g => g.Count()))
-        {}
+            : base(makeDicFromList(list))
+        { }
     }
 }
