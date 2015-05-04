@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Functions
+    public class LengthsDictionary : Dictionary<string, int>
     {
-        static public Dictionary<string, int> MakeLengthsDic(List<string> list)
+        static Dictionary<string, int> InitDic(List<string> list)
         {
             return list
                 .GroupBy(s => s)
                 .ToDictionary(g => g.Key, g => g.Count());
         }
+
+        public LengthsDictionary(List<string> list)
+            : base(InitDic(list))
+        { }
     }
 
 }

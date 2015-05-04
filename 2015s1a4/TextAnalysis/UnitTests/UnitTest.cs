@@ -9,10 +9,10 @@ namespace UnitTests
     public class UnitTest
     {
         [TestMethod]
-        public void TestMakeLengthsDic()
+        public void TestLengthsDictionary()
         {
             var seq = new List<string> { "a", "b", "c", "a", "c", "zzz", "zzz" };
-            var dic = Library.Functions.MakeLengthsDic(seq);
+            var dic = new Library.LengthsDictionary(seq);
 
             Assert.AreEqual(2, dic["a"]);
             Assert.AreEqual(1, dic["b"]);
