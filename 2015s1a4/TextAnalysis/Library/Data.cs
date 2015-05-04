@@ -6,18 +6,25 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class LengthsDictionary : Dictionary<string, int>
+    public class LenDic : Dictionary<int, SortedSet<string>>
     {
-        static Dictionary<string, int> InitDic(List<string> list)
+        private static Dictionary<int, SortedSet<string>> makeDicFromList(List<string> list)
         {
-            return list
-                .GroupBy(s => s)
-                .ToDictionary(g => g.Key, g => g.Count());
+            return 
+                list
+                .GroupBy(s => s.Length)
+                .ToDictionary(g => g.Key, g => new SortedSet<string>(g));
         }
 
-        public LengthsDictionary(List<string> list)
-            : base(InitDic(list))
+        public LenDic(List<string> list)
+            : base(makeDicFromList(list))
         { }
     }
 
+    public class FrqDic : Dictionary<string, int>
+    {
+        public FrqDic(List<string> list)
+            : base(list.GroupBy(s => s).ToDictionary(g => g.ElementAt(0), g => g.Count()))
+        {}
+    }
 }
