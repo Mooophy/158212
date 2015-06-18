@@ -12,7 +12,6 @@ namespace JuestForCshap
 {
     class Program
     {
-
         static string BmiSpan(float bmi)
         {
             if (bmi < 0)
